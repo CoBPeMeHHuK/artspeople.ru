@@ -1,0 +1,249 @@
+<template>
+    <div class="chat_container">
+        <div class="chat_content">
+            <div v-if="isLeftChat" class="chat_content_left">
+                <div class="chat_header_left">
+                    <div class="chat_header__searcher">
+                        <div class="searcher__icon"></div>
+                        <input type="text" placeholder="Search" class="searcher__input">
+                    </div>
+                </div>
+                <div class="chat_content_left__persons">
+                    <div class="chat_content_left__person" v-for="user in users" v-on:click="selectChatUser(user.id)" :class="{active:userSelect===user.id}">
+                        <div class="chat_content_left__left_info">
+                            <div class="personal_chat_left_person__avatar"
+                                 v-bind:style="{ background: 'url(/storage/'+user.type+'/'+user.src+') no-repeat' }">
+                                <div class="personal_chat_left_person__container">
+                                    <div class="personal_chat_left_person__online_icon"></div>
+                                </div>
+                            </div>
+                            <div class="personal_chat_left_person__title_container">
+                                <div class="personal_chat_left_person__name">{{ user.name+ ' ' +user.surname }}</div>
+                                <div class="personal_chat_left_person__last_message">{{ user.lastMessage | truncate(32, '...') }}</div>
+                            </div>
+                        </div>
+                        <div class="personal_chat_left_person__right_container">
+                            <div class="personal_chat_left_person__date">{{ user.timeMessage }}</div>
+                            <div class="count_message__chat">{{ user.countUnreadMessages}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="isRightChat" class="chat_content_right">
+                <div class="chat_header_right">
+                    <div class="chat_header__person">
+                        <div class="chat_header__back" @click="clickBack"></div>
+                        <div class="personal_chat_option_dots__container" @click.stop="closeForm()" @click="openOptionModal">
+                            <div class="personal_chat_option_dots"></div>
+                            <div class="personal_chat_option" v-bind:class="{is_active_modal:userOption === 1}" >
+                                <ul class="personal_chat_option__ul" ref="option_user_modal">
+                                    <li @click.stop="closeForm()">Название пункта</li>
+                                    <li @click.stop="closeForm()">Название пункта</li>
+                                    <li @click.stop="closeForm()">Название пункта</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="personal_chat__avatar"
+                             style="background: url('https://sun9-38.userapi.com/c846016/v846016499/3041d/EKie4fFBKXo.jpg') no-repeat;">
+                            <div class="chat__online_icon_container">
+                                <div class="chat__online_icon"></div>
+                            </div>
+                        </div>
+                        <div class="personal_chat__title_container">
+                            <div class="personal_chat__name">{{ userInformation.surname +' '+ userInformation.name}}</div>
+                            <div class="personal_chat__status">Online</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: relative">
+                    <div class="chat_message_content" ref="message_area">
+                        <div class="chat_person_messages">
+                            <ul class="person_message">
+                                <li v-for="data in dataMessages" v-bind:class="{right_person:data['message']['right_person']==='right_person'}">
+                                    <div class="person_message__avatar"
+                                         v-bind:style="{ background: 'url(/storage/'+data.message.type+'/'+data.message.src+') no-repeat' }">
+                                    </div>
+                                    <div class="person_message_container">
+                                        <div class="person_message_text" v-html="data.message.text"></div>
+                                        <div class="person_message_date">{{ data.message.created | moment("H : m")}}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="chat_write_input_message__wrapper">
+                            <div class="chat_write_input_message__container">
+                                <div class="chat_write_input_message__smile_icon"></div>
+                                <div class="chat_write_input_message__btn_send" @click="sendMessage"></div>
+                                <div class="chat_write_input_message__option_icon"></div>
+                                <div class="chat_write_input_message__clear_chat">Очистить переписку</div>
+                                <textarea  class="chat_write_input_message" placeholder="Напишите сообщение" v-model="message" @keyup.enter="sendMessage"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        data: function () {
+            return {
+                isActive:false,
+                userOption:0,
+                clickedOptionMenu:0,
+                message:'',
+                isLeftChat:true,
+                isRightChat:true
+            }
+        },
+
+        props:[
+            'users',
+            'userAuth',
+            'userSelect',
+            'dataMessages',
+            'userAvatar'
+        ],
+
+        created(){
+            document.addEventListener('click', () => this.closeForm());
+        },
+
+        mounted() {
+            let area = this.$refs.message_area;
+            setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
+                area.scrollTop = area.scrollHeight;
+            }});
+
+            window.innerWidth <= 1100 ? this.isRightChat = false : this.isRightChat = true;
+
+            this.$emit('preloader', [{
+                'isPreloader':false
+            }]);
+        },
+
+
+        computed:{
+            userInformation:function(){
+                try {
+                    if(this.users.find(item => item.id === this.userSelect)){
+                        return this.users.find(item => item.id === this.userSelect);
+                    } else{
+                        return {
+                            'name':'not found',
+                            'surname':'not found'
+                        };
+                    }
+                } catch (e) {
+                    return {
+                        'name':'not found',
+                        'surname':'not found'
+                    };
+                }
+            }
+        },
+
+
+
+        methods: {
+
+            /*-------------------------------------------ОСНОВНЫЕ МЕТОДЫ---------------------------------*/
+            selectChatUser:function(id){
+
+                if(window.innerWidth <= 1100){
+                    this.isLeftChat = false;
+                    this.isRightChat = true;
+                }
+
+                this.userSelect=id;
+                let area = this.$refs.message_area;
+                this.$emit('clear', [{
+                    'userSelect':this.userSelect
+                }]);
+
+                axios({
+                    method:'post',
+                    url:'/api/get-user-messages',
+                    params: {
+                        userSelect:this.userSelect
+                    }
+                }).then((response) => {
+
+                    console.log(response);
+                    Object.keys(response.data).forEach(function(key, id) {
+                        let userAuth = '';
+                        response.data[key].user_from === this.userAuth['id'] ? userAuth = 'right_person': userAuth = '';
+                        this.dataMessages.push({
+                            'message':{
+                                'text': response.data[key].text,
+                                'created':response.data[key].created_at,
+                                'user_from':response.data[key].user_from,
+                                'is_read':response.data[key].is_read,
+                                'name':response.data[key].name,
+                                'surname':response.data[key].surname,
+                                'src':response.data[key].avatar.src,
+                                'type':response.data[key].avatar.type,
+                                'right_person':userAuth
+                            },
+                        });
+                    }.bind(this));
+                    setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
+                        area.scrollTop = area.scrollHeight;
+                    } });
+                });
+            },
+            sendMessage:function(){
+                if(this.message.length > 0 ) {
+                    axios({
+                        method: 'post',
+                        url: '/api/send-message',
+                        params: {userSelect: this.userSelect, message: this.message, user_id: this.userAuth.id}
+                    }).then((response) => {
+
+                        console.log(response);
+
+                        let parameters = {
+                            'name': this.userAuth.name,
+                            'surname':this.userAuth.surname,
+                            'text': this.message,
+                            'is_read':1,
+                            'right_person':'right_person',
+                            'type':'avatars',
+                            'user_from':this.userAuth.id,
+                            'src':this.userAvatar,
+                            'created': new Date()
+                        };
+
+                        console.log(parameters);
+
+                        this.$emit('message', [{
+                            'message':parameters
+                        }]);
+
+                        this.message = "";
+                        let area = this.$refs.message_area;
+                        setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
+                            area.scrollTop = area.scrollHeight;
+                        } });
+                    });
+                }
+            },
+
+            clickBack:function(){
+                this.isRightChat = false;
+                this.isLeftChat = true;
+            },
+
+
+            /*-------------------------------------------ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ-------------------------------*/
+
+            closeForm:function(){
+                this.userOption = 0;
+            },
+            openOptionModal:function(){
+                this.userOption === 0 ? this.userOption = 1 : this.userOption = 0;
+            }
+        }
+    }
+</script>
