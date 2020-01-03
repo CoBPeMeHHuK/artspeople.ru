@@ -130,7 +130,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/artspeople.ru9/data/www/artspeople.ru/resources/js/backend/create.js */"./resources/js/backend/create.js");
+module.exports = __webpack_require__(/*! /var/www/artspeople/resources/js/backend/create.js */"./resources/js/backend/create.js");
 
 
 /***/ })

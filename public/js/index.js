@@ -151,7 +151,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/artspeople.ru9/data/www/artspeople.ru/resources/js/backend/index.js */"./resources/js/backend/index.js");
+module.exports = __webpack_require__(/*! /var/www/artspeople/resources/js/backend/index.js */"./resources/js/backend/index.js");
 
 
 /***/ })

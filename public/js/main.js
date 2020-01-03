@@ -544,7 +544,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/artspeople.ru9/data/www/artspeople.ru/resources/js/frontend/main.js */"./resources/js/frontend/main.js");
+module.exports = __webpack_require__(/*! /var/www/artspeople/resources/js/frontend/main.js */"./resources/js/frontend/main.js");
 
 
 /***/ })

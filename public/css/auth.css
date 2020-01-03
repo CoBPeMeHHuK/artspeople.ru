@@ -244,10 +244,13 @@ iframe {
 .container-login100 {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 85px 15px 15px 15px;
   background-color: #353535;
 }
@@ -314,19 +317,23 @@ iframe {
   border-radius: 3px;
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  -webkit-transform: scaleX(1.1) scaleY(1.3);
   transform: scaleX(1.1) scaleY(1.3);
 }
 
 .input100:focus + .focus-input100 {
   visibility: visible;
   opacity: 1;
+  -webkit-transform: scale(1);
   transform: scale(1);
 }
 
 .eff-focus-selection {
   visibility: visible;
   opacity: 1;
+  -webkit-transform: scale(1);
   transform: scale(1);
 }
 
@@ -334,14 +341,17 @@ iframe {
 .btn-show-pass {
   font-size: 15px;
   color: #999999;
+  display: -webkit-box;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   position: absolute;
   height: 100%;
   top: 0;
   right: 12px;
   padding: 0 5px;
   cursor: pointer;
+  -webkit-transition: background 0.4s;
   transition: background 0.4s;
 }
 
@@ -375,9 +385,12 @@ iframe {
   font-family: FontAwesome;
   font-size: 13px;
   color: transparent;
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
   position: absolute;
   width: 18px;
   height: 18px;
@@ -386,6 +399,7 @@ iframe {
   border: 1px solid #e6e6e6;
   left: 0;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
@@ -397,6 +411,7 @@ iframe {
 [ Button ]*/
 .container-login100-form-btn {
   width: 100%;
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -406,14 +421,18 @@ iframe {
   font-size: 13px;
   color: #fff;
   line-height: 1.2;
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 0 20px;
   min-width: 130px;
   height: 44px;
   background-color: #1897cb;
   border-radius: 5px;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
 
@@ -440,6 +459,7 @@ iframe {
   border-radius: 3px;
   padding: 4px 25px 5px 10px;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 12px;
   pointer-events: none;
@@ -450,6 +470,7 @@ iframe {
   text-align: left;
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: opacity 0.4s;
   transition: opacity 0.4s;
 }
 
@@ -461,6 +482,7 @@ iframe {
   color: #c80000;
   font-size: 18px;
   top: 50%;
+  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 18px;
 }
@@ -471,7 +493,8 @@ iframe {
 }
 
 .register_button_container {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 
 .register_container {
@@ -485,6 +508,7 @@ iframe {
 
 .register_next {
   cursor: pointer;
+  display: -webkit-box;
   display: flex;
   width: 100%;
 }

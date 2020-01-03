@@ -3685,7 +3685,7 @@ function __guardMethod__(obj, methodName, transform) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/artspeople.ru9/data/www/artspeople.ru/resources/js/backend/dropzone.js */"./resources/js/backend/dropzone.js");
+module.exports = __webpack_require__(/*! /var/www/artspeople/resources/js/backend/dropzone.js */"./resources/js/backend/dropzone.js");
 
 
 /***/ })

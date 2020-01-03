@@ -300,7 +300,7 @@ function getMethod(id) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/artspeople.ru9/data/www/artspeople.ru/resources/js/backend/dropzone_sliders.js */"./resources/js/backend/dropzone_sliders.js");
+module.exports = __webpack_require__(/*! /var/www/artspeople/resources/js/backend/dropzone_sliders.js */"./resources/js/backend/dropzone_sliders.js");
 
 
 /***/ })
