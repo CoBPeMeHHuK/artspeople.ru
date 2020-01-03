@@ -38,6 +38,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/delete-work','WorksController@deleteWork');
 	Route::post('/notifications','NotificationsController@getFriendsNotifications');
 	Route::post('/request-to-friend-list','FriendController@requestToFriendList');
+	Route::post('/get-person-about/{id}','UsersController@getPersonAbout');
 	
 	
 	
