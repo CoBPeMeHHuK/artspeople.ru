@@ -44,7 +44,7 @@
 						<li>
 							<router-link @click="changeComponents" class="left-menu__item-container left_menu_mail" to="/profile/mail">
 								<span class="left-item__icon left_icon_mail"></span>
-								<p>Сообщения</p>
+								<p>Сообщения!!!</p>
 								<span class="count_message" :class="{is_visible_flex:countOfUnreadMessages > 0}" v-html="countOfUnreadMessages"></span>
 							</router-link>
 						</li>
