@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class ChatController extends AppController
 {
 
-   // Новый коментарий комита
+   // Изменения
 
 	/**
 	 * @param $id
