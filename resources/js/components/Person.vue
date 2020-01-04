@@ -194,7 +194,7 @@
                 }).then((response) => {
                     if (response.data.status == 'success') {
                         this.user.friendRequest.status = this.user.statuses[4];
-                        this.isStatusDefault = false;
+                        this.isStatusDefault = true;
                     }
                 });
             },
