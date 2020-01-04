@@ -20,7 +20,13 @@ class FriendsRequest extends Model
 		'first_user',
 		'second_user',
 		'status',
+        'last_user_change_id'
 	];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'last_user_change_id');
+    }
 	
 	public function firstUser()
 	{

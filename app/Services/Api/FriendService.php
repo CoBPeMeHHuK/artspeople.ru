@@ -25,26 +25,25 @@ class FriendService extends AppService
 	    $status = $request->status;
 	    $id = $request->user;
 	    $idAuth = Auth::id();
+
+        $getRequestFriend = $this->getRequestFriend($idAuth,$id);
 	
 	    switch ($status) {
 		
 		    case FriendsRequest::FRIEND_REQUEST_STATUSES[1]:
-			    $response = $this->addToFriendList($idAuth,$id);
+			    $response = $this->addToFriendList($idAuth,$id,$getRequestFriend);
 			    break;
-		
-		    case FriendsRequest::FRIEND_REQUEST_STATUSES[0]:
-			    $response = $this->cancelRequestToFriendList($idAuth,$id);
+
+            case FriendsRequest::FRIEND_REQUEST_STATUSES[3]:
+            case FriendsRequest::FRIEND_REQUEST_STATUSES[0]:
+			    $response = $this->deleteFromFriendList($idAuth,$id,$getRequestFriend);
 			    break;
 		
 		    case FriendsRequest::FRIEND_REQUEST_STATUSES[2]:
-			    $response = $this->confirmRequestToFriendList($idAuth,$id);
+			    $response = $this->confirmRequestToFriendList($idAuth,$id,$getRequestFriend);
 			    break;
-		
-		    case FriendsRequest::FRIEND_REQUEST_STATUSES[3]:
-			    $response = $this->deleteFromFriendList($idAuth,$id);
-			    break;
-		
-		    default:
+
+            default:
 			    $response = ['status'=>'error'];
 	    }
 	
@@ -58,153 +57,107 @@ class FriendService extends AppService
 	 * @param $id
 	 * @return array
 	 */
-	private function addToFriendList($idAuth,$id){
+	private function addToFriendList($idAuth,$id, $getRequestFriend){
 		
-		$getRequestFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-			->orWhere([['first_user',$id],['second_user',$idAuth]])
-			->first();
-		
-		
-		if($getRequestFriend) {
-			$sendRequestToFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-				->orWhere([['first_user',$id],['second_user',$idAuth]])
-				->first()
-				->update([
+
+	    if($getRequestFriend != false) {
+			$sendRequestToFriend = $getRequestFriend->update([
 					'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[1],
+					'last_user_change_id'=>$idAuth,
 					'updated_at'=> time()
 				]);
-			
+
 		} else{
 			$sendRequestToFriend =  FriendsRequest::query()->create([
 				'first_user'=>$idAuth,
 				'second_user'=>$id,
+				'last_user_change_id'=>$idAuth,
 				'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[1],
 				'created_at' => time()
 			]);
-			
+
 		}
-		
-		$saveToFriendHistory = FriendHistory::query()->create([
-			'first_user'=>$idAuth,
-			'second_user'=>$id,
-			'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[1],
-			'created' => date("Y-m-d H:i:s", time())
-		]);
+
+		$saveToFriendHistory = $this->saveToFriendHistory($idAuth,$id,FriendsRequest::FRIEND_REQUEST_STATUSES[1]);
 		
 		$sendRequestToFriend && $saveToFriendHistory ? $response = ['status'=>'success'] : $response = ['status'=>'error'];
 		
 		return $response;
 	}
-	
-	
-	/**
-	 * @param $idAuth
-	 * @param $id
-	 * @return array
-	 */
-	private function cancelRequestToFriendList($idAuth,$id){
-		$getRequestFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-			->orWhere([['first_user',$id],['second_user',$idAuth]])
-			->first();
-		
-		
-		if($getRequestFriend) {
-			$sendRequestToFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-				->orWhere([['first_user',$id],['second_user',$idAuth]])
-				->first()
-				->update([
+
+
+    /**
+     * @param $idAuth
+     * @param $id
+     * @param $getRequestFriend
+     * @return array
+     */
+	private function deleteFromFriendList($idAuth,$id,$getRequestFriend){
+
+		if($getRequestFriend != false) {
+			$sendRequestToFriend = $getRequestFriend->update([
 					'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[0],
+					'last_user_change_id'=>$idAuth,
 					'updated_at'=> time()
 				]);
 			
 		} else{
 			return ['status'=>'error'];
 		}
-		
-		$saveToFriendHistory = FriendHistory::query()->create([
-			'first_user'=>$idAuth,
-			'second_user'=>$id,
-			'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[0],
-			'created' => date("Y-m-d H:i:s", time())
-		]);
+
+		$saveToFriendHistory = $this->saveToFriendHistory($idAuth,$id,FriendsRequest::FRIEND_REQUEST_STATUSES[0]);
 		
 		$sendRequestToFriend && $saveToFriendHistory ? $response = ['status'=>'success'] : $response = ['status'=>'error'];
 		
 		return $response;
 	}
-	
-	
-	/**
-	 * @param $idAuth
-	 * @param $id
-	 * @return array
-	 */
-	private function deleteFromFriendList($idAuth,$id){
-		$getRequestFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-			->orWhere([['first_user',$id],['second_user',$idAuth]])
-			->first();
-		
-		
-		if($getRequestFriend) {
-			$sendRequestToFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-				->orWhere([['first_user',$id],['second_user',$idAuth]])
-				->first()
-				->update([
-					'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[4],
-					'updated_at'=> time()
-				]);
-			
-		} else{
-			return ['status'=>'error'];
-		}
-		
-		$saveToFriendHistory = FriendHistory::query()->create([
-			'first_user'=>$idAuth,
-			'second_user'=>$id,
-			'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[4],
-			'created' => date("Y-m-d H:i:s", time())
-		]);
-		
-		$sendRequestToFriend && $saveToFriendHistory ? $response = ['status'=>'success'] : $response = ['status'=>'error'];
-		
-		return $response;
-	}
-	
-	
-	/**
-	 * @param $idAuth
-	 * @param $id
-	 * @return array
-	 */
-	private function confirmRequestToFriendList($idAuth,$id){
-		$getRequestFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-			->orWhere([['first_user',$id],['second_user',$idAuth]])
-			->first();
-		
-		
-		if($getRequestFriend) {
-			$sendRequestToFriend = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
-				->orWhere([['first_user',$id],['second_user',$idAuth]])
-				->first()
-				->update([
+
+
+    /**
+     * @param $idAuth
+     * @param $id
+     * @param $getRequestFriend
+     * @return array
+     */
+	private function confirmRequestToFriendList($idAuth,$id,$getRequestFriend){
+
+
+        if($getRequestFriend != false) {
+			$sendRequestToFriend = $getRequestFriend->update([
 					'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[2],
+					'last_user_change_id'=>$idAuth,
 					'updated_at'=> time()
 				]);
 			
 		} else{
 			return ['status'=>'error'];
 		}
+
+        $saveToFriendHistory = $this->saveToFriendHistory($idAuth,$id,FriendsRequest::FRIEND_REQUEST_STATUSES[2]);
 		
-		$saveToFriendHistory = FriendHistory::query()->create([
-			'first_user'=>$idAuth,
-			'second_user'=>$id,
-			'status'=>FriendsRequest::FRIEND_REQUEST_STATUSES[2],
-			'created' => date("Y-m-d H:i:s", time())
-		]);
-		
-		$sendRequestToFriend && $saveToFriendHistory ? $response = ['status'=>'success'] : $response = ['status'=>'error'];
+        $sendRequestToFriend && $saveToFriendHistory ? $response = ['status'=>'success'] : $response = ['status'=>'error'];
 		
 		return $response;
 	}
+
+	private function getRequestFriend($idAuth,$id){
+	    $friendsRequest = FriendsRequest::where([['first_user',$idAuth],['second_user',$id]])
+            ->orWhere([['first_user',$id],['second_user',$idAuth]])
+            ->first();
+
+	    $friendsRequest ? $response = $friendsRequest :  $response = false;
+
+	    return $response;
+
+	}
+
+    private function saveToFriendHistory($idAuth,$id,$status){
+	    return FriendHistory::query()->create([
+            'first_user'=>$idAuth,
+            'second_user'=>$id,
+            'status'=>$status,
+            'created' => date("Y-m-d H:i:s", time())
+        ]);
+    }
     
 }
