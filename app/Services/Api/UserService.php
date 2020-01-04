@@ -215,9 +215,23 @@ class UserService extends AppService
 		$subcategories = SubCategory::where('category_id',$categoryId)->get(['id','title']);
 		return $subcategories;
 	}
-
-
-
+	
+	public function getPersonAbout($id){
+    	$user = User::findOrFail($id);
+		$userInformation = $this->getInformationAboutUser($id)->first();
+		
+		return [
+			'name'=>$user->name,
+			'surname'=>$user->surname,
+			'email'=>$user->email,
+			'birthday'=>$userInformation->date_of_birth,
+			'phone'=>$userInformation->phone,
+			'additional_phone'=>$userInformation->additional_phone,
+			'quote'=>$userInformation->quote,
+			'personal_site'=>$userInformation->personal_site,
+			'about'=>$userInformation->about_user
+		];
+	}
 	
 	
 	
@@ -229,7 +243,11 @@ class UserService extends AppService
 	
 	
 	
-    /*------------------------------------------ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ--------------------------------------*/
+	
+	
+	
+	
+	/*------------------------------------------ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ--------------------------------------*/
 	
 
     private function getUser($id){

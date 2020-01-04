@@ -106,4 +106,8 @@ class UsersController extends AppController
 		return $this->userService->getAuthSubcategories();
 	}
 	
+	public function getPersonAbout($id){
+		return $this->userService->getPersonAbout($id);
+	}
+	
 }
