@@ -1,15 +1,15 @@
-
-
-
 require('./bootstrap');
 window.io = require('socket.io-client');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 Vue.use(VueRouter);
 Vue.use(require('vue-moment'));
 import VModal from 'vue-js-modal'
+
 Vue.use(VModal);
 import VueSweetalert2 from 'vue-sweetalert2';
+
 Vue.use(VueSweetalert2);
 
 
@@ -24,7 +24,7 @@ import Friends from './components/Friends';
 import Settings from './components/Settings';
 import Notifications from './components/Notifications';
 
-Vue.config.errorHandler = function(err, vm, info) {
+Vue.config.errorHandler = function (err, vm, info) {
 
 }
 
@@ -68,21 +68,21 @@ const router = new VueRouter({
             path: '/profile/:id',
             name: 'person',
             component: Person,
-            children:[
+            children: [
                 {
-                    name:'personworks',
-                    path:'',
-                    component:PersonWorks
+                    name: 'personworks',
+                    path: '',
+                    component: PersonWorks
                 },
                 {
-                    name:'personlikes',
-                    path:'likes',
-                    component:PersonLikes
+                    name: 'personlikes',
+                    path: 'likes',
+                    component: PersonLikes
                 },
                 {
-                    name:'personabout',
-                    path:'about',
-                    component:PersonAbout
+                    name: 'personabout',
+                    path: 'about',
+                    component: PersonAbout
                 }
             ]
         },
@@ -90,7 +90,7 @@ const router = new VueRouter({
     ],
 });
 
-let filter = function(text, length, clamp){
+let filter = function (text, length, clamp) {
     clamp = clamp || '...';
     let node = document.createElement('div');
     node.innerHTML = text;
@@ -106,29 +106,28 @@ const app = new Vue({
         Person
     },
     router,
-    data:function(){
+    data: function () {
         return {
-            preloader:true,
-            isOpenFriends:false,
-            selectFriend:0,
-            selectedBefore:0,
-            isOpenUserOption:false,
-            users:[],
-            userAuth:[],
-            userAvatar:'',
-            userAuthAvatar:'',
-            userAuthName:'',
-            userAuthSurname:'',
-            userAuthQuote:'',
-            userSelect:0,
-            dataMessages:[],
-            connectedUser:[],
-            friendRequests:[],
-            statuses:[]
+            preloader: true,
+            isOpenFriends: false,
+            selectFriend: 0,
+            selectedBefore: 0,
+            isOpenUserOption: false,
+            users: [],
+            userAuth: [],
+            userAvatar: '',
+            userAuthAvatar: '',
+            userAuthName: '',
+            userAuthSurname: '',
+            userAuthQuote: '',
+            userSelect: 0,
+            dataMessages: [],
+            connectedUser: [],
+            friendRequests: [],
+            statuses: []
         }
     },
-    beforeCreate(){
-
+    beforeCreate() {
 
 
         axios({
@@ -136,7 +135,7 @@ const app = new Vue({
             url: '/api/get-auth-user-information',
         }).then((response) => {
 
-            this.userAuthAvatar ='https://357319.selcdn.ru/artspeople/'+ response.data.avatar.type+ '/'+ response.data.avatar.src;
+            this.userAuthAvatar = 'https://357319.selcdn.ru/artspeople/' + response.data.avatar.type + '/' + response.data.avatar.src;
             this.userAuthName = response.data.name;
             this.userAuthSurname = response.data.surname;
             this.userAuthQuote = response.data.user_information.quote;
@@ -145,103 +144,103 @@ const app = new Vue({
         });
 
         axios({
-                method: 'post',
-                url: '/api/get-message-users',
-            }).then((response) => {
+            method: 'post',
+            url: '/api/get-message-users',
+        }).then((response) => {
 
-                this.users = response.data.users;
+            this.users = response.data.users;
 
-                if(this.users !== false){
-                    this.userAuth = response.data.user;
-                    this.userAvatar = response.data.userAvatar.src;
-                    this.userSelect = response.data.users[0]['id'];
+            if (this.users !== false) {
+                this.userAuth = response.data.user;
+                this.userAvatar = response.data.userAvatar.src;
+                this.userSelect = response.data.users[0]['id'];
 
-                    let socket = io('artspeople.ru:3000');
-                    socket.emit('connected_server', {channel: this.userAuth.id});
+                let socket = io('artspeople.ru:3000');
+                socket.emit('connected_server', {channel: this.userAuth.id});
 
-                    socket.on('users_connected', function (data) {
-                        this.connectedUser = data['users'];
-                    }.bind(this));
+                socket.on('users_connected', function (data) {
+                    this.connectedUser = data['users'];
+                }.bind(this));
 
-                    /*-------------------Достаём все сообщения первого пользователя---------------*/
-                    this.dataMessages = [];
+                /*-------------------Достаём все сообщения первого пользователя---------------*/
+                this.dataMessages = [];
 
-                    axios({
-                        method: 'post',
-                        url: '/api/get-user-messages',
-                        params: {
-                            userSelect: this.userSelect
+                axios({
+                    method: 'post',
+                    url: '/api/get-user-messages',
+                    params: {
+                        userSelect: this.userSelect
+                    }
+                }).then((response) => {
+                    Object.keys(response.data).forEach(function (key, id) {
+                        let userAuth = '';
+                        if (response.data[key].user_from == this.userAuth['id']) {
+                            userAuth = 'right_person';
                         }
-                    }).then((response) => {
-                        Object.keys(response.data).forEach(function (key, id) {
-                            let userAuth = '';
-                            if (response.data[key].user_from == this.userAuth['id']) {
-                                userAuth = 'right_person';
-                            }
-                            this.dataMessages.push({
-                                'message': {
-                                    'text': response.data[key].text,
-                                    'created': response.data[key].created_at,
-                                    'user_from': response.data[key].user_from,
-                                    'is_read': response.data[key].is_read,
-                                    'name': response.data[key].name,
-                                    'surname': response.data[key].surname,
-                                    'src': response.data[key].avatar.src,
-                                    'type': response.data[key].avatar.type,
-                                    'right_person': userAuth
-                                },
-                            });
-                        }.bind(this));
-                    });
-
-
-                    /*-------------------------------------------------------------------------*/
-
-                    /*--------------------------------ПОЛУЧАЕМ СООБЩЕНИЕ ЧЕРЕЗ СОКЕТ----------------------------*/
-
-                    socket.on("news-action." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
-
-                        let parameters = {
+                        this.dataMessages.push({
                             'message': {
-                                'name': data.message.name,
-                                'surname': data.message.surname,
-                                'text': data.message.message,
-                                'src': data.message.avatar,
-                                'type': data.message.type,
-                                'right_person': '',
-                                'is_read': data.message.is_read,
-                                'user_from': data.message.user_from,
-                                'created': new Date()
-                            }
-                        };
-
-                        if (data.message.user_from == this.userSelect) {
-                            this.dataMessages.push(parameters);
-                            console.log(this.users.find(item => item.id == data.message.user_from).lastMessage = data.message.message);
-
-                            this.isActive = false;
-                        } else {
-                            this.ArrivedMessages.push({'id': data.message.user_id});
-                        }
-
-                        // setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
-                        //     area.scrollTop = area.scrollHeight;
-                        // } });
+                                'text': response.data[key].text,
+                                'created': response.data[key].created_at,
+                                'user_from': response.data[key].user_from,
+                                'is_read': response.data[key].is_read,
+                                'name': response.data[key].name,
+                                'surname': response.data[key].surname,
+                                'src': response.data[key].avatar.src,
+                                'type': response.data[key].avatar.type,
+                                'right_person': userAuth
+                            },
+                        });
                     }.bind(this));
+                });
 
-                    /*------------------------------------------------------------------------------------------*/
-                }
-            });
+
+                /*-------------------------------------------------------------------------*/
+
+                /*--------------------------------ПОЛУЧАЕМ СООБЩЕНИЕ ЧЕРЕЗ СОКЕТ----------------------------*/
+
+                socket.on("news-action." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
+
+                    let parameters = {
+                        'message': {
+                            'name': data.message.name,
+                            'surname': data.message.surname,
+                            'text': data.message.message,
+                            'src': data.message.avatar,
+                            'type': data.message.type,
+                            'right_person': '',
+                            'is_read': data.message.is_read,
+                            'user_from': data.message.user_from,
+                            'created': new Date()
+                        }
+                    };
+
+                    if (data.message.user_from == this.userSelect) {
+                        this.dataMessages.push(parameters);
+                        console.log(this.users.find(item => item.id == data.message.user_from).lastMessage = data.message.message);
+
+                        this.isActive = false;
+                    } else {
+                        this.ArrivedMessages.push({'id': data.message.user_id});
+                    }
+
+                    // setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
+                    //     area.scrollTop = area.scrollHeight;
+                    // } });
+                }.bind(this));
+
+                /*------------------------------------------------------------------------------------------*/
+            }
+        });
     },
 
 
-    created(){
+    created() {
         document.addEventListener('click', () => this.clickOut());
         document.addEventListener('click', () => this.clickOutFriendContainer());
 
         axios({
             method: 'post',
-            url:'/api/notifications',
+            url: '/api/notifications',
         }).then((response) => {
             this.friendRequests = response.data.requests;
             this.statuses = response.data.statuses;
@@ -249,7 +248,7 @@ const app = new Vue({
 
     },
 
-    mounted(){
+    mounted() {
         $(".hamburger").click(function () {
 
             if (!$('.hamburger').hasClass('is-active')) {
@@ -267,72 +266,79 @@ const app = new Vue({
         });
     },
 
-    computed :{
-        countOfUnreadMessages:function(){
+    computed: {
+        countOfUnreadMessages: function () {
             let messages = 0;
             let users = this.users;
-            Object.keys(users).forEach(function(key) {
+            Object.keys(users).forEach(function (key) {
                 messages += users[key]['countUnreadMessages'];
             });
 
             return messages;
         },
 
-        countOfNotifications:function(){
+        countOfNotifications: function () {
             return this.friendRequests.length;
         },
-        getAuthUserAvatar:function(){
+        getAuthUserAvatar: function () {
             return this.userAuthAvatar;
         }
     },
     methods: {
-        getPreloader:function(data){
+        getPreloader: function (data) {
             this.preloader = data[0]['isPreloader']
         },
 
-        clearMessages:function(data){
+        clearMessages: function (data) {
             this.userSelect = data[0]['userSelect'];
             this.dataMessages = [];
         },
 
-        getMessage:function(data){
+        getMessage: function (data) {
             this.dataMessages.push({
-                'message':data[0]['message'],
+                'message': data[0]['message'],
             });
         },
 
-        clickOut:function(){
+        clickOut: function () {
             this.isOpenFriends = false;
             this.selectFriend = 0;
         },
 
-        clickOutFriendContainer:function(){
+        clickOutFriendContainer: function () {
             this.selectFriend = 0;
         },
 
-        clickMyFriends:function(){
+        clickMyFriends: function () {
             this.selectFriend = 0;
         },
 
-        changeComponents:function(){
+        changeComponents: function () {
             this.preloader = true;
-            console.log('устанавливаем прелоадер');
         },
-        openFriendsContainer:function(){
+
+        changeComponentsToProfile: function ($id) {
+            if ($id != this.$route.params.id) this.preloader = true;
+        },
+        openFriendsContainer: function () {
             this.isOpenFriends ? this.isOpenFriends = false : this.isOpenFriends = true;
         },
-        showFriendsOption:function(event){
+        showFriendsOption: function (event) {
 
             let response = '';
-            this.selectFriend === event ? response = true: response = false;
+            this.selectFriend === event ? response = true : response = false;
 
             return response;
         },
-        toggleUserOption:function(){
-            this.isOpenUserOption === false ? this.isOpenUserOption = true:this.isOpenUserOption = false;
+        toggleUserOption: function () {
+            this.isOpenUserOption === false ? this.isOpenUserOption = true : this.isOpenUserOption = false;
         },
-        changeAvatar:function(data){
+        changeAvatar: function (data) {
             this.userAuthAvatar = data[0]['avatar'];
+        },
+
+        isValidRouter: function ($id) {
+            return this.$route.params.id != $id;
         }
     }
 
