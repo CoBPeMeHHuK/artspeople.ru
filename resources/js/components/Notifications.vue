@@ -95,6 +95,9 @@
                     if(response.data.status === 'success'){
                         this.statusFriendNotification = 'Заявка принята';
                         this.isVisibleStatus = true;
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
                     }
                 });
             },
