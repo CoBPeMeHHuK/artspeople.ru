@@ -123,6 +123,8 @@ const app = new Vue({
             userSelect:0,
             dataMessages:[],
             connectedUser:[],
+            friendRequests:[],
+            statuses:[]
         }
     },
     beforeCreate(){
@@ -237,6 +239,14 @@ const app = new Vue({
         document.addEventListener('click', () => this.clickOut());
         document.addEventListener('click', () => this.clickOutFriendContainer());
 
+        axios({
+            method: 'post',
+            url:'/api/notifications',
+        }).then((response) => {
+            this.friendRequests = response.data.requests;
+            this.statuses = response.data.statuses;
+        });
+
     },
 
     mounted(){
@@ -266,6 +276,10 @@ const app = new Vue({
             });
 
             return messages;
+        },
+
+        countOfNotifications:function(){
+            return this.friendRequests.length;
         },
         getAuthUserAvatar:function(){
             return this.userAuthAvatar;
