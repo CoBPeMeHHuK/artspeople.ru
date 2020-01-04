@@ -11,7 +11,7 @@
         <div class="send_container">
             <button class="btn btn-primary" @click="uploadFiles" v-show="isAddedFile">Загрузить</button>
         </div>
-        <div class="works_container">
+        <div class="works_container" v-if="works.length > 0 ">
             <div class="gallery_works">
                 <div class="grid gallery_work_wrapper is_auth">
                     <div class="gallery_work grid-item"  :key="workIndex" v-for="(work,workIndex) in works">
@@ -28,6 +28,7 @@
                 </div>
             </div>
         </div>
+        <div class="works_container__default" v-else>У вас пока нету загруженных работ</div>
         <div class="modal_container_option">
             <modal name="option" :height="heightModal" :width="widthModal">
             <div class="modal_container">

@@ -3,7 +3,7 @@
     <div class="personal_gallery">
         <div class="works_container">
             <div class="gallery_works">
-                <div class="grid gallery_work_wrapper is_auth">
+                <div class="grid gallery_work_wrapper is_auth" v-if="works.length > 0">
                     <div class="gallery_work grid-item" :key="workIndex" v-for="(work,workIndex) in works">
                         <div class="gallery_work__container">
                             <p class="work_gradient"></p>
@@ -14,9 +14,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="profile_works_container__default" v-else>
+                    <p>У пользователя пока нету симпатий</p>
+                </div>
             </div>
 
-            <div class="modal_container_gallery">
+            <div class="modal_container_gallery" v-if="works.length > 0">
                 <modal :height="'100%'" :width="'100%'" name="gallery">
                     <div class="image_container">
                         <div class="image_content">
