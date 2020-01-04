@@ -28,36 +28,36 @@
                 </div>
             </div>
         </div>
-<!--        <div class="modal_container_option">-->
-<!--            <modal name="option" :height="heightModal" :width="widthModal">-->
-<!--            <div class="modal_container">-->
-<!--                <div class="modal_header">-->
-<!--                    <div class="modal_header__container">-->
-<!--                        <span>Настройки</span>-->
-<!--                        <div class="close_container">-->
-<!--                            <span @click="hide" class="modal_close"></span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal_content" :height="heightModal" :width="widthModal">-->
-<!--                    <label>Выбор подкатегории-->
-<!--                        <select class="image-select form-control form-control-lg form-padding option_custom" v-model="selectSubcategory">-->
-<!--                            <option v-for="subcategory in subcategories" :selected="subcategory.id == selectSubcategory" :value="subcategory.id">{{ subcategory.title }}</option>-->
-<!--                        </select>-->
-<!--                    </label>-->
-<!--                    <label> Название-->
-<!--                        <input type="text" class="form-control option_custom" v-model="selectTitle">-->
-<!--                    </label>-->
-<!--                    <label> Описание-->
-<!--                        <textarea class="form-control option_custom" v-model="selectDescription"></textarea>-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div class="modal_button__container upload">-->
-<!--                    <button @click="updateSettings">Сохранить</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </modal>-->
-<!--        </div>-->
+        <div class="modal_container_option">
+            <modal name="option" :height="heightModal" :width="widthModal">
+            <div class="modal_container">
+                <div class="modal_header">
+                    <div class="modal_header__container">
+                        <span>Настройки</span>
+                        <div class="close_container">
+                            <span @click="hide" class="modal_close"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_content" :height="heightModal" :width="widthModal">
+                    <label>Выбор подкатегории
+                        <select class="image-select form-control form-control-lg form-padding option_custom" v-model="selectSubcategory">
+                            <option v-for="subcategory in subcategories" :selected="subcategory.id == selectSubcategory" :value="subcategory.id">{{ subcategory.title }}</option>
+                        </select>
+                    </label>
+                    <label> Название
+                        <input type="text" class="form-control option_custom" v-model="selectTitle">
+                    </label>
+                    <label> Описание
+                        <textarea class="form-control option_custom" v-model="selectDescription"></textarea>
+                    </label>
+                </div>
+                <div class="modal_button__container upload">
+                    <button @click="updateSettings">Сохранить</button>
+                </div>
+            </div>
+        </modal>
+        </div>
 <!--        <div class="modal_container_gallery">-->
 <!--            <modal :height="'100%'" :width="'100%'" name="gallery">-->
 <!--            <div class="image_container">-->
