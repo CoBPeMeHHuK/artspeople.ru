@@ -73,6 +73,7 @@
 					</ul>
 				</div>
 				<div class="left_section__friend_options" :class="{is_visible:isOpenFriends}" @click.stop="clickOut()" @click="isOpenFriends = true">
+					@if(count($friends) > 0)
 					<div class="friend_options__container">
 						<ul class="friend_options_ul">
                             @foreach($friends as $friend)
@@ -122,6 +123,11 @@
                             @endforeach
 						</ul>
 					</div>
+					@else
+						<div class="friend_options__default">
+							У вас пока нету друзей
+						</div>
+					@endif
 				</div>
 			</div>
 		</div>

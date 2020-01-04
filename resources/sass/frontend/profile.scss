@@ -263,7 +263,7 @@ footer a {
   align-items: center;
   margin: 20px;
   display: flex;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0 auto;
 }
 
@@ -664,6 +664,13 @@ input[type=range]::-ms-track {
     padding: 120px 0 0 20px;
     height: calc(100% - 10px);
     overflow: auto;
+}
+
+.friend_options__default{
+  text-align: center;
+  padding-top: 100px;
+  font-family: 'Circe';
+  font-size: 14px;
 }
 
 .friend_options__container::-webkit-scrollbar-track
@@ -1503,6 +1510,25 @@ input[type=range]::-ms-track {
 
 .personal_data_invite_button div {
     margin-right: 10px;
+}
+
+.works_container__default{
+  font-family: "Circe";
+  font-size: 14px;
+  text-align: center;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.profile_works_container__default{
+  font-family: "Circe";
+  font-size: 14px;
+  text-align: center;
+  height: 70px;
+  border-radius: 5px;
+}
+.profile_works_container__default p {
+  margin: 0;
 }
 
 .btn_message {
