@@ -45,17 +45,13 @@
         },
 
         props:[
-            'userAuth'
+            'userAuth',
+            'friendRequests',
+            'statuses'
         ],
 
         created(){
-            axios({
-                method: 'post',
-                url:'/api/notifications',
-            }).then((response) => {
-               this.friendRequests = response.data.requests;
-               this.statuses = response.data.statuses;
-            });
+
         },
 
         mounted() {
@@ -115,6 +111,9 @@
                     if(response.data.status === 'success'){
                         this.statusFriendNotification = 'Заявка отклонена';
                         this.isVisibleStatus = true;
+                        setTimeout(function() {
+                            location.reload();
+                        }, 1000);
                     }
                 });
             }

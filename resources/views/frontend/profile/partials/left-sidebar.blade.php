@@ -67,7 +67,7 @@
 							<router-link @click="changeComponents" class="left-menu__item-container left_menu_notifications" to="/profile/notifications">
 								<span class="left-item__icon left_icon_notifications"></span>
 								<p>Уведомления</p>
-								<span class="count_message" :class="{is_visible_flex:countOfUnreadMessages > 0}" v-html="countOfUnreadMessages"></span>
+								<span class="count_message" :class="{is_visible_flex:countOfNotifications > 0}" v-html="countOfNotifications"></span>
 							</router-link>
 						</li>
 					</ul>
