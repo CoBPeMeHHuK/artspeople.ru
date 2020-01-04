@@ -815,7 +815,7 @@
             width: 100px;
             margin-top: 0;
         }
-        
+
         .v--modal-box{
             background: #232323;
         }

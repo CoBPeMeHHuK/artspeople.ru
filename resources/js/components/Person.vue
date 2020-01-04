@@ -42,7 +42,9 @@
                     <div class="btn_message" @click="show"><span></span></div>
                     <div class="btn_invite" v-if="isStatusDefault" @click="addToFriendList"><span
                             class="friend_invite"></span></div>
-                    <div class="btn_friend_invited" @click="cancelRequestToFriendList" :class="{is_visible_flex:isStatusNotAccepted}">Отменить заявку</div>
+                    <div class="btn_friend_invited" @click="cancelRequestToFriendList"
+                         :class="{is_visible_flex:isStatusNotAccepted}">Отменить заявку
+                    </div>
                     <div class="btn_friend_invited"
                          :class="{is_visible_flex:user.friendRequest.status == user.statuses[2]}"
                          @click="openDeleteFromFriendList">У вас в друзьях
@@ -199,7 +201,7 @@
                 });
             },
 
-            cancelRequestToFriendList:function(){
+            cancelRequestToFriendList: function () {
                 axios({
                     method: 'post',
                     url: '/api/request-to-friend-list',
