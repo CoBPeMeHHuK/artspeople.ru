@@ -6,20 +6,20 @@
        <div class="friends_requests" :key="friendRequest.id"  v-for="friendRequest in friendRequests">
            <div class="friends_requests__user_container">
                <div class="information__title_container_request_friend">
-                   <div class="information__person_avatar_friend"  v-bind:style="{ background: 'url(/storage/avatars/'+friendRequest.user.avatar.src+') no-repeat' }"></div>
+                   <div class="information__person_avatar_friend"  v-bind:style="{ background: 'url(https://357319.selcdn.ru/artspeople/avatars/'+friendRequest.first_user.avatar.src+') no-repeat' }"></div>
                    <div class="information__person_info">
                        <div class="information__person_title_friend">
-                           <p class="information__person_name_friend">{{ friendRequest.user.name +' '+ friendRequest.user.surname}}</p>
+                           <p class="information__person_name_friend">{{ friendRequest.first_user.name +' '+ friendRequest.first_user.surname}}</p>
                            <p class="information__person_range_friend">Генералисимус</p>
                        </div>
                    </div>
                </div>
                <div class="information__navigation">
                    <div class="information__button_container_notification" v-show="isVisibleStatus ===  false">
-                       <div class="btn_invite__notification" @click="addFriendToList(friendRequest.user.id)">
+                       <div class="btn_invite__notification" @click="addFriendToList(friendRequest.first_user.id)">
                            Добавить
                        </div>
-                       <div class="btn_cancel" @click="rejectApplication(friendRequest.user.id)">
+                       <div class="btn_cancel" @click="rejectApplication(friendRequest.first_user.id)">
                            Убрать
                        </div>
                    </div>
