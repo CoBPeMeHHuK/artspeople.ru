@@ -769,6 +769,11 @@
         outline: none;
     }
 
+    .swal2-show{
+         margin-left:calc(50% - 95px)!important;
+     }
+
+
     @media (max-width: 992px) {
        #dropzone{
            margin-top: 70px;

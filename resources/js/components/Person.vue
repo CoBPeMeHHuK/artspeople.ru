@@ -62,7 +62,8 @@
         <transition>
             <router-view v-bind:is-auth="isAuth" v-bind:user="user"></router-view>
         </transition>
-        <modal name="hello-world" @before-open="beforeOpenModal" :height="heightModal" :width="widthModal">
+        <div class="modal_container_option">
+            <modal name="hello-world" @before-open="beforeOpenModal" :height="heightModal" :width="widthModal">
             <div class="modal_container">
                 <div class="modal_header">
                     <div class="modal_header__container">
@@ -85,7 +86,7 @@
 
             </div>
         </modal>
-
+        </div>
     </div>
 </template>
 <script>
@@ -223,4 +224,5 @@
         }
     }
 </script>
+
 
