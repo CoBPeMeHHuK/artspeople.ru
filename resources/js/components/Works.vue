@@ -770,7 +770,7 @@
     }
 
     .swal2-show{
-         margin-left:calc(50% - 95px)!important;
+         margin-left:calc(50% - 50px)!important;
      }
 
 
