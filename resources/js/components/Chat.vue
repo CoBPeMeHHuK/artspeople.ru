@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="position: relative">
+                <div style="position: relative; min-height: calc(100vh - 200px);">
                     <div class="chat_message_content" ref="message_area">
                         <div class="chat_person_messages">
                             <ul class="person_message">
