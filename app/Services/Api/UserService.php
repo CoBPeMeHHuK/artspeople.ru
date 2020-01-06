@@ -142,7 +142,7 @@ class UserService extends AppService
 			'name'=>$user->name,
 			'surname'=>$user->surname,
 			'email'=>$user->email,
-			'birthday'=>$userInformation->date_of_birth,
+			'birthday'=>date('Y-m-d',$userInformation->date_of_birth),
 			'phone'=>$userInformation->phone,
 			'additional_phone'=>$userInformation->additional_phone,
 			'quote'=>$userInformation->quote,

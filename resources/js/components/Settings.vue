@@ -39,7 +39,7 @@
                 <div class="user_information__option">
                     <div class="user_information__option_container">
                         <div class="user_information__title">Дата рождения</div>
-                        <datepicker v-model="settingBirthday" :language="lang"
+                        <datepicker v-model="settingBirthday" :displayFormat="'DD-MM-YYYY'" :months="months" :weekdays="weekdays"
                                     class="user_information__input form-control__custom"></datepicker>
                     </div>
                     <div class="user_information__option_container">
@@ -92,8 +92,9 @@
 </template>
 <script>
     import myUpload from 'vue-image-crop-upload';
-    import Datepicker from 'vuejs-datepicker';
-    import {ru} from 'vuejs-datepicker/dist/locale'
+    import Datepicker from 'vue-date-pick';
+    import {ru} from 'vuejs-datepicker/dist/locale';
+    import 'vue-date-pick/dist/vueDatePick.css';
 
     export default {
         data: function () {
@@ -119,7 +120,15 @@
                 settingQuote: '',
                 settingAbout: '',
                 lang: ru,
-                status: 0
+                status: 0,
+                weekdays: [
+                        'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'
+                ],
+                months: [
+                    'Январь', 'Февраль', 'Март', 'Апрель',
+                    'Май', 'Июнь', 'Июль', 'Август',
+                    'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+                ]
             }
         },
 
@@ -137,10 +146,12 @@
                 url: window.location.origin + '/api/get-settings',
             }).then((response) => {
 
+                console.log(response.data.birthday);
+
                 this.settingName = response.data.name;
                 this.settingSurname = response.data.surname;
                 // this.settingEmail = response.data.email;
-                this.settingBirthday = new Date(response.data.birthday * 1000);
+                this.settingBirthday = response.data.birthday;
                 this.settingPhone = response.data.phone;
                 this.settingAdditionalPhone = response.data.additional_phone;
                 this.settingQuote = response.data.quote;
@@ -234,3 +245,32 @@
         }
     }
 </script>
+
+<style>
+    .user_information__input button.vdpClearInput{
+        display:none;
+    }
+
+    .vdpComponent{
+        width:100%;
+        font-size:14px;
+        font-family:'Circe';
+        color: #555;
+    }
+
+    .vdpCellContent{
+        font-size: 12px;
+    }
+
+    .vdpInnerWrap{
+        min-width:auto;
+    }
+
+    .vdpHeader{
+        font-size: 12px;
+    }
+
+    .vdpTable thead{
+        font-size:12px;
+    }
+</style>
