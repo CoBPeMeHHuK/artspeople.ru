@@ -8,8 +8,8 @@
                         <input type="text" placeholder="Search" class="searcher__input">
                     </div>
                 </div>
-                <div class="chat_content_left__persons">
-                    <div class="chat_content_left__person" v-for="user in users" v-on:click="selectChatUser(user.id)" :class="{active:userSelect===user.id}">
+                <div class="chat_content_left__persons" v-if="users.length > 0">
+                    <div class="chat_content_left__person"  v-for="user in users" v-on:click="selectChatUser(user.id)" :class="{active:userSelect===user.id}">
                         <div class="chat_content_left__left_info">
                             <div class="personal_chat_left_person__avatar"
                                  v-bind:style="{ background: 'url(/storage/'+user.type+'/'+user.src+') no-repeat' }">
@@ -28,10 +28,16 @@
                         </div>
                     </div>
                 </div>
+                <div class="chat_content_left__persons default" v-else>
+                    <div class="chat_content_left__default_messages">
+                        У вас пока нет сообщений
+                    </div>
+                </div>
             </div>
             <div v-if="isRightChat" class="chat_content_right">
                 <div class="chat_header_right">
                     <div class="chat_header__person">
+                        <div class="chat_header__person_container" v-if="users.length > 0">
                         <div class="chat_header__back" @click="clickBack"></div>
                         <div class="personal_chat_option_dots__container" @click.stop="closeForm()" @click="openOptionModal">
                             <div class="personal_chat_option_dots"></div>
@@ -53,6 +59,7 @@
                             <div class="personal_chat__name">{{ userInformation.surname +' '+ userInformation.name}}</div>
                             <div class="personal_chat__status">Online</div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 <div style="position: relative; min-height: calc(100vh - 200px);">
