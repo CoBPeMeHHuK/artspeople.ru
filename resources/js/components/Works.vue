@@ -459,20 +459,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
     .dropzone{
         min-height: 50px;
@@ -597,35 +583,6 @@
         height: 100%!important;
     }
 
-    .image_container{
-        width: 100%;
-        height: 100%;
-        display: flex;
-    }
-
-    .image_content{
-        width: calc(100% - 280px);
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #000000;
-        position: relative;
-    }
-
-    .image_information{
-        width: 280px;
-        height: 100%;
-        background: #232323;
-    }
-
-    .image_item{
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        max-height: 100%;
-        transition: 1s;
-    }
 
     .image-enter-active,
     .image-leave-active {
@@ -639,135 +596,6 @@
     }
 
 
-    .prev{
-        position: absolute;
-        display: flex;
-        left: 15px;
-        margin-top: -23px;
-        font-size: 45px;
-        font-weight: 100;
-        line-height: 30px;
-        text-align: center;
-        opacity: .5;
-        cursor: pointer;
-        color:#ffffff;
-        height: 100%;
-        width: 400px;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .next{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        right: 15px;
-        margin-top: -23px;
-        font-size: 45px;
-        font-weight: 100;
-        line-height: 30px;
-        text-align: center;
-        opacity: .5;
-        cursor: pointer;
-        color:#ffffff;
-        height: 100%;
-        width: 400px;
-        justify-content: flex-end;
-    }
-
-    .next:hover, .prev:hover{
-        opacity: 0.8;
-        color: #ffffff;
-    }
-
-    .information__title_container{
-        display: flex;
-        padding:50px 30px 30px 30px;
-    }
-
-    .information__person_avatar{
-        border-radius: 50%;
-        height: 60px;
-        width: 60px;
-        background-color: white;
-        position: relative;
-        background-size: cover!important;
-    }
-
-    .information__person_name{
-        font-size: 22px;
-        font-family: 'Circe';
-        color: #11b0f1;
-        margin: 0;
-        padding: 0 10px 0;
-    }
-
-    .information__person_range{
-        font-size: 14px;
-        font-family: 'Circe';
-        padding: 0 10px;
-        color: #ffffff;
-    }
-
-    .information__button_container{
-        display: flex;
-        justify-content: space-between;
-        width: 220px;
-        margin: 0 auto;
-    }
-
-    .information__button_container .btn_like{
-        background: #59c557;
-        width: 100px;
-        height: 29px;
-        display: flex;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-    }
-
-    .information__button_container .btn_like:hover{
-        background:  #16ac55;
-    }
-
-
-    .information__button_container .btn_invite{
-        width: 100px;
-    }
-
-    .like_work{
-        background: url(/images/profile/icons/like-image.png) no-repeat;
-        width: 18px;
-        height: 18px;
-        background-size: cover;
-        margin-bottom: 4px;
-    }
-
-    .information__work_container{
-        padding: 50px 0px 10px 0px;
-        color: #fff;
-        font-family: 'Circe';
-        border-bottom: 1px solid #454646;
-        margin: 0 30px 0 30px;
-    }
-
-    .information__work_title{
-        font-size: 22px;
-    }
-
-    .information__work_description{
-        padding: 10px 0;
-    }
-    .gallery_close.close{
-        font-size: 28px;
-        color: white;
-        margin: 7px;
-        outline: none;
-    }
 
     .swal2-show{
          margin-left:calc(50% - 50px)!important;

@@ -24,7 +24,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/get-auth-user-information','UsersController@getAuthUserInformation');
 	Route::post('/profile/{id}','UsersController@getUserInformation');
 	Route::post('/profile/{id}/works','UsersController@getUserWorks');
-	Route::post('/profile/{id}/likes','UsersController@getUserLikes');
     Route::post('/get-message-users','UsersController@getUsers');
     Route::post('/get-user-messages','MessageController@getUserMessages');
     Route::post('/send-message','MessageController@sendMessage');
@@ -39,6 +38,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/notifications','NotificationsController@getFriendsNotifications');
 	Route::post('/request-to-friend-list','FriendController@requestToFriendList');
 	Route::post('/get-person-about/{id}','UsersController@getPersonAbout');
-	
-	
-	
+	Route::post('/add-delete-like','LikeController@addLike');
+    Route::post('/profile/{id}/likes','LikeController@getLikeWorks');
+
+
+

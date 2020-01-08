@@ -9,8 +9,12 @@
                             <p class="work_gradient"></p>
                             <img  class="work" v-bind:src="getImgSrc(work.src)" alt="image.png">
                             <div class="work_eye__icon work_icons person" @click="showGallery(workIndex)"></div>
-                            <div class="work_like__icon work_icons"></div>
-                            <div class="count_likes work_icons">7</div>
+                            <div class="work_like__container" @click="addDeleteLike(work.id,workIndex)">
+                                <div class="work_like__container_relative">
+                                    <div class="work_like__icon work_icons" :class="{blue:isLike(workIndex)}"></div>
+                                    <div class="count_likes work_icons" v-if="work.number_of_likes > 0" :class="{blue:isLike(workIndex)}">{{ work.number_of_likes }}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,22 +84,21 @@
 
         props:[
             'isAuth',
-            'user'
+            'user',
+            'userAuth'
         ],
 
         created(){
-
+            axios({
+                method: 'post',
+                url:'/api/profile/'+this.$route.params['id']+'/works',
+            }).then((response) => {
+                this.works = response.data;
+            });
         },
 
         mounted() {
 
-
-            axios({
-                method: 'post',
-                url:window.location.origin+'/api/profile/'+this.$route.params['id']+'/works',
-            }).then((response) => {
-                this.works = response.data;
-            });
         },
 
         beforeUpdate(){
@@ -131,7 +134,9 @@
                     this.urlList.push(this.selectelWorkSrc+this.works[id].src)
                 }.bind(this));
                 return this.urlList;
-            }
+            },
+
+
         },
 
 
@@ -155,6 +160,33 @@
                 this.selectImage = index;
                 this.$modal.show('gallery');
             },
+
+            addDeleteLike:function(work_id,work_index){
+                axios({
+                    method: 'post',
+                    url: '/api/add-delete-like',
+                    params: {
+                        'work_id': work_id,
+                    }
+                }).then((response) => {
+
+                   if(response.data.status === 'success'){
+
+                       if(response.data.message ==='created' || response.data.message === 'updated'){
+                           this.works[work_index]['is_like'] = true;
+                           this.works[work_index]['number_of_likes']++;
+                       } else{
+                           this.works[work_index]['is_like'] = false;
+                           this.works[work_index]['number_of_likes']--;
+                       }
+                   }
+
+                });
+            },
+
+            isLike:function(id){
+                return !!this.works[id]['is_like'];
+            }
         }
     }
 </script>

@@ -20,20 +20,28 @@ class Work extends Model
         'updated_at'
     ];
 
+    public function likes(){
+        return $this->hasMany(Like::class,'work_id','id')->where('status',Like::STATUS_ACCEPTED);
+    }
+
     public function images()
     {
         return $this->hasMany(Image::class, 'element_id','id')->where("type", "works");
+    }
+
+    public function image(){
+        return $this->hasOne(Image::class,'element_id','id')->where('type','works');
     }
 
     public function subcategories()
     {
         return $this->hasMany(SubCategory::class, 'id','subcategory_id');
     }
-    
+
     public function user(){
     	return $this->hasOne(User::class,'id','user_id');
     }
-	
+
 	public function avatar(){
 		return $this->hasOne(Image::class, 'element_id','user_id')->where("type", "avatars");
 	}

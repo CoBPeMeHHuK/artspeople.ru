@@ -60,7 +60,7 @@
             </div>
         </div>
         <transition>
-            <router-view v-bind:is-auth="isAuth" v-bind:user="user"></router-view>
+            <router-view v-bind:is-auth="isAuth" v-bind:user="user" v-bind:user-auth="userAuth"></router-view>
         </transition>
         <div class="modal_container_option">
             <modal name="hello-world" @before-open="beforeOpenModal" :height="heightModal" :width="widthModal">

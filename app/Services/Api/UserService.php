@@ -63,26 +63,32 @@ class UserService extends AppService
 			->orderBy('id','desc')
 			->get();
 		$worksArray =[];
-		$idNumber = 0;
 
 		foreach($works as $work ) {
-			foreach($work->images as $image)
 
-				$worksArray[] = [
+		    $is_like = false;
+
+		    foreach($work->likes as $like){
+		        if($like->user_id == Auth::id()) $is_like = true;
+            }
+
+		    $worksArray[] = [
 					'id'=>$work->id,
 					'user'=>$work->user,
 					'avatar'=>$work->avatar,
 					'subcategory_id'=>$work->subcategory_id,
 					'title'=>$work->name,
 					'description'=>$work->description,
-					'src'=>$image->src,
+					'src'=>$work->image->src,
 					'count_views'=>$work->count_views,
 					'rating'=>$work->rating,
 					'is_can_comment'=>$work->is_can_comment,
 					'is_active'=>$work->is_active,
-					'created'=>date("d.m.Y", strtotime($work->created_at))
+					'created'=>date("d.m.Y", strtotime($work->created_at)),
+                    'likes'=>$work->likes,
+                    'is_like'=>$is_like,
+                    'number_of_likes'=>count($work->likes)
 				];
-			$idNumber++;
 		}
 		return json_encode($worksArray);
     }

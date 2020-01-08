@@ -3,14 +3,18 @@
     <div class="personal_gallery">
         <div class="works_container">
             <div class="gallery_works">
-                <div class="grid gallery_work_wrapper is_auth" v-if="works.length > 0">
-                    <div class="gallery_work grid-item" :key="workIndex" v-for="(work,workIndex) in works">
+                <div class="grid gallery_work_wrapper is_auth" v-if="likes.length > 0">
+                    <div class="gallery_work grid-item" :key="likeIndex" v-for="(like,likeIndex) in likes">
                         <div class="gallery_work__container">
                             <p class="work_gradient"></p>
-                            <img  class="work" v-bind:src="getImgSrc(work.src)" alt="image.png">
-                            <div class="work_eye__icon work_icons person" @click="showGallery(workIndex)"></div>
-                            <div class="work_like__icon work_icons"></div>
-                            <div class="count_likes work_icons">7</div>
+                            <img  class="work" v-bind:src="getImgSrc(like['work']['image']['src'])" alt="image.png">
+                            <div class="work_eye__icon work_icons person" @click="showGallery(likeIndex)"></div>
+                            <div class="work_like__container">
+                                <div class="work_like__container_relative">
+                                    <div class="work_like__icon work_icons"></div>
+                                    <div class="count_likes work_icons">{{ like['work']['likes'].length }}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -19,15 +23,15 @@
                 </div>
             </div>
 
-            <div class="modal_container_gallery" v-if="works.length > 0">
+            <div class="modal_container_gallery" v-if="likes.length > 0">
                 <modal :height="'100%'" :width="'100%'" name="gallery">
                     <div class="image_container">
                         <div class="image_content">
                             <transition name="image" mode="out-in">
                                 <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
                             </transition>
-                            <a class="prev" @click="prev"></a>
-                            <a class="next" @click="next"></a>
+                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
+                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
                         </div>
 
                         <div class="image_information">
@@ -36,10 +40,10 @@
                             </button>
                             <div class="information_container">
                                 <div class="information__title_container">
-                                    <div class="information__person_avatar" ></div>
+                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>
                                     <div class="information__person_info">
                                         <div class="information__person_title">
-                                            <p class="information__person_name">{{ user.surname +' '+user.name }}</p>
+                                            <p class="information__person_name">{{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}</p>
                                             <p class="information__person_range">Генералисимус</p>
                                         </div>
                                     </div>
@@ -54,9 +58,9 @@
                                 </div>
 
                                 <div class="information__work_container">
-                                    <div class="information__work_title" v-html="works[selectImage].title"></div>
-                                    <div class="information__work_description" v-html="works[selectImage].description"></div>
-                                    <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
+                                    <div class="information__work_title" v-html="likes[selectImage].work.name"></div>
+                                    <div class="information__work_description" v-html="likes[selectImage].work.description"></div>
+                                    <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +74,9 @@
     export default {
         data: function () {
             return {
-                works: [],
+                likes: [],
                 selectelUrl:'https://357319.selcdn.ru/artspeople/works/',
+                selectelAvatarSrc:'https://357319.selcdn.ru/artspeople/avatars/',
                 selectImage:0,
                 isInvited:false,
             }
@@ -89,9 +94,9 @@
         mounted() {
             axios({
                 method: 'post',
-                url:window.location.origin+'/api/profile/'+this.$route.params['id']+'/works',
+                url:'/api/profile/'+this.$route.params['id']+'/likes',
             }).then((response) => {
-                this.works = response.data;
+                this.likes = response.data.likes;
             });
         },
 
@@ -124,8 +129,8 @@
         computed:{
             getUrlList:function(){
                 this.urlList = [];
-                Object.keys(this.works).forEach(function(id) {
-                    this.urlList.push(this.selectelUrl+this.works[id].src)
+                Object.keys(this.likes).forEach(function(id) {
+                    this.urlList.push(this.selectelUrl+this.likes[id].work.image.src)
                 }.bind(this));
                 return this.urlList;
             }
@@ -136,11 +141,11 @@
                 return this.selectelUrl+source;
             },
             prev(){
-                let length = this.works.length;
+                let length = this.likes.length;
                 this.selectImage === 0 ? this.selectImage = length - 1  : this.selectImage--;
             },
             next(){
-                let length = this.works.length;
+                let length = this.likes.length;
                 this.selectImage === length - 1 ? this.selectImage = 0 : this.selectImage++;
 
             },
