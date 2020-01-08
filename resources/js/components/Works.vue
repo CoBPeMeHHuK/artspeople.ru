@@ -21,8 +21,6 @@
                             <div class="work_option__icon work_icons" @click="show(work.id)"></div>
                             <div class="work_delete__icon work_icons" @click="deleteWork(workIndex)"></div>
                             <div class="work_eye__icon work_icons" @click="showGallery(workIndex)"></div>
-                            <div class="work_like__icon work_icons"></div>
-                            <div class="count_likes work_icons">7</div>
                         </div>
                     </div>
                 </div>
