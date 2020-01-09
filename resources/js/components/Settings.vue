@@ -256,6 +256,7 @@
         font-size:14px;
         font-family:'Circe';
         color: #555;
+        margin-top: 5px;
     }
 
     .vdpCellContent{
