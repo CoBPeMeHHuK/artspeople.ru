@@ -14,6 +14,7 @@ class CreateTableLastMessagesUsers extends Migration
     public function up()
     {
         Schema::create('last_messages_users', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->text('message');
             $table->bigInteger('user_to')->unsigned();
             $table->bigInteger('user_from')->unsigned();
