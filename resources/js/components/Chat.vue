@@ -26,12 +26,12 @@
                         <div class="personal_chat_left_person__right_container" v-if="user.last_messages_from !== null">
                             <div class="personal_chat_left_person__date" v-if="user.last_messages_from.updated_at !== null">{{ user.last_messages_from.updated_at }}</div>
                             <div class="personal_chat_left_person__date" v-else>{{ user.last_messages_from.created_at }}</div>
-                            <div class="count_message__chat" v-if="user.last_messages_from.is_read > 0">{{ user.last_messages_from.is_read}}</div>
+                            <div class="count_message__chat" v-if="user.last_messages_from.is_read > 0">{{ user.last_messages_from.count_of_unread}}</div>
                         </div>
                         <div class="personal_chat_left_person__right_container" v-if="user.last_messages_to !== null">
                             <div class="personal_chat_left_person__date" v-if="user.last_messages_to.updated_at !== null">{{ user.last_messages_to.updated_at }}</div>
                             <div class="personal_chat_left_person__date" v-else>{{ user.last_messages_to.updated_at }}</div>
-                            <div class="count_message__chat" v-if="user.last_messages_to.is_read > 0">{{ user.last_messages_to.is_read}}</div>
+                            <div class="count_message__chat" v-if="user.last_messages_to.is_read > 0">{{ user.last_messages_to.count_of_unread}}</div>
                         </div>
                     </div>
                 </div>
