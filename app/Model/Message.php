@@ -12,4 +12,12 @@ class Message extends Model
     {
         return $this->hasOne(Image::class, 'element_id','user_from')->where("type", "avatars");
     }
+    
+    public function to_user(){
+        return $this->hasOne(User::class,'id','user_to');
+    }
+    
+    public function from_user(){
+        return $this->hasOne(User::class,'id','user_from');
+    }
 }

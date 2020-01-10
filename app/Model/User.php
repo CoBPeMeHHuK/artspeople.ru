@@ -5,6 +5,7 @@
     use Illuminate\Notifications\Notifiable;
 	use Illuminate\Contracts\Auth\MustVerifyEmail;
 	use Illuminate\Foundation\Auth\User as Authenticatable;
+    use Illuminate\Support\Facades\Auth;
     use Spatie\Permission\Traits\HasRoles;
 	
 	class User extends Authenticatable
@@ -54,6 +55,22 @@
         public function avatar()
         {
             return $this->hasOne(Image::class, 'element_id')->where("type", "avatars");
+        }
+        
+        public function messages_to(){
+            return $this->hasMany(Message::class,'user_to','id');
+        }
+        
+        public function messages_from(){
+            return $this->hasMany(Message::class,'user_from','id');
+        }
+        
+        public function last_messages_to(){
+            return $this->hasOne(LastMessageUser::class,'user_to','id');
+        }
+        
+        public function last_messages_from(){
+            return $this->hasOne(LastMessageUser::class,'user_from','id');
         }
 
 	}
