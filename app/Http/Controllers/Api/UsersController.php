@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\AppController;
+use App\Model\Message;
+use App\Model\User;
 use App\Services\Api\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends AppController
 {
 	
 	protected $userService;
+	
 	
 	/**
 	 * UsersController constructor.
@@ -21,7 +25,7 @@ class UsersController extends AppController
 		$this->userService = $userService;
 	}
 	
-	/**
+        /**
 	 * @return string
 	 */
 	public function getAuthUserInformation(){

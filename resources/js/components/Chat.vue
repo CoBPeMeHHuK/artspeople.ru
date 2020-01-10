@@ -12,19 +12,26 @@
                     <div class="chat_content_left__person"  v-for="user in users" v-on:click="selectChatUser(user.id)" :class="{active:userSelect===user.id}">
                         <div class="chat_content_left__left_info">
                             <div class="personal_chat_left_person__avatar"
-                                 v-bind:style="{ background: 'url(/storage/'+user.type+'/'+user.src+') no-repeat' }">
+                                 v-bind:style="{background: 'url('+selectelAvatarSrc+ user.avatar.src+') no-repeat' }">
                                 <div class="personal_chat_left_person__container">
                                     <div class="personal_chat_left_person__online_icon"></div>
                                 </div>
                             </div>
                             <div class="personal_chat_left_person__title_container">
                                 <div class="personal_chat_left_person__name">{{ user.name+ ' ' +user.surname }}</div>
-                                <div class="personal_chat_left_person__last_message">{{ user.lastMessage | truncate(32, '...') }}</div>
+                                <div class="personal_chat_left_person__last_message" v-if="user.last_messages_from !== null">{{ user.last_messages_from.message | truncate(32, '...') }}</div>
+                                <div class="personal_chat_left_person__last_message" v-if="user.last_messages_to !== null">{{ user.last_messages_to.message | truncate(32, '...') }}</div>
                             </div>
                         </div>
-                        <div class="personal_chat_left_person__right_container">
-                            <div class="personal_chat_left_person__date">{{ user.timeMessage }}</div>
-                            <div class="count_message__chat">{{ user.countUnreadMessages}}</div>
+                        <div class="personal_chat_left_person__right_container" v-if="user.last_messages_from !== null">
+                            <div class="personal_chat_left_person__date" v-if="user.last_messages_from.updated_at !== null">{{ user.last_messages_from.updated_at }}</div>
+                            <div class="personal_chat_left_person__date" v-else>{{ user.last_messages_from.created_at }}</div>
+                            <div class="count_message__chat" v-if="user.last_messages_from.is_read > 0">{{ user.last_messages_from.is_read}}</div>
+                        </div>
+                        <div class="personal_chat_left_person__right_container" v-if="user.last_messages_to !== null">
+                            <div class="personal_chat_left_person__date" v-if="user.last_messages_to.updated_at !== null">{{ user.last_messages_to.updated_at }}</div>
+                            <div class="personal_chat_left_person__date" v-else>{{ user.last_messages_to.updated_at }}</div>
+                            <div class="count_message__chat" v-if="user.last_messages_to.is_read > 0">{{ user.last_messages_to.is_read}}</div>
                         </div>
                     </div>
                 </div>
@@ -101,7 +108,8 @@
                 clickedOptionMenu:0,
                 message:'',
                 isLeftChat:true,
-                isRightChat:true
+                isRightChat:true,
+                selectelAvatarSrc:'https://357319.selcdn.ru/artspeople/avatars/',
             }
         },
 

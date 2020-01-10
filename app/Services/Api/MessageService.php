@@ -47,36 +47,21 @@ class MessageService extends AppService
 	
 	public static function getAuthUserMessages(){
 		$authUserId = Auth::id();
-		$users = User::where('id','!=',$authUserId)->with('avatar')->get();
-		
-		$result=[];
-		foreach($users as $user){
-			$message =  Message::where([['user_from',$authUserId],['user_to',$user->id]])
-				->orWhere([['user_to',$authUserId],['user_from',$user->id]])
-				->orderBy('id','desc')
-				->first();
-			
-			$countUnreadMessage =  Message::where([['user_from',$authUserId],['user_to',$user->id]])
-				->orWhere([['user_to',$authUserId],['user_from',$user->id]])
-				->where('is_read',0)
-				->get();
-			
-			if($message){
-				
-				$result[] = [
-					'id'=>$user->id,
-					'name'=>$user->name,
-					'surname'=>$user->surname,
-					'lastMessage'=>$message->text,
-					'timeMessage'=>DATE_FORMAT($message->created_at,'M d'),
-					'src'=>$user->avatar->src,
-					'type'=>$user->avatar->type,
-					'countUnreadMessages'=>count($countUnreadMessage)
-				];
-			}
-		}
-		
-		return $result;
+        $users = User::whereHas('messages_to', function ($query) use ($authUserId) {
+            $query->where('user_from',$authUserId);
+        })->orWhereHas('messages_from',function($query) use ($authUserId){
+            $query->where('user_to',$authUserId);
+        })
+            ->with(array('last_messages_to'=>function($query) use ($authUserId) {
+                $query->where('user_from',$authUserId);
+            }))
+            ->with(array('last_messages_from' =>function($query) use ($authUserId) {
+                $query->where('user_to',$authUserId);
+            }))
+            ->with('avatar')
+            ->get();
+        
+        return $users;
 	}
 	
 	
