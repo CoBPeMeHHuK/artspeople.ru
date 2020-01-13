@@ -68,7 +68,13 @@
 			$this->vars['scripts'] =  $scripts;
 			
 			
-			return $this->renderOutput();
+		//	return $this->renderOutput();
+            
+            if(Auth::check()){
+                return redirect()->route('profile', ['id' => Auth::id()]);
+            } else{
+                return redirect()->route('login');
+            }
 		}
 		
 		

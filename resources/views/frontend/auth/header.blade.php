@@ -9,7 +9,7 @@
 		</div>
 
 		<ul>
-			<li><a href="/">ГЛАВНАЯ</a></li>
+			{{--<li><a href="/">ГЛАВНАЯ</a></li>--}}
 			<li><a href="{{ route('register') }}">РЕГИСТРАЦИЯ</a></li>
 			<li><a href="{{ route('login') }}">ВОЙТИ</a></li>
 
@@ -26,7 +26,7 @@
 				</div>
 				<div class="col-md-9  col-xs-9 col-sm-9">
 					<ul>
-						<li><a href="/">ГЛАВНАЯ</a> </li>
+						{{--<li><a href="/">ГЛАВНАЯ</a> </li>--}}
 						<li><a href="{{ route('register') }}">РЕГИСТРАЦИЯ</a> </li>
 						<li><a href="{{ route('login') }}">ВОЙТИ</a> </li>
 					</ul>
