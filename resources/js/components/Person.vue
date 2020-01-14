@@ -41,7 +41,7 @@
                      :class="{is_visible_flex:user.id != userAuth.id}">
                     <div class="btn_message" @click="show"><span></span></div>
                     <div class="btn_invite" v-if="isStatusDefault" @click="addToFriendList"><span
-                            class="friend_invite"></span></div>
+                        class="friend_invite"></span></div>
                     <div class="btn_friend_invited" @click="cancelRequestToFriendList"
                          :class="{is_visible_flex:isStatusNotAccepted}">Отменить заявку
                     </div>
@@ -64,28 +64,28 @@
         </transition>
         <div class="modal_container_option">
             <modal name="hello-world" @before-open="beforeOpenModal" :height="heightModal" :width="widthModal">
-            <div class="modal_container">
-                <div class="modal_header">
-                    <div class="modal_header__container">
-                        <span>Новое сообщение</span>
-                        <div class="close_container">
-                            <span @click="hide" class="modal_close"></span>
+                <div class="modal_container">
+                    <div class="modal_header">
+                        <div class="modal_header__container">
+                            <span>Новое сообщение</span>
+                            <div class="close_container">
+                                <span @click="hide" class="modal_close"></span>
+                            </div>
+
                         </div>
 
                     </div>
+                    <div class="modal_content">
+                        <label>
+                            <textarea class="modal_textarea" v-model="messageText"></textarea>
+                        </label>
+                    </div>
+                    <div class="modal_button__container">
+                        <button @click="sendMessage">Отправить</button>
+                    </div>
 
                 </div>
-                <div class="modal_content">
-                    <label>
-                        <textarea class="modal_textarea"></textarea>
-                    </label>
-                </div>
-                <div class="modal_button__container">
-                    <button @click="hide">Отправить</button>
-                </div>
-
-            </div>
-        </modal>
+            </modal>
         </div>
     </div>
 </template>
@@ -98,6 +98,7 @@
                 isAuth: false,
                 isOpenUserOption: false,
                 isInvited: false,
+                messageText: '',
                 widthModal: 600,
                 heightModal: 340,
                 isAdded: false,
@@ -156,7 +157,17 @@
 
         methods: {
             sendMessage: function () {
+                axios({
+                    method: 'post',
+                    url: '/api/send-message',
+                    params: {
+                        user_id: this.user.id,
+                        message: this.messageText,
+                    }
+                }).then((response) => {
 
+                });
+                this.$modal.hide('hello-world');
             },
 
             showUserOption: function () {

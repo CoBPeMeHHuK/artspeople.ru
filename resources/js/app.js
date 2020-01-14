@@ -172,6 +172,7 @@ const app = new Vue({
                         userSelect: this.userSelect
                     }
                 }).then((response) => {
+
                     Object.keys(response.data).forEach(function (key, id) {
                         let userAuth = '';
                         if (response.data[key].user_from == this.userAuth['id']) {
@@ -183,8 +184,8 @@ const app = new Vue({
                                 'created': response.data[key].created_at,
                                 'user_from': response.data[key].user_from,
                                 'is_read': response.data[key].is_read,
-                                'name': response.data[key].name,
-                                'surname': response.data[key].surname,
+                                'name': response.data[key].get_message_user.name,
+                                'surname': response.data[key].get_message_user.surname,
                                 'src': response.data[key].avatar.src,
                                 'type': response.data[key].avatar.type,
                                 'right_person': userAuth
@@ -216,16 +217,16 @@ const app = new Vue({
 
                     if (data.message.user_from == this.userSelect) {
                         this.dataMessages.push(parameters);
-                        console.log(this.users.find(item => item.id == data.message.user_from).lastMessage = data.message.message);
-
                         this.isActive = false;
                     } else {
                         this.ArrivedMessages.push({'id': data.message.user_id});
                     }
 
-                    // setTimeout(function() { if(area.selectionStart == area.selectionEnd) {
-                    //     area.scrollTop = area.scrollHeight;
-                    // } });
+                    setTimeout(function () {
+                        if (area.selectionStart == area.selectionEnd) {
+                            area.scrollTop = area.scrollHeight;
+                        }
+                    });
                 }.bind(this));
 
                 /*------------------------------------------------------------------------------------------*/
@@ -271,8 +272,16 @@ const app = new Vue({
             let messages = 0;
             let users = this.users;
             Object.keys(users).forEach(function (key) {
-                messages += users[key]['countUnreadMessages'];
-            });
+                if (users[key]['last_messages_from'] === null) {
+                    if (users[key]['last_messages_to']['last_user_changes_id'] !== this.userAuth.id) {
+                        messages += users[key]['last_messages_to']['count_of_unread'];
+                    }
+                } else {
+                    if (users[key]['last_messages_from']['last_user_changes_id'] !== this.userAuth.id) {
+                        messages += users[key]['last_messages_from']['count_of_unread'];
+                    }
+                }
+            }.bind(this));
 
             return messages;
         },
@@ -294,10 +303,16 @@ const app = new Vue({
             this.dataMessages = [];
         },
 
+
+        /***********************************************  СООБЩЕНИЕ ИЗ ЧАТ КОМПОНЕНТА  ****************************************************/
+
         getMessage: function (data) {
             this.dataMessages.push({
                 'message': data[0]['message'],
             });
+
+            let user = this.users.find(x => x.id === this.userSelect);
+            user.last_messages_from === null ? user.last_messages_to.message = data[0]['message'].text : user.last_messages_from.message = data[0]['message'].text;
         },
 
         clickOut: function () {
