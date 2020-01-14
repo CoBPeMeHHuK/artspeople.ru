@@ -29,5 +29,9 @@ class MessageController extends AppController
 		return $this->messageService->getUserMessages($request);
     }
     
+    public function readMessages(Request $request){
+	    return $this->messageService->readMessages($request);
+    }
+    
     
 }

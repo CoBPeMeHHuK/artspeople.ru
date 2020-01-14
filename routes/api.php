@@ -25,6 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/profile/{id}/works','UsersController@getUserWorks');
     Route::post('/get-message-users','UsersController@getUsers');
     Route::post('/get-user-messages','MessageController@getUserMessages');
+    Route::post('/read-messages','MessageController@readMessages');
     Route::post('/send-message','MessageController@sendMessage');
 	Route::post('/change-avatar','UsersController@changeAvatar');
 	Route::post('/change-settings','UsersController@changeSettings');

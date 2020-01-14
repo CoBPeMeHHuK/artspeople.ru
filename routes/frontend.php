@@ -5,4 +5,4 @@
 	
 	Route::get('/', 'IndexController@show')->name('index');
 	Route::get('/profile/{id}/{slug?}', 'ProfileController@show')->name('profile');
-    Route::get('/test','HomeController@index')->name('test');
+    Route::get('/test','TestController@test')->name('test');

@@ -3,13 +3,13 @@
 	
 	use App\Http\Controllers\AppController;
 	use App\Model\Slider;
-	
-	class TestController extends AppController{
+    use DateTimeZone;
+    use Illuminate\Support\Carbon;
+    
+    class TestController extends AppController{
 		public function test(){
-			
-			$slider = Slider::with(['images' => function ($query) {
-				$query->where('type', 'slider');
-			}])->get();
-			return view('frontend.test.test')->with(['sliders'=>$slider]);
+		    $time = Carbon::now();
+		    
+		    return $time;
 		}
 	}
