@@ -201,6 +201,8 @@ const app = new Vue({
 
                 socket.on("news-action." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
 
+                    console.log(data.message);
+
                     let parameters = {
                         'message': {
                             'name': data.message.name,
