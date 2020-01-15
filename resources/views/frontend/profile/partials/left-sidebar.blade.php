@@ -92,13 +92,17 @@
                                                 @if($friend->second_user == Auth::id())
                                                     <div class="option_people__avatar"
                                                          style="background: url({{ asset('https://357319.selcdn.ru/artspeople/'.$friend->firstUser->avatar->type.'/'.$friend->firstUser->avatar->src) }}) no-repeat;">
+                                                        <div class="option_people__online_icon_container" v-if="isOnlineFriend({{  $friend->firstUser->id }})">
+                                                            <div class="option_people__online_icon"></div>
+                                                        </div>
                                                         @elseif($friend->first_user == Auth::id())
                                                             <div class="option_people__avatar"
                                                                  style="background: url({{ asset('https://357319.selcdn.ru/artspeople/'.$friend->secondUser->avatar->type.'/'.$friend->secondUser->avatar->src) }}) no-repeat;">
-                                                                @endif
-                                                                <div class="option_people__online_icon_container">
+                                                                <div class="option_people__online_icon_container" v-if="isOnlineFriend({{  $friend->secondUser->id }})">
                                                                     <div class="option_people__online_icon"></div>
                                                                 </div>
+                                                                @endif
+
                                                             </div>
                                                     </div>
 
