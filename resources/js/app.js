@@ -220,8 +220,30 @@ const app = new Vue({
                     if (data.message.user_from == this.userSelect) {
                         this.dataMessages.push(parameters);
                         this.isActive = false;
-                    } else {
-                        this.ArrivedMessages.push({'id': data.message.user_id});
+                        let user = this.users.find(x=>x.id === Number(data.message.user_from));
+                        if (user.last_messages_from !== null) {
+
+                            user.last_messages_from.count_of_unread++;
+                            user.last_messages_from.message = data.message.message;
+                            user.last_messages_from.last_user_changes_id = data.message.user_from;
+
+                        } else if(user.last_messages_to !== null) {
+                            user.last_messages_to.count_of_unread++;
+                            user.last_messages_to.message = data.message.message;
+                            user.last_messages_to.last_user_changes_id = data.message.user_from;
+                        }
+                    } else{
+                        if (user.last_messages_from !== null) {
+
+                            user.last_messages_from.count_of_unread++;
+                            user.last_messages_from.message = data.message.message;
+                            user.last_messages_from.last_user_changes_id = data.message.user_from;
+
+                        } else if(user.last_messages_to !== null) {
+                            user.last_messages_to.count_of_unread++;
+                            user.last_messages_to.message = data.message.message;
+                            user.last_messages_to.last_user_changes_id = data.message.user_from;
+                        }
                     }
 
                     setTimeout(function () {
