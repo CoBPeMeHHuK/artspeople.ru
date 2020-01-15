@@ -312,6 +312,12 @@ const app = new Vue({
         }
     },
     methods: {
+
+        isOnlineFriend:function(id){
+            let user = this.connectedUser.find(x=>x.channel === Number(id));
+            return !!user;
+        },
+
         getPreloader: function (data) {
             this.preloader = data[0]['isPreloader']
         },
