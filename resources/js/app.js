@@ -245,12 +245,6 @@ const app = new Vue({
                             user.last_messages_to.last_user_changes_id = data.message.user_from;
                         }
                     }
-
-                    setTimeout(function () {
-                        if (area.selectionStart == area.selectionEnd) {
-                            area.scrollTop = area.scrollHeight;
-                        }
-                    });
                 }.bind(this));
 
                 /*------------------------------------------------------------------------------------------*/

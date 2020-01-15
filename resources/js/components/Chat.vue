@@ -154,14 +154,12 @@
 
         watch : {
             dataMessages:function(newVal, oldVal){
-                if(newVal !== oldVal){
                     let area = this.$refs.message_area;
                     setTimeout(function () {
                         if (area.selectionStart === area.selectionEnd) {
                             area.scrollTop = area.scrollHeight;
                         }
                     });
-                }
             }
         },
 
