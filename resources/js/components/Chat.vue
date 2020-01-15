@@ -14,7 +14,7 @@
                         <div class="chat_content_left__left_info">
                             <div class="personal_chat_left_person__avatar"
                                  v-bind:style="{background: 'url('+selectelAvatarSrc+ user.avatar.src+') no-repeat' }">
-                                <div class="personal_chat_left_person__container">
+                                <div class="personal_chat_left_person__container" v-if="isOnlineFriend(user.id)">
                                     <div class="personal_chat_left_person__online_icon"></div>
                                 </div>
                             </div>
@@ -322,6 +322,11 @@
             clickBack: function () {
                 this.isRightChat = false;
                 this.isLeftChat = true;
+            },
+
+            isOnlineFriend:function(id){
+                let user = this.connectedUsers.find(x=>x.channel === Number(id));
+                return !!user;
             },
 
 
