@@ -149,7 +149,8 @@
             'userAuth',
             'userSelect',
             'dataMessages',
-            'userAvatar'
+            'userAvatar',
+            'connectedUsers'
         ],
 
         watch : {

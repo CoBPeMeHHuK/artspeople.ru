@@ -122,7 +122,7 @@ const app = new Vue({
             userAuthQuote: '',
             userSelect: 0,
             dataMessages: [],
-            connectedUser: [],
+            connectedUsers: [],
             friendRequests: [],
             statuses: []
         }
@@ -159,7 +159,7 @@ const app = new Vue({
                 socket.emit('connected_server', {channel: this.userAuth.id});
 
                 socket.on('users_connected', function (data) {
-                    this.connectedUser = data['users'];
+                    this.connectedUsers = data['users'];
                 }.bind(this));
 
                 /*-------------------Достаём все сообщения первого пользователя---------------*/
@@ -314,7 +314,7 @@ const app = new Vue({
     methods: {
 
         isOnlineFriend:function(id){
-            let user = this.connectedUser.find(x=>x.channel === Number(id));
+            let user = this.connectedUsers.find(x=>x.channel === Number(id));
             return !!user;
         },
 
