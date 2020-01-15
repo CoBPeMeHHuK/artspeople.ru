@@ -82,7 +82,7 @@
                             </div>
                             <div class="personal_chat__avatar"
                                  v-bind:style="{ background: 'url('+selectelAvatarSrc+ userInformation.avatar.src+') no-repeat' }">
-                                <div class="chat__online_icon_container">
+                                <div class="chat__online_icon_container" v-if="isOnlineFriend(userInformation.id)">
                                     <div class="chat__online_icon"></div>
                                 </div>
                             </div>
