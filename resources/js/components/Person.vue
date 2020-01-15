@@ -3,7 +3,7 @@
         <div class="personal_data">
             <div class="personal_data__avatar"
                  v-bind:style="{ background: 'url('+avatar+') no-repeat' }">
-                <div class="online_icon_container">
+                <div class="online_icon_container" v-if="isOnlineFriend(user.id)">
                     <div class="online_icon"></div>
                 </div>
             </div>
@@ -110,7 +110,8 @@
         },
 
         props: [
-            'userAuth'
+            'userAuth',
+            'connectedUsers'
         ],
 
         created() {
@@ -231,6 +232,11 @@
             },
             openDeleteFromFriendList: function () {
                 this.isVisibleOptionDeleteFriendsList === false ? this.isVisibleOptionDeleteFriendsList = true : this.isVisibleOptionDeleteFriendsList = false;
+            },
+
+            isOnlineFriend:function(id){
+                let user = this.connectedUsers.find(x=>x.channel === Number(id));
+                return !!user;
             },
         }
     }
