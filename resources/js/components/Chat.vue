@@ -95,8 +95,8 @@
                         </div>
                     </div>
                 </div>
-                <div style="position: relative; min-height: calc(100vh - 200px);">
-                    <div class="chat_message_content" ref="message_area" @click="readMessages">
+                <div style="position: relative; min-height: calc(100vh - 200px);" @click="readMessages">
+                    <div class="chat_message_content" ref="message_area">
                         <div class="chat_person_messages">
                             <ul class="person_message">
                                 <li v-for="data in dataMessages"
