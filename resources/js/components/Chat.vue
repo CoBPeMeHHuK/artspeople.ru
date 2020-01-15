@@ -152,6 +152,12 @@
             'userAvatar'
         ],
 
+        watch : {
+            dataMessages:function(newVal, oldVal){
+                console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+            }
+        },
+
         created() {
             document.addEventListener('click', () => this.closeForm());
         },
