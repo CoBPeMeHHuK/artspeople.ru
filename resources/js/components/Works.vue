@@ -201,6 +201,8 @@
 
                 let template = '';
                 template += '<div class="dz-preview dz-file-preview">'+
+                    '<div class="dz-option-icon"></div>'+
+                    '<div class="dz-option-overlay"></div>'+
                     '<div class="dz-image">'+
                     '<img data-dz-thumbnail />'+
                     '</div>'+
@@ -495,6 +497,10 @@
 
     .dropzone .dz-preview.active .dz-details {
         opacity: 1;
+    }
+
+    .dz-details{
+        transition:none!important;
     }
 
     .vue-dropzone > .dz-preview.active .dz-remove {
