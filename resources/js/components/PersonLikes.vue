@@ -49,13 +49,13 @@
                                     </div>
                                 </div>
 
-                                <div class="information__navigation">
-                                    <div class="information__button_container">
-                                        <div class="btn_like" ><span class="like_work"></span></div>
-                                        <div class="btn_invite" v-if="!isInvited" @click="isInvited=true"><span class="friend_invite"></span></div>
-                                        <div class="btn_invite" v-if="isInvited" @click="isInvited=false"><span class="friend_invited"></span></div>
-                                    </div>
-                                </div>
+                                <!--<div class="information__navigation">-->
+                                    <!--<div class="information__button_container">-->
+                                        <!--<div class="btn_like" ><span class="like_work"></span></div>-->
+                                        <!--<div class="btn_invite" v-if="!isInvited" @click="isInvited=true"><span class="friend_invite"></span></div>-->
+                                        <!--<div class="btn_invite" v-if="isInvited" @click="isInvited=false"><span class="friend_invited"></span></div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                                 <div class="information__work_container">
                                     <div class="information__work_title" v-html="likes[selectImage].work.name"></div>
