@@ -90,7 +90,7 @@
                                 <div class="personal_chat__name">{{ userInformation.surname +' '+
                                     userInformation.name}}
                                 </div>
-                                <div class="personal_chat__status">Online</div>
+                                <div class="personal_chat__status" v-if="isOnlineFriend(userInformation.id)">Online</div>
                             </div>
                         </div>
                     </div>
