@@ -25,7 +25,7 @@
                 </p>
             </div>
 
-            <div class="personal_data_navigation">
+            <div class="personal_data_navigation" v-if="clientWidth >= 992">
                 <ul class="personal_data_navigation__ul">
                     <li>
                         <router-link :to="{ name:'personworks' }">ПОРТФОЛИО</router-link>
@@ -57,6 +57,40 @@
                     </div>
 
                 </div>
+            </div>
+
+            <div class="personal_data_navigation" v-else>
+                <div class="personal_data_invite_button personal_data_invite_button__container mobile"
+                     :class="{is_visible_flex:user.id != userAuth.id}">
+                    <div class="btn_message" @click="show"><span></span></div>
+                    <div class="btn_invite" v-if="isStatusDefault" @click="addToFriendList"><span
+                        class="friend_invite"></span></div>
+                    <div class="btn_friend_invited" @click="cancelRequestToFriendList"
+                         :class="{is_visible_flex:isStatusNotAccepted}">Отменить заявку
+                    </div>
+                    <div class="btn_friend_invited"
+                         :class="{is_visible_flex:user.friendRequest.status == user.statuses[2]}"
+                         @click="openDeleteFromFriendList">У вас в друзьях
+                        <div class="personal_title__options personal_title__options_friend_request"
+                             @click="deleteFromFriendList" :class="{is_visible:isVisibleOptionDeleteFriendsList}">
+                            <ul class="personal_title__ul">
+                                <li>Удалить из друзей</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <ul class="personal_data_navigation__ul">
+                    <li>
+                        <router-link :to="{ name:'personworks' }">ПОРТФОЛИО</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{name:'personlikes'}">СИМПАТИИ</router-link>
+                    </li>
+                    <li>
+                        <router-link :to="{name:'personabout'}">О СЕБЕ</router-link>
+                    </li>
+                </ul>
             </div>
         </div>
         <transition>
@@ -105,7 +139,8 @@
                 isStatusDefault: false,
                 isStatusNotAccepted: false,
                 isStatusAccepted: false,
-                isVisibleOptionDeleteFriendsList: false
+                isVisibleOptionDeleteFriendsList: false,
+                clientWidth:0
             }
         },
 
@@ -122,6 +157,8 @@
         },
 
         mounted() {
+
+            this.clientWidth = document.documentElement.clientWidth;
 
 
             axios({
