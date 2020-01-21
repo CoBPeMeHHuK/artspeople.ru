@@ -653,7 +653,7 @@
             margin-top: 0;
         }
 
-        .v--modal-box{
+        .modal_container_gallery > .v--modal-overlay > .v--modal-background-click >.v--modal-box{
             background: #232323;
         }
     }
