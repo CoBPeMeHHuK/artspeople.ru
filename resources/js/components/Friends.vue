@@ -3,18 +3,46 @@
         <div class="friend_options__container mobile">
             <ul class="friend_options_ul">
                 <li class="friend_options__li" v-for="friend in friends">
-                    <div class="option_people">
+                    <div class="option_people" v-if="friend.second_user === authId">
                         <div class="option_people__avatar_container mobile">
                             <div class="option_people__avatar mobile"
-                                 v-bind:style="{ background: 'url(/storage/'+friend.avatar.type+'/'+friend.avatar.src+') no-repeat' }">
+                                 v-bind:style="{ background: 'url('+selectelAvatarSrc+ friend.first_user.avatar.src+') no-repeat' }">
                                 <div class="option_people__online_icon_container mobile">
                                     <div class="option_people__online_icon mobile"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="option_people_name mobile">
-                            {{ friend.name +' '+ friend.surname }}
+                        <router-link :to="{ name: 'person', params: { id: friend.first_user.id }}">
+                            <div class="option_people_name mobile">
+                                {{ friend.first_user.name +' '+ friend.first_user.surname }}
+                            </div>
+                        </router-link>
+                        <div class="option_people_dots mobile" @click.stop="close" @click="selectedFriend = friend.id">
+                            <div class="option_people_dots__menu mobile" v-show="isOpenFriendOption(friend.id)">
+                                <ul class="option_people_dots__ul">
+                                    <router-link :to="{ name: 'person', params: { id: friend.id }}">
+                                        <li>Профиль</li>
+                                    </router-link>
+                                    <li @click.stop="close">Название пункта</li>
+                                    <li @click.stop="close">Название пункта</li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+                    <div class="option_people" v-if="friend.first_user === authId">
+                        <div class="option_people__avatar_container mobile">
+                            <div class="option_people__avatar mobile"
+                                 v-bind:style="{ background: 'url('+selectelAvatarSrc+ friend.second_user.avatar.src+') no-repeat' }">
+                                <div class="option_people__online_icon_container mobile">
+                                    <div class="option_people__online_icon mobile"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <router-link :to="{ name: 'person', params: { id: friend.second_user.id }}">
+                            <div class="option_people_name mobile">
+                                {{ friend.second_user.name +' '+ friend.second_user.surname }}
+                            </div>
+                        </router-link>
                         <div class="option_people_dots mobile" @click.stop="close" @click="selectedFriend = friend.id">
                             <div class="option_people_dots__menu mobile" v-show="isOpenFriendOption(friend.id)">
                                 <ul class="option_people_dots__ul">
@@ -41,7 +69,8 @@
                 avatar: '',
                 subcategories: [],
                 isAuth: false,
-                selectedFriend: 0
+                selectedFriend: 0,
+                selectelAvatarSrc: 'https://357319.selcdn.ru/artspeople/avatars/',
             }
         },
 
