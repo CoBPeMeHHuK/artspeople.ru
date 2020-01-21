@@ -12,7 +12,7 @@
                                 </div>
                             </div>
                         </div>
-                        <router-link :to="{ name: 'person', params: { id: friend.first_user.id }}">
+                        <router-link :to="'/profile/'+friend.first_user.id">
                             <div class="option_people_name mobile">
                                 {{ friend.first_user.name +' '+ friend.first_user.surname }}
                             </div>
@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        <router-link :to="{ name: 'person', params: { id: friend.second_user.id }}">
+                        <router-link  :to="'profile/'+friend.second_user.id ">
                             <div class="option_people_name mobile">
                                 {{ friend.second_user.name +' '+ friend.second_user.surname }}
                             </div>
