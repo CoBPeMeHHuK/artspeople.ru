@@ -59,7 +59,7 @@
         </div>
         <div class="modal_container_gallery" v-if="works.length > 0 ">
             <modal :height="'100%'" :width="'100%'" name="gallery">
-            <div class="image_container">
+            <div class="image_container" v-if="clientWidth >= 992">
                 <div class="image_content">
                     <transition name="image" mode="out-in">
                         <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
@@ -81,6 +81,32 @@
                     </div>
                 </div>
             </div>
+                <div class="image_container image_container_mobile" v-else>
+                    <div class="image_information__header_mobile">
+                        <div class="information__title_container__mobile upload_works">
+                        <button type="button" @click="closeGallery" class="gallery_close close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    </div>
+                    <div class="image_content">
+                        <transition name="image" mode="out-in">
+                            <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
+                        </transition>
+                        <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
+                        <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+
+                    <div class="image_information">
+                        <div class="information_container">
+                            <div class="information__work_container">
+                                <div class="information__work_title" v-html="works[selectImage].title"></div>
+                                <div class="information__work_description" v-html="works[selectImage].description"></div>
+                                <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </modal>
         </div>
     </div>
@@ -107,6 +133,7 @@
                 selectDescription:null,
                 selectSubcategory:null,
                 index:null,
+                clientWidth:0,
                 selectId:null,
                 selectelUrl:'https://357319.selcdn.ru/artspeople/works/',
                 urlList:[],
@@ -190,6 +217,8 @@
 
 
         mounted() {
+
+            this.clientWidth = document.documentElement.clientWidth;
 
             axios({
                 method: 'post',

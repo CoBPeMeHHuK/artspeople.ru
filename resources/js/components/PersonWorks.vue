@@ -25,7 +25,7 @@
 
             <div class="modal_container_gallery" v-if="works.length > 0">
                 <modal :height="'100%'" :width="'100%'" name="gallery">
-                    <div class="image_container">
+                    <div class="image_container" v-if="clientWidth >= 992">
                         <div class="image_content">
                             <transition name="image" mode="out-in">
                                 <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
@@ -48,15 +48,41 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="information__work_container">
+                                    <div class="information__work_title" v-html="works[selectImage].title"></div>
+                                    <div class="information__work_description" v-html="works[selectImage].description"></div>
+                                    <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image_container image_container_mobile" v-else>
+                        <div class="image_information__header_mobile">
+                            <div class="information__title_container__mobile">
+                                <div class="information__title_container__mobile">
+                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+works[selectImage].avatar.src+') no-repeat' }"></div>
+                                    <div class="information__person_info">
+                                        <div class="information__person_title">
+                                            <p class="information__person_name">{{ works[selectImage].user.surname +' '+works[selectImage].user.name }}</p>
+                                            <p class="information__person_range">Генералисимус</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" @click="closeGallery" class="gallery_close close close_mobile" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="image_content">
+                            <transition name="image" mode="out-in">
+                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
+                            </transition>
+                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
+                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
+                        </div>
 
-                                <!--<div class="information__navigation">-->
-                                    <!--<div class="information__button_container">-->
-                                        <!--<div class="btn_like" ><span class="like_work"></span></div>-->
-                                        <!--<div class="btn_invite" v-if="!isInvited" @click="isInvited=true"><span class="friend_invite"></span></div>-->
-                                        <!--<div class="btn_invite" v-if="isInvited" @click="isInvited=false"><span class="friend_invited"></span></div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-
+                        <div class="image_information">
+                            <div class="information_container">
                                 <div class="information__work_container">
                                     <div class="information__work_title" v-html="works[selectImage].title"></div>
                                     <div class="information__work_description" v-html="works[selectImage].description"></div>
@@ -79,6 +105,7 @@
                 selectelAvatarSrc:'https://357319.selcdn.ru/artspeople/avatars/',
                 selectImage:0,
                 isInvited:false,
+                clientWidth:0
             }
         },
 
@@ -98,7 +125,7 @@
         },
 
         mounted() {
-
+            this.clientWidth = document.documentElement.clientWidth;
         },
 
         beforeUpdate(){
