@@ -608,6 +608,13 @@ input[type=range]::-ms-track {
   background-color: #fff;
   border-bottom: 1px solid #e5e5e5;
   height: 50px;
+    position:fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.auth > .profile_header{
+    width: calc(100% - 240px);
 }
 
 .main {

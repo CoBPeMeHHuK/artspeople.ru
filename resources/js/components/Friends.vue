@@ -7,7 +7,7 @@
                         <div class="option_people__avatar_container mobile">
                             <div class="option_people__avatar mobile"
                                  v-bind:style="{ background: 'url('+selectelAvatarSrc+ friend.first_user.avatar.src+') no-repeat' }">
-                                <div class="option_people__online_icon_container mobile">
+                                <div class="option_people__online_icon_container mobile" v-if="isOnlineFriend(friend.first_user.id)">
                                     <div class="option_people__online_icon mobile"></div>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                         <div class="option_people__avatar_container mobile">
                             <div class="option_people__avatar mobile"
                                  v-bind:style="{ background: 'url('+selectelAvatarSrc+ friend.second_user.avatar.src+') no-repeat' }">
-                                <div class="option_people__online_icon_container mobile">
+                                <div class="option_people__online_icon_container mobile" v-if="isOnlineFriend(friend.second_user.id)">
                                     <div class="option_people__online_icon mobile"></div>
                                 </div>
                             </div>
@@ -76,7 +76,8 @@
 
         props: [
             'friends',
-            'authId'
+            'authId',
+            'connectedUsers'
         ],
 
         beforeCreate() {
@@ -118,7 +119,11 @@
                 this.selectedFriend === event ? response = true : response = false;
 
                 return response;
-            }
+            },
+            isOnlineFriend:function(id){
+                let user = this.connectedUsers.find(x=>x.channel === Number(id));
+                return !!user;
+            },
         }
     }
 </script>
