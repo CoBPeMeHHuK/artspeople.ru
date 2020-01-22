@@ -1962,7 +1962,9 @@ input[type=range]::-ms-track {
 
 .information__title_container{
     display: flex;
-    padding:50px 30px 30px 30px;
+    padding:50px 10px;
+    width: 100%;
+    margin-left: 10px;
 }
 
 .information__person_avatar{
@@ -1975,7 +1977,7 @@ input[type=range]::-ms-track {
 }
 
 .information__person_name{
-    font-size: 22px;
+    font-size: 20px;
     font-family: 'Circe';
     color: #11b0f1;
     margin: 0;
@@ -2028,7 +2030,7 @@ input[type=range]::-ms-track {
 }
 
 .information__work_container{
-    padding: 50px 0px 10px 0px;
+    padding: 10px 0px;
     color: #fff;
     font-family: 'Circe';
     border-bottom: 1px solid #454646;
