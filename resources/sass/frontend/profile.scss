@@ -1894,6 +1894,10 @@ input[type=range]::-ms-track {
     display: flex;
 }
 
+.image_container_mobile{
+    margin-top:0!important;
+}
+
 .image_content{
     width: calc(100% - 280px);
     height: 100%;
@@ -1965,6 +1969,12 @@ input[type=range]::-ms-track {
     padding:50px 10px 30px 10px;
     width: 100%;
     margin-left: 10px;
+}
+
+.information__title_container__mobile{
+    display: flex;
+    width: 100%;
+    padding:10px;
 }
 
 .information__person_avatar{
@@ -2054,6 +2064,11 @@ input[type=range]::-ms-track {
     color: white;
     margin: 7px;
     outline: none;
+}
+
+.gallery_close.close.close_mobile{
+    margin:0 7px 0 0;
+    height: 28px;
 }
 
 
