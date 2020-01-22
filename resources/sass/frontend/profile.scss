@@ -2951,6 +2951,33 @@ input[type=range]::-ms-track {
     .user_information__option{
         width:90%;
     }
+
+    .chat_content_right{
+        padding:0;
+    }
+
+    .chat_container{
+        height: calc(100% - 50px);
+    }
+
+    .chat_content{
+        padding: 0;
+    }
+
+    .chat_header__searcher{
+        margin: 0 10px;
+    }
+
+    .searcher__icon{
+        margin-top:0;
+    }
+
+    .searcher__input{
+        margin-top:0;
+    }
+    .chat_header__searcher{
+        height: 50px;
+    }
 }
 
 
