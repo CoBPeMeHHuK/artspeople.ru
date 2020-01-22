@@ -1977,6 +1977,11 @@ input[type=range]::-ms-track {
     padding:10px;
 }
 
+.information__title_container__mobile.upload_works{
+    justify-content: flex-end;
+}
+
+
 .information__person_avatar{
     border-radius: 50%;
     height: 60px;
