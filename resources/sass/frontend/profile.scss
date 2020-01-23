@@ -2997,10 +2997,11 @@ input[type=range]::-ms-track {
 
 
     .chat_write_input_message__wrapper{
-        top: calc(100% - 10px);
+        top: calc(100% - 100px);
         z-index: 333;
         height: 50px;
         border-radius: 0;
+        position: fixed;
     }
 
     .chat_write_input_message__wrapper{
