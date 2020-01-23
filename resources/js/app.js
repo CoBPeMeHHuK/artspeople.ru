@@ -221,8 +221,7 @@ const app = new Vue({
                     }
 
                     let user = this.users.find(x=>x.id === Number(data.message.user_from));
-                    console.log(user);
-                    this.addLastMessage(user);
+                    this.addLastMessage(user,data);
 
                 }.bind(this));
 
@@ -359,9 +358,8 @@ const app = new Vue({
             return this.$route.params.id != $id;
         },
 
-        addLastMessage: function(user){
+        addLastMessage: function(user,data){
 
-            console.log(user);
             if (user.last_messages_from !== null) {
 
                 user.last_messages_from.count_of_unread++;
