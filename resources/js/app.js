@@ -314,7 +314,13 @@ const app = new Vue({
             });
 
             let user = this.users.find(x => x.id === this.userSelect);
-            user.last_messages_from === null ? user.last_messages_to.message = data[0]['message'].text : user.last_messages_from.message = data[0]['message'].text;
+            if(user.last_messages_from === null){
+                user.last_messages_to.message = data[0]['message'].text;
+                user.last_messages_to.updated_at = new Date();
+            }else{
+                user.last_messages_from.message = data[0]['message'].text;
+                user.last_messages_from.updated_at = new Date();
+            }
         },
 
         clickOut: function () {
