@@ -201,8 +201,6 @@ const app = new Vue({
 
                 socket.on("news-action." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
 
-                    console.log(data.message);
-
                     let parameters = {
                         'message': {
                             'name': data.message.name,
@@ -220,31 +218,12 @@ const app = new Vue({
                     if (data.message.user_from == this.userSelect) {
                         this.dataMessages.push(parameters);
                         this.isActive = false;
-                        let user = this.users.find(x=>x.id === Number(data.message.user_from));
-                        if (user.last_messages_from !== null) {
-
-                            user.last_messages_from.count_of_unread++;
-                            user.last_messages_from.message = data.message.message;
-                            user.last_messages_from.last_user_changes_id = data.message.user_from;
-
-                        } else if(user.last_messages_to !== null) {
-                            user.last_messages_to.count_of_unread++;
-                            user.last_messages_to.message = data.message.message;
-                            user.last_messages_to.last_user_changes_id = data.message.user_from;
-                        }
-                    } else{
-                        if (user.last_messages_from !== null) {
-
-                            user.last_messages_from.count_of_unread++;
-                            user.last_messages_from.message = data.message.message;
-                            user.last_messages_from.last_user_changes_id = data.message.user_from;
-
-                        } else if(user.last_messages_to !== null) {
-                            user.last_messages_to.count_of_unread++;
-                            user.last_messages_to.message = data.message.message;
-                            user.last_messages_to.last_user_changes_id = data.message.user_from;
-                        }
                     }
+
+                    let user = this.users.find(x=>x.id === Number(data.message.user_from));
+                    console.log(user);
+                    this.addLastMessage(user);
+
                 }.bind(this));
 
                 /*------------------------------------------------------------------------------------------*/
@@ -378,6 +357,25 @@ const app = new Vue({
 
         isValidRouter: function ($id) {
             return this.$route.params.id != $id;
+        },
+
+        addLastMessage: function(user){
+
+            console.log(user);
+            if (user.last_messages_from !== null) {
+
+                user.last_messages_from.count_of_unread++;
+                user.last_messages_from.message = data.message.message;
+                user.last_messages_from.last_user_changes_id = data.message.user_from;
+                user.last_messages_from.updated_at = new Date();
+
+            } else if(user.last_messages_to !== null) {
+
+                user.last_messages_to.count_of_unread++;
+                user.last_messages_to.message = data.message.message;
+                user.last_messages_to.last_user_changes_id = data.message.user_from;
+                user.last_messages_to.updated_at = new Date();
+            }
         }
     }
 
