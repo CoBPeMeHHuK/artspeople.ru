@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="left-section__info">
-                    <div class="title-section">
+                    <div class="title-section" :class="{is_flex_preview:isLoadingUserInformation}">
                         <p class="title-section__name">@{{ userAuthName+' '+userAuthSurname }}</p>
                         <div class="icons-container" @click.stop="clickOut()" @click="toggleUserOption"><span
                                     class="title-section__icons" :class="{rotate:isOpenUserOption}"></span></div>
@@ -23,7 +23,7 @@
                             </ul>
                         </div>
                     </div>
-                    <p class="description" v-html="userAuthQuote">
+                    <p class="description" v-html="userAuthQuote" :class="{is_active_preview:isLoadingUserInformation}">
                     </p>
                 </div>
                 <div class="left-section__menu">
