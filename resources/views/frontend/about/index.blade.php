@@ -98,7 +98,7 @@
 
 </header>
 
-<section>
+<section class="wrapper_section">
 
     {!! $category !!}
 
