@@ -340,6 +340,8 @@
             },
 
             clearReadMessages: function (last_messages, user) {
+
+                console.log('clearMessages');
                 axios({
                     method: 'post',
                     url: '/api/read-messages',
