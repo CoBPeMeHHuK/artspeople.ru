@@ -2909,7 +2909,7 @@ input[type=range]::-ms-track {
 
   .chat_header__person {
     margin-left: 0;
-      height: 50px;
+      height: 60px;
   }
 
   .personal_container {
@@ -2917,8 +2917,8 @@ input[type=range]::-ms-track {
   }
 
     .personal_chat__avatar{
-        height: 40px;
-        width: 40px;
+        height: 45px;
+        width: 45px;
     }
 
     .personal_chat_option_dots__container{
@@ -3014,7 +3014,7 @@ input[type=range]::-ms-track {
     }
 
     .chat_message_content{
-        max-height: calc(100vh - 266px);
+        max-height: calc(100vh - 256px);
     }
 
     .chat_write_input_message__option_icon{
