@@ -483,10 +483,12 @@ footer a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
+    display: none;
 }
 
 .img_container {
   margin-bottom: 10px;
+    min-height: 150px;
 }
 
 .vicp-wrap {
