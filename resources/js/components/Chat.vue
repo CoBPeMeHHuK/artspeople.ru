@@ -309,6 +309,8 @@
                 console.log(this.userAuth.id);
 
                 if (this.selectUserMessagesIsRead === false) {
+
+                    console.log('selectUserMessagesIsRead');
                     if (user.last_messages_from !== null && user.last_messages_from.count_of_unread > 0 && user.last_messages_from.last_user_changes_id !== this.userAuth.id) {
                         let last_message = 'last_message_from';
                         this.clearReadMessages(last_message, user);
