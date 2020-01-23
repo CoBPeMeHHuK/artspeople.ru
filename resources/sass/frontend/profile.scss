@@ -2899,16 +2899,31 @@ input[type=range]::-ms-track {
   }
 
   .chat_write_input_message {
-    padding: 35px 100px 23px 55px;;
+    padding: 18px 80px 8px 50px;
+      border-radius: 0;
   }
 
+    .person_message{
+        padding-bottom: 0;
+    }
+
   .chat_header__person {
-    margin-left: 3%;
+    margin-left: 0;
+      height: 50px;
   }
 
   .personal_container {
     padding-top: 80px;
   }
+
+    .personal_chat__avatar{
+        height: 40px;
+        width: 40px;
+    }
+
+    .personal_chat_option_dots__container{
+        width: 16px;
+    }
 
   .profile_header_mobile {
     position: fixed;
@@ -2958,6 +2973,7 @@ input[type=range]::-ms-track {
 
     .chat_container{
         height: calc(100% - 50px);
+        padding: 10px 0 0 0;
     }
 
     .chat_content{
@@ -2978,6 +2994,52 @@ input[type=range]::-ms-track {
     .chat_header__searcher{
         height: 50px;
     }
+
+
+    .chat_write_input_message__wrapper{
+        top: calc(100% - 10px);
+        z-index: 333;
+        height: 50px;
+        border-radius: 0;
+    }
+
+    .chat_write_input_message__wrapper{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .chat_message_content{
+        height: calc(100% - 50px);
+    }
+
+    .chat_message_content{
+        max-height: calc(100vh - 210px);
+    }
+
+    .chat_write_input_message__option_icon{
+        width: 18px;
+        height: 18px;
+        top: 18px;
+        right: 60px;
+    }
+    
+    .chat_write_input_message__btn_send{
+        width: 30px;
+        height: 30px;
+        right: 20px;
+        top: 10px;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+    .chat_write_input_message__smile_icon{
+        width: 21px;
+        height: 21px;
+        top:15px;
+        left: 25px;
+    }
+
+
 }
 
 
