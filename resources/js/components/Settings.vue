@@ -17,7 +17,7 @@
                            lang-type="ru"
                            img-format="png"></my-upload>
                 <div class="img_container">
-                    <img :src="userAuthAvatar">
+                    <img :src="userAuthAvatar" :class="{is_active_preview:userAuthAvatar}">
                 </div>
                 <a class="btn" @click="toggleShow">Изменить аватар</a>
             </div>
@@ -178,7 +178,15 @@
         updated() {
 
         },
-        computed: {},
+
+        watch:{
+            userAuthAvatar:function(){
+              return true;
+            }
+        },
+        computed: {
+
+        },
 
         methods: {
             toggleShow() {
