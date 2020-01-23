@@ -10,6 +10,7 @@ mix.options({
     .js('resources/js/backend/dropzone_sliders.js', 'public/js')
     .js('resources/js/backend/index.js', 'public/js')
     .js('resources/js/frontend/main.js', 'public/js')
+    .js('resources/js/frontend/about.js', 'public/js')
 
     .sass('resources/sass/frontend/upload.scss','public/css')
     .sass('resources/sass/auth/auth.scss','public/css')
@@ -21,6 +22,7 @@ mix.options({
     .sass('resources/sass/frontend/hamburgers.min.scss','public/css')
     .sass('resources/sass/frontend/magnific.scss','public/css')
     .sass('resources/sass/frontend/main.scss','public/css')
+    .sass('resources/sass/frontend/about.scss','public/css')
     .sass('resources/sass/frontend/preloader.scss','public/css')
     .sass('resources/sass/frontend/profile.scss','public/css')
     .sass('resources/sass/app.scss', 'public/css')
