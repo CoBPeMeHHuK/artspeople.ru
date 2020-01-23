@@ -124,7 +124,8 @@ const app = new Vue({
             dataMessages: [],
             connectedUsers: [],
             friendRequests: [],
-            statuses: []
+            statuses: [],
+            isLoadingUserInformation:false
         }
     },
     beforeCreate() {
@@ -139,6 +140,7 @@ const app = new Vue({
             this.userAuthName = response.data.name;
             this.userAuthSurname = response.data.surname;
             this.userAuthQuote = response.data.user_information.quote;
+            this.isLoadingUserInformation = true;
 
 
         });

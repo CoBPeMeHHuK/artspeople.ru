@@ -722,8 +722,8 @@ input[type=range]::-ms-track {
 
 .left-section__info {
   text-align: center;
-  padding-bottom: 27px;
   border-bottom: 1px solid #464646;
+    min-height: 140px;
 }
 
 .left-section__info .description {
@@ -734,11 +734,12 @@ input[type=range]::-ms-track {
   font-size: 12px;
   line-height: 1.7;
   font-family: Circe;
+    display: none;
 
 }
 
 .title-section {
-  display: flex;
+  display: none;
   text-align: center;
   width: 109px;
   margin: 0 auto;
@@ -1870,6 +1871,18 @@ input[type=range]::-ms-track {
 
 .is_active_modal {
   display: block !important;
+}
+
+.is_active_preview{
+    display:block !important;
+}
+
+.is_flex_preview{
+    display: flex!important;
+}
+
+.is_inactive_preview{
+    display:none !important;
 }
 
 .modalMenu ul {
