@@ -20,7 +20,6 @@
 }
 
 
-
 @font-face {
     font-family: 'Circe';
     src: url('../../fonts/Circe-Regular.eot');
@@ -87,7 +86,7 @@
     font-style: normal;
 }
 
-figure{
+figure {
     margin: 0 auto !important;
 }
 
@@ -105,6 +104,7 @@ figure{
     visibility: hidden;
     overflow: hidden;
 }
+
 .wrapper_main {
     max-width: 1300px;
     margin: 0 auto;
@@ -114,10 +114,12 @@ figure{
     justify-content: flex-end;
     align-items: flex-end;
 }
+
 * {
     padding: 0;
     margin: 0;
 }
+
 h1 {
     color: #000000;
     font-size: 60px;
@@ -126,6 +128,7 @@ h1 {
     padding-bottom: 36px;
     text-align: center;
 }
+
 h2 {
     color: #000000;
     font-size: 46px;
@@ -134,9 +137,11 @@ h2 {
     padding-bottom: 20px;
     text-align: center;
 }
+
 ul {
     margin-bottom: 0;
 }
+
 header {
     margin: 0 auto;
     position: relative;
@@ -151,6 +156,7 @@ header {
     opacity: 0.6;
     transition: 1s;
 }
+
 /* Меню */
 
 .menu {
@@ -176,8 +182,9 @@ header {
     width: 100px;
     margin: 18px 20px 0 0;
 }
+
 .hamburger {
-    margin: 10px -15px 10px 0 ;
+    margin: 10px -15px 10px 0;
     float: right;
     z-index: 699;
 }
@@ -219,22 +226,23 @@ header {
 }
 
 .modalMenu ul {
-    margin:120px auto;
+    margin: 120px auto;
 }
 
-.modalMenu ul li{
+.modalMenu ul li {
     text-align: center;
     margin-bottom: 20px;
 
 }
 
-.after_mobile_photography{
+.after_mobile_photography {
     display: none;
     text-align: center;
     cursor: pointer;
     margin-bottom: 10px;
 }
-.after_mobile_tattoo{
+
+.after_mobile_tattoo {
     display: none;
     text-align: center;
     cursor: pointer;
@@ -254,49 +262,51 @@ header {
     text-decoration: none;
 }
 
-.mobile_container_slider-prev{
+.mobile_container_slider-prev {
 
 }
 
-.mobile_container_slider-next{
+.mobile_container_slider-next {
     right: 0;
 }
 
-.arrows-container-mobile-prev{
-    top: 89%!important;
+.arrows-container-mobile-prev {
+    top: 89% !important;
     left: 23%;
     padding: 25px 0 25px 20px;
     width: 26%;
 }
-.arrows-container-mobile-next{
-    top: 89%!important;
+
+.arrows-container-mobile-next {
+    top: 89% !important;
     right: 23%;
     padding: 25px 20px 25px 0;
     width: 26%;
 }
 
-.after_mobile_photography-up{
+.after_mobile_photography-up {
     display: none;
     width: 30px;
     margin: 0 auto;
     margin-bottom: 10px;
     background: #e2e2e2;
     border-radius: 5px;
-    padding-bottom:3px;
-    text-align: center;
-}
-.after_mobile_tattoo-up{
-    display: none;
-    width: 30px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    background: #e2e2e2;
-    border-radius: 5px;
-    padding-bottom:3px;
+    padding-bottom: 3px;
     text-align: center;
 }
 
-@media (max-width:500px){
+.after_mobile_tattoo-up {
+    display: none;
+    width: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background: #e2e2e2;
+    border-radius: 5px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
     .menu {
         display: none;
     }
@@ -313,7 +323,7 @@ header {
     margin-bottom: 0;
 }
 
-.menu ul li{
+.menu ul li {
     float: left;
     list-style: none;
     margin: 25px 0 30px 20px;
@@ -339,24 +349,25 @@ header {
     font-size: 30px;
 }
 
-.mobile_photography{
-    display: none;
-}
-.mobile_tattoo{
+.mobile_photography {
     display: none;
 }
 
-.photography_text h2{
+.mobile_tattoo {
+    display: none;
+}
+
+.photography_text h2 {
     margin-top: 0;
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
     .menu ul {
         float: right;
         margin-bottom: none;
     }
 
-    .menu ul li{
+    .menu ul li {
         float: left;
         list-style: none;
         margin: 12px 0 14px 20px;
@@ -369,20 +380,24 @@ header {
         margin: 0;
     }
 }
+
 /* Header */
-body{
+body {
     overflow-x: hidden;
 }
+
 .sl_slider {
     overflow: hidden;
     height: 90vh;
 }
+
 .shadow {
     position: absolute;
     top: 0;
     opacity: 0.3;
     height: 100%;
 }
+
 .sl_item {
     position: relative;
     overflow: hidden;
@@ -392,6 +407,7 @@ body{
     background-size: cover;
     background-position: center center;
 }
+
 .sl_item:after {
     content: '';
     position: absolute;
@@ -406,12 +422,14 @@ body{
 .sl_item.slick-slide {
     height: 100%;
 }
+
 .img-nav {
     background-size: cover;
     background-position: center center;
     height: 100%;
     border-radius: 5px;
 }
+
 .sl_item img {
     width: 100%;
 
@@ -425,6 +443,7 @@ body{
     width: 120vw;
     height: auto;
 }
+
 .infoStyle {
     margin: 75px auto 182px auto;
     max-width: 1200px;
@@ -433,6 +452,7 @@ body{
     justify-content: center;
     flex-flow: wrap;
 }
+
 .itemStyle {
     position: relative;
     margin: 10px;
@@ -445,6 +465,7 @@ body{
     background-position: center center;
     background-repeat: no-repeat;
 }
+
 .tab-active {
     display: flex;
 }
@@ -452,6 +473,7 @@ body{
 .tab {
     display: none;
 }
+
 .infoBlock {
     width: 100%;
     height: 100%;
@@ -462,12 +484,14 @@ body{
     font-family: 'Circe';
     color: white;
 }
+
 .itemStyle:hover .infoBlock {
     transition: 1s;
     position: absolute;
     opacity: 1;
     background-color: rgba(73, 73, 73, 0.603);
 }
+
 .logoName {
     padding: 20px;
     pointer-events: none;
@@ -490,6 +514,7 @@ body{
     font-family: Circe;
     font-weight: 800;
 }
+
 /*
   @media (max-width:768px) {
     .logoName h1 {
@@ -506,35 +531,42 @@ body{
     max-width: 1200px;
     margin: 0 auto;
 }
+
 /* Первый слайдер */
 .slider_first {
     height: 1000px;
 }
-.slider-for{
+
+.slider-for {
     width: auto;
     height: 450px;
     margin: 30px auto 1px;
     overflow: hidden;
 }
-img{
+
+img {
     max-width: 100%;
     margin: 0 auto;
 }
-.slider-nav{
+
+.slider-nav {
     position: absolute;
     bottom: 200px;
     left: 15px;
     width: 300px;
 }
+
 .slider-nav .slick-list {
     height: 200px;
 }
+
 .slider-nav .prev-arrow {
     bottom: -35px;
     left: 0;
     top: auto;
     transition: opacity 300ms;
 }
+
 .slider-nav .next-arrow {
     bottom: -35px;
     right: 100px;
@@ -542,34 +574,40 @@ img{
     transform: rotateY(180deg);
     transition: opacity 300ms;
 }
+
 .slider-nav .prev-arrow:hover,
 .slider-nav .next-arrow:hover {
     opacity: 0.6;
     cursor: pointer;
 }
+
 .sl_photography_for .prev-arrow,
 .sl_tattoo_for .prev-arrow,
 .sl_musick_for .prev-arrow {
     font-size: 60px;
     left: 0px;
 }
+
 .sl_photography_for .next-arrow,
 .sl_tattoo_for .next-arrow,
 .sl_musick_for .next-arrow {
     font-size: 60px;
     right: 0px;
 }
+
 .sl_photography_for .slick-list.draggable,
 .sl_tattoo_for .slick-list.draggable,
 .sl_musick_for .slick-list.draggable {
-    padding:20px 40px 40px 40px;
+    padding: 20px 40px 40px 40px;
     position: relative;
     height: 100%;
 }
+
 .slider_first .slider-nav .slick-list {
-    padding: 0 50px 0 0!important;
+    padding: 0 50px 0 0 !important;
 }
-.slider-nav .slick-track{
+
+.slider-nav .slick-track {
     height: 200px;
 
 }
@@ -580,7 +618,8 @@ img{
     background-repeat: no-repeat;
     background-position: center center;
 }
-.slick-arrow{
+
+.slick-arrow {
     position: absolute;
     top: 50%;
     z-index: 50;
@@ -588,10 +627,12 @@ img{
     color: #737373;
     cursor: pointer;
 }
-.slick-prev{
+
+.slick-prev {
     left: 5px;
 }
-.slick-next{
+
+.slick-next {
     right: 5px;
 }
 
@@ -602,16 +643,19 @@ img{
     border-radius: 25px;
     border: none
 }
-.itemFirstSliderNav  {
-    -webkit-box-shadow: 10px 10px 26px -11px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 26px -11px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 26px -11px rgba(0,0,0,0.75);
+
+.itemFirstSliderNav {
+    -webkit-box-shadow: 10px 10px 26px -11px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 26px -11px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 26px -11px rgba(0, 0, 0, 0.75);
 }
+
 .itemFirstSlider {
     margin: 0 auto;
 
 }
-.itemFirstSlider img{
+
+.itemFirstSlider img {
     width: 700px;
     height: 450px;
     float: left;
@@ -621,7 +665,7 @@ img{
     background-position: center center;
 }
 
-.count p{
+.count p {
     float: left;
     font-family: 'BebasNeueBold';
 
@@ -641,15 +685,17 @@ img{
     font-size: 39px;
     font-weight: 400;
 }
+
 .count {
     position: absolute;
     left: 15px;
     bottom: 390px;
 }
+
 /* футер */
 
 footer {
-    display:flex !important;
+    display: flex !important;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -662,6 +708,7 @@ footer a {
     color: white;
     margin: 0 15px
 }
+
 .wrapper_tabs {
     max-width: 1300px;
     display: flex;
@@ -672,13 +719,16 @@ footer a {
     margin-top: 8%;
     padding: 0 36px 0 20px;
 }
+
 .wrapper_tabs .right_column {
     width: 50%;
 }
+
 .wrapper_tabs .left_column {
     width: 50%;
     text-align: right;
 }
+
 .wrapper_tab_content {
     max-width: 1300px;
     display: flex;
@@ -688,10 +738,12 @@ footer a {
     margin-bottom: 100px;
     padding: 0 20px;
 }
+
 .wrapper_tab_content .itemStyle {
     width: calc((100% / 4) - 20px);
     height: 190px;
 }
+
 .wrapper_tabs p {
     /*float: left;*/
     margin-left: 10px;
@@ -701,6 +753,7 @@ footer a {
     font-size: 16px;
     color: rgb(160, 160, 163);
 }
+
 .wrapper_tabs h1 {
     color: #000000;
     font-family: 'BebasNeueBold';
@@ -723,7 +776,7 @@ footer a {
     color: #7a7a7a;
 }
 
-.wrapper_tabs ul li a{
+.wrapper_tabs ul li a {
     text-decoration: none;
     font-family: Circe;
     font-weight: 400;
@@ -732,7 +785,8 @@ footer a {
     color: rgb(122, 122, 122);
     text-transform: uppercase;
 }
-.wrapper_tabs ul li a:hover{
+
+.wrapper_tabs ul li a:hover {
     color: black;
     text-decoration: none;
 }
@@ -740,24 +794,27 @@ footer a {
 .all {
     display: none;
 }
-.tattoo {display: block;}
+
+.tattoo {
+    display: block;
+}
+
 .wrapper_tabs ul li.active a {
     font-weight: 700;
     color: black;
 }
 
 
-
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .wrapper_tabs .left_column {
         width: 100%;
     }
-    .wrapper_tabs .right_column{
+    .wrapper_tabs .right_column {
         width: 100%;
         margin: 0;
         text-align: center;
     }
-    .wrapper_tabs ul li div{
+    .wrapper_tabs ul li div {
         text-align: center;
     }
     .wrapper_tabs ul {
@@ -769,7 +826,7 @@ footer a {
     }
 }
 
-@media (max-width:465px) {
+@media (max-width: 465px) {
 
     .wrapper_tabs ul li {
         width: 50%;
@@ -780,7 +837,7 @@ footer a {
 
 /* Конец табов */
 
-@media (max-width:1288px) {
+@media (max-width: 1288px) {
     .logoName {
         padding: 20px;
         margin-right: 0px;
@@ -805,11 +862,11 @@ footer a {
     .wrapper_main {
         padding-left: 0;
     }
-    header{
+    header {
         position: relative;
     }
 
-    figure{
+    figure {
         width: 100%;
     }
 }
@@ -847,32 +904,39 @@ footer a {
         height: 70vh;
     }
 }
+
 @media (max-height: 500px) {
     .wrapper_main {
         height: 100%;
     }
 }
+
 /* Стили для активного контейнера вкладки */
 .tab-content__item.active {
     display: block;
 }
-.photography_slide, .tattoo_slide{
+
+.photography_slide, .tattoo_slide {
     width: 100%;
 }
+
 /*.photograph, .cinema {
     padding-bottom: 23px;
 }*/
 .photography_section {
     margin-bottom: calc(0% - 105px);
 }
+
 .tattoo_section {
     margin-top: calc(0% - 225px);
     margin-bottom: calc(0% - 0px);
 
 }
+
 .musick {
     margin-bottom: calc(0% - 120px);
 }
+
 /*
 .photograph, .cinema, .musick {
     display: flex;
@@ -893,6 +957,7 @@ footer a {
 .musick .sl_photo {
     padding: 10px 10px;
 }
+
 .photography_section .sl_image,
 .tattoo_section .sl_image,
 .musick .sl_image {
@@ -902,69 +967,83 @@ footer a {
     background-repeat: no-repeat;
     border-radius: 12px;
 
-    box-shadow: 2px 4px 7px rgb(116,116,116);
+    box-shadow: 2px 4px 7px rgb(116, 116, 116);
 }
+
 .photography_section .slick-slide,
 .tattoo_section .slick-slide,
-.musick .slick-slide{
+.musick .slick-slide {
     opacity: .7;
 }
+
 .photography_section .slick-slide.slick-current,
 .tattoo_section .slick-slide.slick-current,
-.musick  .slick-slide.slick-current {
+.musick .slick-slide.slick-current {
     opacity: 1;
 }
+
 .wrapper {
     max-width: 1300px;
-    margin : 0 auto;
+    margin: 0 auto;
     height: 510px;
 }
 
-.wrapper_section{
+.wrapper_section {
     padding-top: 150px;
 }
+
 .name_of_work .photography_name_sl,
 .name_of_work .tattoo_name_sl,
-.name_of_work .musick_name_sl{
+.name_of_work .musick_name_sl {
     display: flex;
     flex-flow: row wrap;
     padding: 0 20px;
 }
+
 .name_of_work {
     /*padding-top: 238px;*/
 }
+
 .after_photography, .after_musick {
     background-color: #eff0f4;
 }
+
 .after_photography {
     padding-bottom: 440px;
     padding-top: 180px;
 }
+
 .after_tattoo {
     padding-top: 80px;
     padding-bottom: 140px;
 }
+
 .after_musick {
     padding-bottom: 140px;
     padding-top: 240px;
 }
+
 .work_image {
     width: calc(60% - 80px);
 }
-.work_image img{
+
+.work_image img {
     border-radius: 7px;
 }
+
 .left_content {
     width: 40%;
     margin-right: 80px;
     margin-top: 18px;
 }
-.left_content p{
+
+.left_content p {
     font-family: Circe;
     color: rgb(116, 116, 116);
     line-height: 1.875;
     font-size: 16px;
 }
+
 .left_content h2 {
     font-family: 'BebasNeueRegular';
     font-size: 60px;
@@ -976,8 +1055,6 @@ footer a {
 }
 
 
-
-
 .slick-slide {
     height: auto;
 }
@@ -985,16 +1062,16 @@ footer a {
 .after_musick .slick-list {
     /*height: 100%;*/
 }
-.logout_button{
+
+.logout_button {
     cursor: pointer;
 }
 
 
-
-
-.next-arrow-mobile{
+.next-arrow-mobile {
     transform: rotateY(180deg);
 }
+
 @media (max-width: 1440px) {
     .after_photography {
         /*padding-bottom: 310px;*/
@@ -1013,55 +1090,55 @@ footer a {
     }
 }
 
-@media (max-width: 992px){
+@media (max-width: 992px) {
 
-   .mobile_photography{
-       display: block;
-   }
-    .desktop_photography{
-        display: none;
-    }
-    .mobile_tattoo{
+    .mobile_photography {
         display: block;
     }
-    .desktop_tattoo{
+    .desktop_photography {
+        display: none;
+    }
+    .mobile_tattoo {
+        display: block;
+    }
+    .desktop_tattoo {
         display: none;
     }
 
-    .logoName p{
+    .logoName p {
         margin-right: 0;
     }
-    .wrapper_tabs{
+    .wrapper_tabs {
         padding: 0 36px 0 36px;
     }
-    .wrapper_tabs p{
+    .wrapper_tabs p {
         width: 148px;
         margin: 0 auto;
     }
-    .left_content p{
-         text-align: center;
-         line-height:1.5;
-     }
-    .after_mobile_photography{
-        display: block;
-        width: 30px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        background: #e2e2e2;
-        border-radius: 5px;
-        padding-bottom:3px;
+    .left_content p {
+        text-align: center;
+        line-height: 1.5;
     }
-    .after_mobile_tattoo{
+    .after_mobile_photography {
         display: block;
         width: 30px;
         margin: 0 auto;
         margin-bottom: 10px;
         background: #e2e2e2;
         border-radius: 5px;
-        padding-bottom:3px;
+        padding-bottom: 3px;
+    }
+    .after_mobile_tattoo {
+        display: block;
+        width: 30px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        background: #e2e2e2;
+        border-radius: 5px;
+        padding-bottom: 3px;
     }
 
-    .mobile_container_slider-prev{
+    .mobile_container_slider-prev {
         width: 40px;
         height: 40px;
         bottom: 20px;
@@ -1070,7 +1147,7 @@ footer a {
         text-align: center;
     }
 
-    .mobile_container_slider-next{
+    .mobile_container_slider-next {
         width: 40px;
         height: 40px;
         bottom: 20px;
@@ -1078,20 +1155,20 @@ footer a {
         top: 35px;
         text-align: center;
     }
-    .next-arrow{
-        font-size: 32px!important;
+    .next-arrow {
+        font-size: 32px !important;
     }
-    .prev-arrow{
-        font-size: 32px!important;
+    .prev-arrow {
+        font-size: 32px !important;
     }
-    .tattoo_section{
-       background: #eff0f4;
-   }
-    .next-arrow-mobile:active{
+    .tattoo_section {
+        background: #eff0f4;
+    }
+    .next-arrow-mobile:active {
         opacity: 0.5;
         transition: 20ms;
     }
-    .prev-arrow-mobile:active{
+    .prev-arrow-mobile:active {
         opacity: 0.5;
         transition: 20ms;
     }
@@ -1111,7 +1188,7 @@ footer a {
         margin-top: 0;
     }
 
-    .musick_slider, .tattoo_slide, .photography_slide  {
+    .musick_slider, .tattoo_slide, .photography_slide {
         display: none;
     }
     .after_photography, .after_tattoo, .after_musick {
@@ -1131,6 +1208,7 @@ footer a {
     }
 
 }
+
 .photography_slide {
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -1138,7 +1216,7 @@ footer a {
     transition: 2s;
 }
 
-@media (max-width: 992px){
+@media (max-width: 992px) {
     .tattoo_text h2 {
         font-size: 38px;
     }
@@ -1163,42 +1241,49 @@ footer a {
         margin-top: 30px;
     }
 }
+
 .photography_slide:hover {
-    margin-left:  0;
+    margin-left: 0;
 }
+
 .tattoo_section {
     overflow: hidden;
 }
-.active_user{
 
-    background:#d9ebff;
+.active_user {
+
+    background: #d9ebff;
 }
 
-.user_name{
+.user_name {
 
     border-bottom: 1px solid #dedede;
 }
-.p_message{
+
+.p_message {
     /*margin-left: 33px;*/
     /*margin-top: -10px;*/
 }
-.message_user_name{
+
+.message_user_name {
     display: inline-block;
 }
 
-.avatar_mini{
+.avatar_mini {
     height: 30px;
     width: 30px;
     border-radius: 15px;
 }
+
 .tattoo_slide {
     -webkit-transform: translateX(50%);
     -ms-transform: translateX(50%);
     transform: translateX(50%);
     transition: 2s;
 }
+
 .tattoo_slide:hover {
-    margin-right:  0;
+    margin-right: 0;
 }
 
 @media (max-width: 470px) {
@@ -1217,7 +1302,8 @@ footer a {
         width: calc(100% - 20px);
     }
 }
-@media (max-width:768px)  {
+
+@media (max-width: 768px) {
     .shadow {
         position: absolute;
         top: 0;
@@ -1227,7 +1313,7 @@ footer a {
     .sl_slider {
         height: auto;
     }
-    .sl_item.slick-slide{
+    .sl_item.slick-slide {
         position: relative;
         overflow: hidden;
         text-align: center;
@@ -1243,7 +1329,7 @@ footer a {
 
 }
 
-.green_circle{
+.green_circle {
     display: inline-block;
     width: 8px;
     height: 8px;
@@ -1253,10 +1339,12 @@ footer a {
     bottom: -10px;
     left: -4px;
 }
-.arrived_messages{
-    background:#eaeaea;
+
+.arrived_messages {
+    background: #eaeaea;
 }
-.message_arrived{
+
+.message_arrived {
     float: right;
     position: relative;
     right: 7px;
