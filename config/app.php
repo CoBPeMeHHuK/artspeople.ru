@@ -180,6 +180,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 	    Spatie\Permission\PermissionServiceProvider::class,
 	    BAGArt\SelectelStorage\SelectelServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
 
     ],
 
@@ -231,7 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'ImageResize' => Intervention\Image\Facades\Image::class
+        'ImageResize' => Intervention\Image\Facades\Image::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
 
     ],
 
