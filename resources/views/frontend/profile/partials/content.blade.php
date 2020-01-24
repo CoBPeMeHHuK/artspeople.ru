@@ -11,7 +11,7 @@
 		{{--</div>--}}
 	</div>
 
-	<div class="vue_container">
+	<div class="vue_container bg">
 		@if(Auth::check())
 			<transition>
 				<router-view :key="$route.params['id']" v-bind:connected-users="connectedUsers" v-bind:friend-requests="friendRequests" v-bind:statuses="statuses" v-bind:user-auth-avatar="userAuthAvatar" :auth-id="{{ Auth::id() }}" :class="{is_visible:!preloader}" :friends="{{ $friends }}" v-on:clear="clearMessages" v-bind:data-messages="dataMessages" v-bind:users="users" v-bind:user-auth="{{ Auth::user() }}" v-bind:user-select="userSelect"  v-on:preloader="getPreloader" v-on:message="getMessage" v-on:avatar="changeAvatar"></router-view>
