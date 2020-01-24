@@ -98,6 +98,22 @@
   display: none !important;
 }
 
+.bg {
+    background: #ffffff;
+    background-image:url('/images/giphy.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
 
 a {
   color: #444444;
@@ -123,22 +139,6 @@ figure {
   border-radius: 15px;
 }
 
-
-.bg {
-  background: #ffffff;
-  background-image: url('images/general/giphy.gif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  /*visibility: hidden;*/
-  overflow: hidden;
-}
 
 li {
   list-style-type: none;
