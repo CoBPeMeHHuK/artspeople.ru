@@ -1,14 +1,14 @@
 <div class="profile_content chat">
 
 	<div :class="{not_visible:!preloader}">
-		<div class="transition-loader-inner {{ $isAuth }}">
-			<label></label>
-			<label></label>
-			<label></label>
-			<label></label>
-			<label></label>
-			<label></label>
-		</div>
+		{{--<div class="transition-loader-inner {{ $isAuth }}">--}}
+			{{--<label></label>--}}
+			{{--<label></label>--}}
+			{{--<label></label>--}}
+			{{--<label></label>--}}
+			{{--<label></label>--}}
+			{{--<label></label>--}}
+		{{--</div>--}}
 	</div>
 
 	<div class="vue_container">
