@@ -95,7 +95,7 @@
                     <div>
                         {!! NoCaptcha::renderJs() !!}
                         {!! NoCaptcha::display() !!}
-                        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                        <span class="error-message">{{ $errors->first('g-recaptcha-response') }}</span>
                     </div>
 
 	            </div>
