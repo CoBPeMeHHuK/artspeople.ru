@@ -115,3 +115,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    .rc-anchor-normal .rc-anchor-checkbox-label{
+        font-family: 'Circe';
+        font-size: 14px;
+        color: #555555;
+    }
+</style>
