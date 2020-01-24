@@ -92,6 +92,12 @@
                     <span class="focus-input100"></span>
                 </div>
 
+                    <div>
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                        <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                    </div>
+
 	            </div>
                 <div class="container-login100-form-btn register_button_container">
 
