@@ -611,6 +611,7 @@ input[type=range]::-ms-track {
     position:fixed;
     width: 100%;
     z-index: 100;
+    box-shadow: 0 0 7px 0 rgba(50, 50, 50, 0.2);
 }
 
 .auth > .profile_header{
