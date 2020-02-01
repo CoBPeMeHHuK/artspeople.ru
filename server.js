@@ -30,7 +30,7 @@ setInterval(function () {
 
 let redis = new Redis();
 
-redis.psubscribe('news-action.*');
+redis.psubscribe('chat_message.*');
 
 redis.on('pmessage', function (pattern, channel, message) {
     message = JSON.parse(message);
