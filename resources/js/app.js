@@ -201,7 +201,7 @@ const app = new Vue({
 
                 /*--------------------------------ПОЛУЧАЕМ СООБЩЕНИЕ ЧЕРЕЗ СОКЕТ----------------------------*/
 
-                socket.on("news-action." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
+                socket.on("chat_message." + this.userAuth.id + ":App\\Events\\ChatMessage", function (data) {
 
                     let parameters = {
                         'message': {
