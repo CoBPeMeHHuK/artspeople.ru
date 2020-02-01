@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="container-login100-form-btn register_button_container">
-                    <button class="login100-form-btn register_next" type="submit">
+                    <button class="login100-form-btn login" type="submit">
                         {{ __('ВОЙТИ') }}
                     </button>
                 </div>
