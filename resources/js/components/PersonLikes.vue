@@ -43,7 +43,11 @@
                                     <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>
                                     <div class="information__person_info">
                                         <div class="information__person_title">
-                                            <p class="information__person_name">{{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}</p>
+                                            <router-link :to="'/profile/'+likes[selectImage].work.user.id">
+                                            <p class="information__person_name">
+                                                {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
+                                            </p>
+                                            </router-link>
                                             <p class="information__person_range">Генералисимус</p>
                                         </div>
                                     </div>
@@ -63,7 +67,11 @@
                                 <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>
                                 <div class="information__person_info">
                                     <div class="information__person_title">
-                                        <p class="information__person_name">{{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}</p>
+                                        <router-link :to="'/profile/'+likes[selectImage].work.user.id">
+                                        <p class="information__person_name">
+                                            {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
+                                        </p>
+                                        </router-link>
                                         <p class="information__person_range">Генералисимус</p>
                                     </div>
                                 </div>
