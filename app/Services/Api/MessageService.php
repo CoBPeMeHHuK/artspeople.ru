@@ -1,7 +1,7 @@
 <?php
-    
+
     namespace App\Services\Api;
-    
+
     use App\Events\ChatMessage;
     use App\Model\LastMessageUser;
     use App\Model\Message;
@@ -9,30 +9,30 @@
     use Carbon\Carbon;
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
-    
+
     class MessageService extends AppService
     {
         public function __construct()
         {
             parent::__construct();
         }
-        
+
         public function sendMessage($request)
         {
             Auth::check() ? $auth_id = Auth::id() : $auth_id = false;
             $request->user_id ? $user_id = $request->user_id : $user_id = false;
             strlen($request->message) > 0 ? $message = $request->message : $message = false;
-            
+
             if ($auth_id && $user_id && $message) {
-                
+
                 /*************************************************/
                 $channels = 'news-action.' . $user_id;
                 $user = Auth::user();
                 $user_name = $user->name;
                 $user_surname = $user->surname;
                 $avatarSrc = $user->avatar->src;
-                
-                
+
+
                 $parameters = [
                     'channels' => $channels,
                     'name' => $user_name,
@@ -44,11 +44,11 @@
                     'right_person' => '',
                     'type' => 'avatars'
                 ];
-                
+
                 ChatMessage::dispatch($parameters);
                 /*************************************************/
-                
-                
+
+
                 $messageResponse = Message::query()->create([
                     'user_from' => $auth_id,
                     'user_to' => $user_id,
@@ -56,21 +56,21 @@
                     'is_read' => 0,
                     'created_at' => Carbon::now()
                 ]);
-                
+
                 $auth_id < $user_id ? $uniqueRecord = $auth_id . '-' . $user_id : $uniqueRecord = $user_id . '-' . $auth_id;
-                
+
                 $lastMessage = LastMessageUser::where(['unique_users_record' => $uniqueRecord])
                     ->first();
-                
+
                 if ($lastMessage) {
-                    
+
                     $lastMessageResponse = LastMessageUser::where(['unique_users_record' => $uniqueRecord])->update([
                         'message' => $message,
                         'count_of_unread' => DB::raw('count_of_unread + 1'),
                         'last_user_changes_id' => $auth_id,
                         'updated_at' => Carbon::now()
                     ]);
-                    
+
                 } else {
                     $lastMessageResponse = LastMessageUser::query()->create([
                         'user_from' => $auth_id,
@@ -82,7 +82,7 @@
                         'created_at' => Carbon::now()
                     ]);
                 }
-                
+
                 if ($messageResponse && $lastMessageResponse) {
                     return [
                         'status' => 'success',
@@ -101,28 +101,28 @@
                 ];
             }
         }
-        
+
         public function getUserMessages($request)
         {
-            
+
             return $this->getMessages($request);
-            
+
         }
-        
+
         public function readMessages($request)
         {
             Auth::check() ? $auth_id = Auth::id() : $auth_id = false;
             $request->user_id ? $user_id = $request->user_id : $user_id = false;
-            
+
             if ($user_id && $auth_id) {
-                
+
                 $auth_id < $user_id ? $uniqueRecord = $auth_id . '-' . $user_id : $uniqueRecord = $user_id . '-' . $auth_id;
-                
+
                 $lastMessageResponse = LastMessageUser::where(['unique_users_record' => $uniqueRecord])->update([
                     'count_of_unread' => 0,
                     'updated_at' => Carbon::now()
                 ]);
-                
+
                 if ($lastMessageResponse > 0) {
                     return [
                         'status' => 'success',
@@ -140,9 +140,9 @@
                     'message' => 'Пользователь не найден или вы не авторизованы.'
                 ];
             }
-            
+
         }
-        
+
         public static function getAuthUserMessages()
         {
             $authUserId = Auth::id();
@@ -163,21 +163,22 @@
                 ))
                 ->with('avatar')
                 ->get();
-            
+
             return $users;
         }
-        
-        
+
+
         /*----------------------------------------------------Вспомогательные методы-------------------------------------*/
-        
+
         private function getMessages($request)
         {
             $messages = Message::where([['user_from', Auth::id()], ['user_to', $request->userSelect]])
                 ->orWhere([['user_to', Auth::id()], ['user_from', $request->userSelect]])
                 ->with(['avatar', 'getMessageUser'])
+                ->orderBy('id', 'desc')->limit(30)
                 ->get();
             return $messages;
         }
-        
-        
+
+
     }
