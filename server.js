@@ -1,5 +1,11 @@
-var http = require('http').Server();
-var io = require('socket.io')(http);
+var express = require('express');
+var fs = require('fs');
+const options = {
+    key: fs.readFileSync('/var/www/httpd-cert/artspeople.ru_2019-11-06-15-42_25.key'),
+    cert: fs.readFileSync('/var/www/httpd-cert/artspeople.ru_2019-11-06-15-42_25.crt')
+};
+var https = require('https').Server(options,express);
+var io = require('socket.io')(https);
 var Redis = require('ioredis');
 var id = [];
 
@@ -37,6 +43,6 @@ redis.on('pmessage', function (pattern, channel, message) {
     io.emit(channel + ':' + message.event, message.data)
 });
 
-http.listen(3000, function () {
+https.listen(3000, function () {
     console.log('Listening on Port: 3000');
 });
