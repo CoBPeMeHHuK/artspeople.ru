@@ -253,6 +253,9 @@
                     '<textarea class="dz_description_work form-control" name="description"></textarea>'+
                     '</div>'+
                     '</div>'+
+                    '<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">\n' +
+                    '          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>\n' +
+                    '        </div>'+
                     '<div class="dz-error-message"><span data-dz-errormessage></span></div>'+
                     '<div class="dz-remove basket" href="javascript:undefined;" data-dz-remove=""></div>'+
                     '</div>';
