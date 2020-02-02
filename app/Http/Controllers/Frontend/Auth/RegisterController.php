@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    
+
     /**
      * Create a new controller instance.
      *
@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        
+
         $image = Image::create([
         	'element_id'=> $user->id,
 	        'entity'=>User::class,
@@ -77,7 +77,7 @@ class RegisterController extends Controller
 	        'condition'=>'max',
 	        'size'=>500000
         ]);
-        
+
         $userInformation = UserInformation::create([
 	        'date_of_birth'=> '',
 	        'gender'=> 1,
@@ -88,7 +88,7 @@ class RegisterController extends Controller
 	        'about_user'=>'',
 	        'user_id'=>$user->id
         ]);
-        
+
         return $user;
     }
 
@@ -103,8 +103,8 @@ class RegisterController extends Controller
             'footer'=>$footer
         ]);
     }
-	
+
 	protected function redirectTo(){
-		return url('/profile',auth()->user()->id);
+        return url('/profile',auth()->user()->id);
 	}
 }

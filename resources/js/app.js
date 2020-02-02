@@ -157,7 +157,7 @@ const app = new Vue({
                 this.userAvatar = response.data.userAvatar.src;
                 this.userSelect = response.data.users[0]['id'];
 
-                let socket = io('artspeople.ru:3000');
+                let socket = io.connect('artspeople.ru:3000');
                 socket.emit('connected_server', {channel: this.userAuth.id});
 
                 socket.on('users_connected', function (data) {
