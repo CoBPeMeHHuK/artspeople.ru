@@ -176,7 +176,9 @@
                 ->orWhere([['user_to', Auth::id()], ['user_from', $request->userSelect]])
                 ->with(['avatar', 'getMessageUser'])
                 ->orderBy('id', 'desc')->limit(30)
-                ->get();
+                ->get()
+                ->reverse()
+                ->values();
             return $messages;
         }
 
