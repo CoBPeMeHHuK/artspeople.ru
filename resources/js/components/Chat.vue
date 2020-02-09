@@ -155,12 +155,7 @@
 
         watch : {
             dataMessages:function(newVal, oldVal){
-                    let area = this.$refs.message_area;
-                    setTimeout(function () {
-                        if (area.selectionStart === area.selectionEnd) {
-                            area.scrollTop = area.scrollHeight;
-                        }
-                    });
+                this.getScroll();
             }
         },
 
@@ -175,6 +170,8 @@
             this.$emit('preloader', [{
                 'isPreloader': false
             }]);
+
+            this.getScroll();
 
         },
 
@@ -202,12 +199,7 @@
         updated() {
 
             if (this.dataMessages.length > 0 && this.scrollMounted === false) {
-                let area = this.$refs.message_area;
-                setTimeout(function () {
-                    if (area.selectionStart === area.selectionEnd) {
-                        area.scrollTop = area.scrollHeight;
-                    }
-                });
+                this.getScroll();
                 this.scrollMounted = true;
             }
         },
@@ -255,12 +247,7 @@
                             });
                         }.bind(this));
 
-                        setTimeout(function () {
-                            if (area.selectionStart == area.selectionEnd) {
-                                area.scrollTop = area.scrollHeight;
-                            }
-                        });
-
+                        this.getScroll();
                         this.selectUserMessagesIsRead = false;
                         this.readMessages();
                     });
@@ -292,12 +279,7 @@
                             }]);
 
                             this.message = "";
-                            let area = this.$refs.message_area;
-                            setTimeout(function () {
-                                if (area.selectionStart == area.selectionEnd) {
-                                    area.scrollTop = area.scrollHeight;
-                                }
-                            });
+                            this.getScroll();
                         }
                     });
                 }
@@ -333,6 +315,15 @@
 
 
             /*-------------------------------------------ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ-------------------------------*/
+
+            getScroll:function(){
+                let area = this.$refs.message_area;
+                setTimeout(function () {
+                    if (area.selectionStart == area.selectionEnd) {
+                        area.scrollTop = area.scrollHeight;
+                    }
+                });
+            },
 
             closeForm: function () {
                 this.userOption = 0;
