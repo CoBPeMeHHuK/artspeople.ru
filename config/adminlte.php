@@ -144,9 +144,9 @@ return [
 		    'label_color' => 'success',
 	    ],
 	    [
-		    'text'        => 'Пользователи',
-		    'url'         => 'admin/users',
-		    'icon'        => 'fa fa-user',
+		    'text'        => 'Статьи',
+		    'url'         => 'admin/articles',
+		    'icon'        => 'fa fa-newspaper',
 		    'label_color' => 'success',
 		    'can'=>'access to users'
 	    ],

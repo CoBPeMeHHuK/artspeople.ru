@@ -5,84 +5,29 @@
         </div>
 
         <div class="articles_container">
-            <div class="article__item">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-{{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="article__item">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="article__item article__middle">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="article__item article__middle">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="article__item article__middle">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @if(count($articles) > 0)
+                @foreach($articles as $article)
+                    @if($article->type == 2)
+                        <div class="article__item article__middle">
+                            @elseif($article->type == 3)
+                                <div class="article__item article__largest">
+                                    @elseif($article->type == 4)
+                                        <div class="article__item article__largest_second">
+                                            @else
+                                                <div class="article__item">
+                                                    @endif
+                                                    <img src="{{ asset($article->img_preview) }}" class="article__img">
+                                                    <div class="article__overlay">
+                                                        <div class="article__overlay_container">
+                                                            <div class="article__information_container">
+                                                                <div class="article__title">{{ $article->title }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-            <div class="article__item article__largest">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="article__item article__largest_second">
-                <img src="/images/articles/article.jpg" class="article__img">
-                <div class="article__overlay">
-                    <div class="article__overlay_container">
-                        <div class="article__information_container">
-                            <div class="article__title">Название статьи</div>
-                            {{--                            <div class="article__description">Описание статьи</div>--}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
