@@ -57,7 +57,7 @@
             </div>
         </modal>
         </div>
-        <div class="modal_container_gallery" v-if="works.length > 0 ">
+        <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="works.length > 0 ">
             <modal :height="'100%'" :width="'100%'" name="gallery">
             <div class="image_container" v-if="clientWidth >= 992">
                 <div class="image_content">
@@ -173,7 +173,8 @@
 
 
         props: [
-            'user-auth'
+            'user-auth',
+            'isAuth'
         ],
         components: {
             vueDropzone,
@@ -608,6 +609,12 @@
     }
 
     .modal_container_gallery > .v--modal-overlay{
+        width: 100%;
+        height: calc(100% - 50px);
+        top: 50px;
+    }
+
+    .modal_container_gallery.auth > .v--modal-overlay{
         width: calc(100% - 240px);
         height: calc(100% - 50px);
         top: 50px;
@@ -652,6 +659,13 @@
         }
 
         .modal_container_gallery > .v--modal-overlay{
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .modal_container_gallery.auth > .v--modal-overlay{
             width: 100%;
             height: 100%;
             top: 0;
