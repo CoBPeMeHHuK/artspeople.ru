@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="modal_container_gallery" v-if="likes.length > 0">
+            <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="likes.length > 0">
                 <modal :height="'100%'" :width="'100%'" name="gallery">
                     <div class="image_container" v-if="clientWidth >= 992">
                         <div class="image_content">

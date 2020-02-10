@@ -129,7 +129,6 @@
             return {
                 user: [],
                 avatar: '',
-                isAuth: false,
                 isOpenUserOption: false,
                 isInvited: false,
                 messageText: '',
@@ -146,7 +145,8 @@
 
         props: [
             'userAuth',
-            'connectedUsers'
+            'connectedUsers',
+            'isAuth'
         ],
 
         created() {
