@@ -231,15 +231,6 @@
                     name = this.settingName,
                     surname = this.settingSurname;
 
-
-                //
-                // this.dateValidation(this.settingBirthday) ? dateBirthdays = (Date.parse(this.settingBirthday) / 1000) : dateBirthdays = '';
-                // this.phoneValidation(this.settingPhone) ? phone = this.settingPhone : phone = '';
-                // this.phoneValidation(this.settingAdditionalPhone) ? additionalPhone = this.settingAdditionalPhone : additionalPhone = '';
-                // this.dateValidation(this.settingPersonalSite) ? site = this.settingPersonalSite : site = '';
-
-                console.log(quote);
-
                 let params = {
                     'name': name,
                     'surname': surname,
@@ -287,9 +278,7 @@
             surnameChange:function(){
                 this.settingSurname.length == ""? this.isSurnameError = true : this.isSurnameError = false;
             },
-            dateChange:function(){
 
-            },
             phoneChange:function(){
                 this.phoneValidation(this.settingPhone) ? this.isPhoneError = false : this.isPhoneError = true;
             },
