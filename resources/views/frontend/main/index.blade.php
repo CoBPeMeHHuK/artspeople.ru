@@ -7,21 +7,6 @@
 	<title>Главная страница</title>
 
 		{!! $css !!}
-
-{{--<!-- Marquiz script start -->--}}
-	{{--<script src="//script.marquiz.ru/v1.js" type="application/javascript"></script>--}}
-	{{--<script>--}}
-        {{--document.addEventListener("DOMContentLoaded", function() {--}}
-            {{--Marquiz.init({--}}
-                {{--id: '5e034617d74ff400445664f7',--}}
-                {{--autoOpen: 15,--}}
-                {{--autoOpenFreq: 'once',--}}
-                {{--openOnExit: true--}}
-            {{--});--}}
-        {{--});--}}
-	{{--</script>--}}
-	{{--<!-- Marquiz script end -->--}}
-
 </head>
 
 <body class="bg">

@@ -1,0 +1,667 @@
+@font-face {
+    font-family: 'BebasNeueBold';
+    src: url('../../fonts/Bebas Neue.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('../../fonts/9115.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MyriadPro';
+    src: url('../../fonts/8141.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-Regular.eot');
+    src: local('Circe'), local('Circe-Regular'),
+    url('../../fonts/Circe-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-Regular.woff') format('woff'),
+    url('../../fonts/Circe-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-ExtraLight.eot');
+    src: local('Circe ExtraLight'), local('Circe-ExtraLight'),
+    url('../../fonts/Circe-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-ExtraLight.woff') format('woff'),
+    url('../../fonts/Circe-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-Thin.eot');
+    src: local('Circe Thin'), local('Circe-Thin'),
+    url('../../fonts/Circe-Thin.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-Thin.woff') format('woff'),
+    url('../../fonts/Circe-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-Light.eot');
+    src: local('Circe Light'), local('Circe-Light'),
+    url('../../fonts/Circe-Light.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-Light.woff') format('woff'),
+    url('../../fonts/Circe-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-Bold.eot');
+    src: local('Circe Bold'), local('Circe-Bold'),
+    url('../../fonts/Circe-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-Bold.woff') format('woff'),
+    url('../../fonts/Circe-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circe';
+    src: url('../../fonts/Circe-ExtraBold.eot');
+    src: local('Circe ExtraBold'), local('Circe-ExtraBold'),
+    url('../../fonts/Circe-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/Circe-ExtraBold.woff') format('woff'),
+    url('../../fonts/Circe-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+figure{
+    margin: 0 auto !important;
+}
+
+.bg {
+    background: #ffffff;
+    background-image:url('/images/giphy.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+.wrapper_main {
+    max-width: 1300px;
+    margin: 0 auto;
+    height: 78%;
+    padding-left: 400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+h1 {
+    color: #000000;
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 36px;
+    text-align: center;
+}
+h2 {
+    color: #000000;
+    font-size: 46px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    text-align: center;
+}
+ul {
+    margin-bottom: 0;
+}
+header {
+    margin: 0 auto;
+    position: relative;
+}
+
+.rows {
+    /*max-width: 1200px;*/
+    margin: 0 auto;
+    background: white;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 39px -20px;
+    opacity: 0.6;
+    transition: 1s;
+}
+/* Меню */
+
+.menu {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 1s;
+    display: block;
+    height: 65px;
+    z-index: 111;
+}
+
+.mobMenu {
+    position: absolute;
+    width: 100%;
+    z-index: 6;
+    display: none;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 1s;
+}
+
+.mobMenu .logo {
+    width: 100px;
+    margin: 18px 20px 0 0;
+}
+.hamburger {
+    margin: 10px -15px 10px 0 ;
+    float: right;
+    z-index: 699;
+}
+
+.hamburger-inner {
+    background-color: #fff;
+}
+
+.hamburger-inner::before {
+    background-color: #fff;
+}
+
+.hamburger-inner::after {
+    background-color: #fff;
+}
+
+.modalMenu {
+    display: none;
+    position: fixed;
+    z-index: 500px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+}
+
+.burgerClose {
+    width: 100%;
+    z-index: 699;
+    margin: 10px 0 0 0;
+}
+
+.burgerClose .hamburger {
+    margin: 0;
+    float: none;
+    position: absolute;
+    right: 0;
+}
+
+.modalMenu ul {
+    margin:120px auto;
+}
+
+.modalMenu ul li{
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.after_mobile_photography{
+    display: none;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.after_mobile_tattoo{
+    display: none;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+
+.modalMenu ul li a {
+    text-transform: uppercase;
+    font-family: Circe;
+    color: white;
+    text-decoration: none;
+}
+
+.modalMenu ul li a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.mobile_container_slider-prev{
+
+}
+
+.mobile_container_slider-next{
+    right: 0;
+}
+
+.arrows-container-mobile-prev{
+    top: 89%!important;
+    left: 23%;
+    padding: 25px 0 25px 20px;
+    width: 26%;
+}
+.arrows-container-mobile-next{
+    top: 89%!important;
+    right: 23%;
+    padding: 25px 20px 25px 0;
+    width: 26%;
+}
+
+.after_mobile_photography-up{
+    display: none;
+    width: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background: #e2e2e2;
+    border-radius: 5px;
+    padding-bottom:3px;
+    text-align: center;
+}
+.after_mobile_tattoo-up{
+    display: none;
+    width: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background: #e2e2e2;
+    border-radius: 5px;
+    padding-bottom:3px;
+    text-align: center;
+}
+
+@media (max-width:500px){
+    .menu {
+        display: none;
+    }
+
+    .mobMenu {
+        display: block;
+        z-index: 600;
+    }
+}
+
+.menu ul {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.menu ul li{
+    float: left;
+    list-style: none;
+    margin: 25px 0 30px 20px;
+}
+
+.menu ul li a {
+    text-transform: uppercase;
+    font-family: Circe;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.menu ul li a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.logo {
+    font-family: 'BebasNeueBold';
+    margin: 5px 5px 0 0;
+    color: white;
+    font-size: 30px;
+}
+
+.mobile_photography{
+    display: none;
+}
+.mobile_tattoo{
+    display: none;
+}
+
+@media (max-width:992px) {
+    .menu ul {
+        float: right;
+        margin-bottom: none;
+    }
+
+    .menu ul li{
+        float: left;
+        list-style: none;
+        margin: 12px 0 14px 20px;
+    }
+    .logo {
+        margin: 5px 20px 0 0;
+    }
+
+    ol, ul {
+        margin: 0;
+    }
+}
+/* Header */
+body{
+    overflow-x: hidden;
+}
+
+/* футер */
+
+footer {
+    display:flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+}
+
+footer a {
+    color: white;
+    margin: 0 15px
+}
+.wrapper_tabs {
+    max-width: 1300px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    margin: 0 auto;
+    margin-bottom: 3.38%;
+    margin-top: 8%;
+    padding: 0 36px 0 20px;
+}
+.wrapper_tabs .right_column {
+    width: 50%;
+}
+.wrapper_tabs .left_column {
+    width: 50%;
+    text-align: right;
+}
+.wrapper_tab_content {
+    max-width: 1300px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    padding: 0 20px;
+}
+.wrapper_tab_content .itemStyle {
+    width: calc((100% / 4) - 20px);
+    height: 190px;
+}
+.wrapper_tabs p {
+    /*float: left;*/
+    margin-left: 10px;
+    font-family: Circe;
+    margin: 0 10px;
+    line-height: 20px;
+    font-size: 16px;
+    color: rgb(160, 160, 163);
+}
+.wrapper_tabs h1 {
+    color: #000000;
+    font-family: 'BebasNeueBold';
+    font-size: 58px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-left: 10px;
+    padding-bottom: 0;
+    text-align: left;
+}
+
+/*.wrapper_tabs ul {
+    float: right;
+}*/
+.wrapper_tabs ul li {
+    /*float: left;*/
+    list-style: none;
+    margin: 0 10px;
+    display: inline-block;
+    color: #7a7a7a;
+}
+
+.wrapper_tabs ul li a{
+    text-decoration: none;
+    font-family: Circe;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(122, 122, 122);
+    text-transform: uppercase;
+}
+.wrapper_tabs ul li a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.all {
+    display: none;
+}
+.tattoo {display: block;}
+.wrapper_tabs ul li.active a {
+    font-weight: 700;
+    color: black;
+}
+
+
+
+@media (max-width:700px) {
+    .wrapper_tabs .left_column {
+        width: 100%;
+    }
+    .wrapper_tabs .right_column{
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    .wrapper_tabs ul li div{
+        text-align: center;
+    }
+    .wrapper_tabs ul {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .infoStyle {
+        margin: 185px auto 50px auto;
+    }
+}
+
+@media (max-width:465px) {
+
+    .wrapper_tabs ul li {
+        width: 50%;
+        margin: 0;
+    }
+
+}
+
+/* Конец табов */
+
+@media (max-width:1288px) {
+    .logoName {
+        padding: 20px;
+        margin-right: 0px;
+        pointer-events: none;
+    }
+
+    .logoName p {
+        color: white;
+        margin-top: 15px;
+        color: #ffffff;
+        font-family: Circe;
+        font-weight: 400;
+        margin-right: 75px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 1023px) {
+    .wrapper_tab_content .itemStyle {
+        width: calc((100% / 3) - 20px);
+    }
+    .wrapper_main {
+        padding-left: 0;
+    }
+    header{
+        position: relative;
+    }
+
+    figure{
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper_main {
+        height: 100%;
+    }
+    .logoName {
+        padding: 20px;
+        pointer-events: none;
+        margin: 0 auto;
+    }
+    .logoName h1 {
+        padding-bottom: 0;
+        font-weight: 300;
+        font-size: 30px;
+    }
+
+    .logoName p {
+        color: white;
+        margin-top: 15px;
+        color: #ffffff;
+        font-family: Circe;
+        font-size: 3vw;
+        font-weight: 400;
+    }
+    .wrapper_tab_content .itemStyle {
+        width: calc((100% / 2) - 20px);
+    }
+}
+
+
+
+/*-----------------------------------------НОВЫЕ СТИЛИ-----------------------------------------------------------*/
+
+.content{
+    min-height: calc(100vh - 50px);
+    padding-top: 100px;
+    font-family: 'Circe';
+    color: #ffffff;
+}
+
+.wrapper{
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.content__title{
+    font-size: 40px;
+    font-weight: 900;
+    color: #5b5b5b;
+}
+
+.articles_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.article__item{
+    width: calc(50% - 7px);
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 14px;
+    height: 340px;
+}
+
+.article__item.article__middle{
+    width: calc(33% - 7px);
+    height: 300px;
+}
+
+.article__item.article__largest{
+    width:calc(67% - 7px) ;
+}
+
+.article__item.article__largest_second{
+    width:calc(33% - 7px) ;
+}
+
+.article__img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.article__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(180.77deg, #000000 0.29%, rgba(0, 0, 0, 0) 65.9%);
+    border-radius: 10px;
+}
+
+.article__overlay__container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.article__information_container{
+    position: absolute;
+    padding: 20px;
+}
+
+.article__title{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.article__description{
+    font-size: 20px;
+    font-width: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
