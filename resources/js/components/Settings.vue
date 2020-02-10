@@ -27,39 +27,45 @@
                         <div class="user_information__title">Имя</div>
                         <label for="user_name"></label><input type="text" name="name" id="user_name"
                                                               class="user_information__input form-control"
-                                                              v-model="settingName">
+                                                              v-model="settingName" @change="nameChange">
+                        <div v-if="isNameError" class="user_information__error">Поле не должно быть пустым</div>
                     </div>
                     <div class="user_information__option_container">
                         <div class="user_information__title">Фамилия</div>
                         <label for="user_surname"></label><input type="text" name="surname" id="user_surname"
                                                                  class="user_information__input form-control"
-                                                                 v-model="settingSurname">
+                                                                 v-model="settingSurname" @change="surnameChange">
+                        <div v-if="isSurnameError" class="user_information__error">Поле не должно быть пустым</div>
                     </div>
                 </div>
                 <div class="user_information__option">
                     <div class="user_information__option_container">
                         <div class="user_information__title">Дата рождения</div>
-                        <datepicker v-model="settingBirthday" :displayFormat="'DD-MM-YYYY'" :months="months" :weekdays="weekdays"
+                        <datepicker  v-model="settingBirthday" :displayFormat="'DD-MM-YYYY'" :months="months" :weekdays="weekdays"
                                     class="user_information__input form-control__custom"></datepicker>
+                        <div v-if="isDateError" class="user_information__error">Неверный формат даты</div>
                     </div>
                     <div class="user_information__option_container">
                         <div class="user_information__title">Телефон</div>
                         <label for="user_phone"></label><input type="text" name="surname" id="user_phone"
                                                                class="user_information__input form-control"
-                                                               v-model="settingPhone">
+                                                               v-model="settingPhone" @change="phoneChange">
+                        <div v-if="isPhoneError" class="user_information__error">Неверный формат телефона</div>
                     </div>
                     <div class="user_information__option_container">
                         <div class="user_information__title">Дополнительный телефон</div>
                         <label for="user_additional_phone"></label><input type="text" name="email"
                                                                           id="user_additional_phone"
                                                                           class="user_information__input form-control"
-                                                                          v-model="settingAdditionalPhone">
+                                                                          v-model="settingAdditionalPhone" @change="additionalPhoneChange">
+                        <div v-if="isAdditionalPhoneError" class="user_information__error">Неверный формат телефона</div>
                     </div>
                     <div class="user_information__option_container">
                         <div class="user_information__title">Персональный сайт</div>
                         <label for="user_site"></label><input type="text" name="email" id="user_site"
                                                               class="user_information__input form-control"
-                                                              v-model="settingPersonalSite">
+                                                              v-model="settingPersonalSite" @change="siteChange">
+                        <div v-if="isSiteError" class="user_information__error">Неверный формат персонального сайта</div>
                     </div>
                 </div>
                 <div class="user_information__option">
@@ -128,7 +134,13 @@
                     'Январь', 'Февраль', 'Март', 'Апрель',
                     'Май', 'Июнь', 'Июль', 'Август',
                     'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
-                ]
+                ],
+                isNameError:false,
+                isSurnameError:false,
+                isDateError:false,
+                isPhoneError:false,
+                isAdditionalPhoneError:false,
+                isSiteError:false
             }
         },
 
@@ -146,11 +158,8 @@
                 url: window.location.origin + '/api/get-settings',
             }).then((response) => {
 
-                console.log(response.data.birthday);
-
                 this.settingName = response.data.name;
                 this.settingSurname = response.data.surname;
-                // this.settingEmail = response.data.email;
                 this.settingBirthday = response.data.birthday;
                 this.settingPhone = response.data.phone;
                 this.settingAdditionalPhone = response.data.additional_phone;
@@ -182,6 +191,10 @@
         watch:{
             userAuthAvatar:function(){
               return true;
+            },
+
+            settingBirthday:function(oldVal,newVal){
+                (this.dateValidation(this.settingBirthday)) ? this.isDateError = false : this.isDateError = true;
             }
         },
         computed: {
@@ -192,63 +205,91 @@
             toggleShow() {
                 this.show = !this.show;
             },
-            /**
-             * crop success
-             *
-             * [param] imgDataUrl
-             * [param] field
-             */
+
             cropSuccess(imgDataUrl, field) {
                 this.userAuthAvatar = imgDataUrl;
                 this.$emit('avatar', [{
                     'avatar': imgDataUrl
                 }]);
             },
-            /**
-             * upload success
-             *
-             * [param] jsonData  server api return data, already json encode
-             * [param] field
-             */
+
             cropUploadSuccess(jsonData, field) {
-                console.log('-------- upload success --------');
-                console.log(jsonData);
-                console.log('field: ' + field);
+
             },
-            /**
-             * upload fail
-             *
-             * [param] status    server api return error status, like 500
-             * [param] field
-             */
+
             cropUploadFail(status, field) {
-                console.log('-------- upload fail --------');
-                console.log(status);
-                console.log('field: ' + field);
+
             },
 
             saveSettings: function () {
                 this.status = 0;
+
+                let quote = this.settingQuote,
+                    about = this.settingAbout,
+                    name = this.settingName,
+                    surname = this.settingSurname;
+
+                this.dateValidation(this.settingBirthday) ? date = Date.parse(this.settingBirthday) / 1000 : date = '';
+                this.phoneValidation(this.settingPhone) ? phone = this.settingPhone : phone = '';
+                this.phoneValidation(this.settingAdditionalPhone) ? additionalPhone = this.settingAdditionalPhone : additionalPhone = '';
+                this.dateValidation(this.settingPersonalSite) ? site = this.settingPersonalSite : site = '';
+
+                let params = {
+                    'name': name,
+                    'surname': surname,
+                    'birthday': date,
+                    'phone': phone,
+                    'additional_phone': additionalPhone,
+                    'site': site,
+                    'quote': quote,
+                    'about': about
+                };
+
                 axios({
                     method: 'post',
-                    url: window.location.origin + '/api/change-settings',
-                    params: {
-                        'name': this.settingName,
-                        'surname': this.settingSurname,
-                        // 'email': this.settingEmail,
-                        'birthday': Date.parse(this.settingBirthday) / 1000,
-                        'phone': this.settingPhone,
-                        'additional_phone': this.settingAdditionalPhone,
-                        'site': this.settingPersonalSite,
-                        'quote': this.settingQuote,
-                        'about': this.settingAbout
-                    }
+                    url: '/api/change-settings',
+                    params: params
                 }).then((response) => {
 
                     if (response.data.status === 'success') this.status = 1;
                     if (response.data.status === 'error') this.status = 2;
 
                 });
+            },
+
+
+            phoneValidation:function(phone){
+                let regular = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+                return regular.test(phone);
+            },
+
+            dateValidation:function(date){
+                let regular = /^[0-9-]+$/;
+                return regular.test(date) && date.length === 10;
+            },
+
+            urlValidation:function(url){
+                let regular = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+                return regular.test(url);
+            },
+
+            nameChange:function(){
+                this.settingName.length == "" ? this.isNameError = true : this.isNameError = false;
+            },
+            surnameChange:function(){
+                this.settingSurname.length == ""? this.isSurnameError = true : this.isSurnameError = false;
+            },
+            dateChange:function(){
+
+            },
+            phoneChange:function(){
+                this.phoneValidation(this.settingPhone) ? this.isPhoneError = false : this.isPhoneError = true;
+            },
+            additionalPhoneChange:function(){
+                this.phoneValidation(this.settingAdditionalPhone) ? this.isAdditionalPhoneError = false : this.isAdditionalPhoneError = true;
+            },
+            siteChange:function(){
+                this.urlValidation(this.settingPersonalSite) ? this.isSiteError = false : this.isSiteError = true;
             }
         }
     }
