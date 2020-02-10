@@ -222,6 +222,8 @@
             },
 
             saveSettings: function () {
+
+                console.log('save');
                 this.status = 0;
 
                 let quote = this.settingQuote,
@@ -229,21 +231,27 @@
                     name = this.settingName,
                     surname = this.settingSurname;
 
-                this.dateValidation(this.settingBirthday) ? date = Date.parse(this.settingBirthday) / 1000 : date = '';
-                this.phoneValidation(this.settingPhone) ? phone = this.settingPhone : phone = '';
-                this.phoneValidation(this.settingAdditionalPhone) ? additionalPhone = this.settingAdditionalPhone : additionalPhone = '';
-                this.dateValidation(this.settingPersonalSite) ? site = this.settingPersonalSite : site = '';
+
+                //
+                // this.dateValidation(this.settingBirthday) ? dateBirthdays = (Date.parse(this.settingBirthday) / 1000) : dateBirthdays = '';
+                // this.phoneValidation(this.settingPhone) ? phone = this.settingPhone : phone = '';
+                // this.phoneValidation(this.settingAdditionalPhone) ? additionalPhone = this.settingAdditionalPhone : additionalPhone = '';
+                // this.dateValidation(this.settingPersonalSite) ? site = this.settingPersonalSite : site = '';
+
+                console.log(quote);
 
                 let params = {
                     'name': name,
                     'surname': surname,
-                    'birthday': date,
-                    'phone': phone,
-                    'additional_phone': additionalPhone,
-                    'site': site,
+                    'birthday': Date.parse(this.settingBirthday) / 1000,
+                    'phone': this.settingPhone,
+                    'additional_phone': this.settingAdditionalPhone,
+                    'site': this.settingPersonalSite,
                     'quote': quote,
                     'about': about
                 };
+
+                console.log(params);
 
                 axios({
                     method: 'post',
