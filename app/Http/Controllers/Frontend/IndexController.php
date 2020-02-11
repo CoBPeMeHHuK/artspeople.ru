@@ -1,7 +1,7 @@
 <?php
-	
+
 	namespace App\Http\Controllers\Frontend;
-	
+
 	use App\Http\Controllers\AppController;
 	use App\Services\Frontend\CategoryService;
 	use App\Services\Frontend\SliderService;
@@ -10,9 +10,9 @@
 
     class IndexController extends AppController
 	{
-		
-		
-	
+
+
+
 	    /**
 	     * IndexController constructor.
 	     * @param SliderService $slider
@@ -25,31 +25,31 @@
 		    $this->slider = $slider;
 		    $this->template = 'frontend.main.index';
 	    }
-	    
-	    
-		
+
+
+
 	    /**
-		 * @return IndexController
+		 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 		 * @throws \Throwable
 		 */
 		public function show()
 		{
-			
+
 			$categories=$this->getCategory();
 			$sliders=$this->getSliders();
 			$firstSlider = $this->getFirstSlider();
-			
+
 			if (Auth::user()) {
 				$this->isAuth=true;
 				$this->vars['user_id'] = Auth::user()->id;
 			}
-			
+
 			$this->vars['isAuth'] = $this->isAuth;
-			
+
 
 			$css = view('frontend.main.partials.css')->render();
 			$this->vars['css'] = $css;
-			
+
 			$sliders = view('frontend.main.partials.sliders')
 				->with([
 					'sliders'=>$sliders,
@@ -57,28 +57,19 @@
 				])
 				->render();
 			$this->vars['sliders'] = $sliders;
-			
+
 			$best = view('frontend.main.partials.best')->render();
 			$this->vars['best'] = $best;
-			
-			$category = view('frontend.main.partials.category')->with(['categories'=>$categories])->render();
-			$this->vars['category'] =  $category;
-			
+
 			$scripts = view('frontend.main.partials.js')->render();
 			$this->vars['scripts'] =  $scripts;
-			
-			
-		//	return $this->renderOutput();
-            
-            if(Auth::check()){
-                return redirect()->route('profile', ['id' => Auth::id()]);
-            } else{
-                return redirect()->route('login');
-            }
+
+
+			return $this->renderOutput();
 		}
-		
-		
-	
+
+
+
 	    /**
 	     * @return bool|mixed
 	     */
@@ -89,14 +80,14 @@
 		    }
 		    return $category;
 	    }
-	
-	
-	    
+
+
+
 	    /**
 	     * @return bool
 	     */
 	    private function getSliders(){
-		
+
 		    $sliders= $this->slider
 			    ->orderBy('rating','desc')
 			    ->active()
@@ -107,18 +98,18 @@
 		    if($sliders->isEmpty()){
 			    return FALSE;
 		    }
-		
+
 		    return $sliders;
 	    }
-	
-	
-	    
-	    
+
+
+
+
 	    /**
 	     * @return mixed
 	     */
 	    private function getFirstSlider(){
-		
+
 		    $slider= $this->slider
 			    ->orderBy('rating','desc')
 			    ->active()
@@ -126,8 +117,8 @@
 				    $query->where('type', 'sliders');
 			    }])
 			    ->first();
-		    
+
 		    return $slider;
 	    }
-		
+
     }
