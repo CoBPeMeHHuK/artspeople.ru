@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends AppController
 {
-	
-	
+
+
 	/**
 	 * @param Request $request
 	 * @return false|string
@@ -28,8 +28,8 @@ class ImagesController extends AppController
         return json_encode(['status'=>'success']);
 
 	}
-	
-	
+
+
 	/**
 	 * @param $name
 	 */
@@ -39,7 +39,7 @@ class ImagesController extends AppController
         if($images){
             foreach($images as $image){
                 $pathImage =  $image->type.'/'.$name;
-                Storage::disk('public')->delete($pathImage);
+                Storage::disk('selectel')->delete($pathImage);
                 $image->delete();
             }
         }

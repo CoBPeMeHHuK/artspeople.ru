@@ -8,6 +8,7 @@
 
 		Route::resource('sliders', 'SlidersController');
         Route::resource('articles', 'ArticlesController');
+        Route::post('/articles/{id}', 'ArticlesController@update')->name('articles.update');
 		Route::post('/sliders/{id}', 'SlidersController@update')->name('sliders.update');
 		Route::resource('categories', 'CategoriesController');
 		Route::resource('subcategories', 'SubCategoriesController');
