@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->smallInteger('type')->unsigned()->default(1);
-            $table->text('content');
+            $table->longText('content');
             $table->smallInteger('is_active')->unsigned()->default(0);
             $table->timestamps();
         });
