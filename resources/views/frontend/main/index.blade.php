@@ -104,8 +104,6 @@
 
 	{!! $best !!}
 
-	{!! $category !!}
-
 </section>
 
 <footer>
