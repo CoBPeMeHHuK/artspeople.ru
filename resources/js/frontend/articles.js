@@ -12,16 +12,18 @@ $(document).ready(function () {
         var y = window.scrollY;
         if(y > 10){
             $(".menu").css({position: 'fixed'} );
-            $(".menu").css({background: 'rgba(0, 0, 0, 0.534)'} );
+            $(".menu").css({background: '#ffffff'} );
             $(".mobMenu").css({position: 'fixed'} );
-            $(".mobMenu").css({background: 'rgba(0, 0, 0, 0.534)'} );
-            $(".rows").css({opacity: 1} );
+            $(".mobMenu").css({background: '#ffffff'} );
+            $(".rows").css({opacity: 0.6} );
+            $(".mobMenu").css({opacity: 0.9} );
         } else {
             $(".menu").css({position: 'absolute'});
-            $(".menu").css({background: 'rgba(0, 0, 0, 0)'} );
+            $(".menu").css({background: '#ffffff'} );
             $(".mobMenu").css({position: 'absolute'});
-            $(".mobMenu").css({background: 'rgba(0, 0, 0, 0)'} );
-            $(".rows").css({opacity:0.6} );
+            $(".mobMenu").css({background: '#ffffff'} );
+            $(".rows").css({opacity:1} );
+            $(".mobMenu").css({opacity: 1} );
         }
 
     });
@@ -32,13 +34,16 @@ $(document).ready(function () {
         if (!$('.hamburger').hasClass('is-active')) {
 
             $(".hamburger").addClass('is-active');
+            $(".mobMenu").addClass('is-active');
             $(".modalMenu").css({display: 'block'});
             $(".modalMenu").css('z-index', '550');
-            $(".hamburger").css('z-index', '551')
+            $(".hamburger").css('z-index', '551');
 
         } else {
             $(".hamburger").removeClass('is-active');
-            $(".modalMenu").css({display: 'none'})
+            $(".mobMenu").removeClass('is-active');
+            $(".modalMenu").css({display: 'none'});
+
         }
 
     });
