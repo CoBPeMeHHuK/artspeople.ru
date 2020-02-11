@@ -15,7 +15,7 @@
                 <h1 class="box-title">
                     Статьи
                 </h1>
-                <input type="text" hidden id="type_element" value="sliders">
+                <input type="text" hidden id="type_element" value="articles">
                 <div class="pull-right box-tools">
                     <a href="{{ route('admin.articles.create') }}"><button class="btn btn-primary ">Добавить статью</button></a>
                 </div>
@@ -30,6 +30,7 @@
                             <th>Активность</th>
                             <th>Название</th>
                             <th>Мини-картинка</th>
+                            <th>Тип превью</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -46,6 +47,10 @@
                                         @endif
                                     </td>
                                     <td>{{ $article->title }}</td>
+                                    @foreach($article->images->where('condition','max') as $image)
+                                        <td><div class="admin_img" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div></td>
+                                    @endforeach
+                                    <td>{{ $article->type }}</td>
 
                                     <td><a href="/admin/articles/{{ $article->id }}"><button class="btn btn-success">Изменить</button></a></td>
                                     <td><button value="{{$article->id}}" class="btn btn-danger delete">Удалить</button></td>

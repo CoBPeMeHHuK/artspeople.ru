@@ -16,7 +16,6 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('img_preview');
             $table->smallInteger('type')->unsigned()->default(1);
             $table->text('content');
             $table->smallInteger('is_active')->unsigned()->default(0);

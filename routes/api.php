@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
     Route::get('/get_dropzone_images/{id}','SlidersController@getImages');
+    Route::get('/get_articles_images/{id}','ArticleController@getImages');
     Route::get('/get_subcategories_images/{id}/{type}','SubCategoriesController@getImages');
 	Route::post('/profile/works','UsersController@getUserAuthWorks');
 	Route::post('/profile/likes','UsersController@getUserAuthLikes');

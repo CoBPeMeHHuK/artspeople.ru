@@ -54,13 +54,19 @@ class ArticleController extends AppController
             $this->vars['user_id'] = Auth::user()->id;
         }
 
+        $article = Article::query()->findOrFail($id);
+
+        $parameters = [
+            'article'=>$article
+        ];
+
         $this->vars['isAuth'] = $this->isAuth;
 
 
         $css = view('frontend.articles.partials.css')->render();
         $this->vars['css'] = $css;
 
-        $content = view('frontend.articles.partials.article-content')->render();
+        $content = view('frontend.articles.partials.article-content')->with($parameters)->render();
         $this->vars['content'] =  $content;
 
         $scripts = view('frontend.articles.partials.js')->render();
@@ -71,7 +77,7 @@ class ArticleController extends AppController
     }
 
     private function getArticles(){
-        return Article::where('is_active',1)->get();
+        return Article::where('is_active',1)->with('image')->get();
     }
 
 }

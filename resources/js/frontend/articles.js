@@ -84,8 +84,6 @@ $(document).ready(function () {
         }
     });
 
-
-    $(document).ready(function() {
         $('.wrapper_tab_content').magnificPopup({
             delegate: 'a',
             type: 'image',
@@ -105,7 +103,6 @@ $(document).ready(function () {
                 }
             }
         });
-    });
 });
 
 

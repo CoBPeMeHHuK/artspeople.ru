@@ -16,9 +16,19 @@ class Article extends Model
 
 	protected $fillable = [
 		'title',
-		'img_preview',
 		'type',
-        'content'
+        'content',
+        'is_active'
 	];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'element_id', 'id')->where("type", "articles");
+    }
+
+    public function image()
+    {
+        return $this->hasOne(Image::class, 'element_id', 'id')->where("type", "articles");
+    }
 
 }
