@@ -28,7 +28,7 @@
 		<div class="menu_container_mobile">
 			<ul>
 			<li><a href="/">ГЛАВНАЯ</a></li>
-                <li><a href="/">НОВОСТИ</a></li>
+                <li><a href="/articles">НОВОСТИ</a></li>
 			@if($isAuth)
 				<li><a href="{{ route('logout') }}"
 				       onclick="event.preventDefault();
@@ -91,7 +91,7 @@
 			<div class="header-container">
 				<ul class="header-container__ul">
 					<li><a href="/">ГЛАВНАЯ</a></li>
-                    <li><a href="/">НОВОСТИ</a></li>
+                    <li><a href="/articles">НОВОСТИ</a></li>
 					@if($isAuth)
 						<li><a href="{{ route('logout') }}"
 						       onclick="event.preventDefault();
