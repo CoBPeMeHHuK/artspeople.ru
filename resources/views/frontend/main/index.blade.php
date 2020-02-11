@@ -23,6 +23,7 @@
 
 		<ul>
 			<li><a href="/">ГЛАВНАЯ</a></li>
+            <li><a href="/articles">НОВОСТИ</a></li>
 			@if($isAuth)
 				<li><a href="{{ route('profile',$user_id) }}">МОЙ ПРОФИЛЬ</a></li>
 				<li><a href="{{ route('logout') }}"
@@ -54,6 +55,7 @@
 				<div class="col-md-9  col-xs-9 col-sm-9">
 					<ul>
 						<li><a href="/">ГЛАВНАЯ</a> </li>
+                        <li><a href="/">НОВОСТИ</a> </li>
 						@if($isAuth)
 							<li><a href="{{ route('profile',$user_id) }}">МОЙ ПРОФИЛЬ</a></li>
 							<li><a href="{{ route('logout') }}"
