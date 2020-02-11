@@ -726,6 +726,15 @@ footer a {
     .mobMenu .logo > img{
         width: 100%;
     }
+
+    .article_description img{
+        width: 100%!important;
+    }
+
+    iframe{
+        width: 100%;
+        height: 168px;
+    }
 }
 
 @media (max-width: 400px) {
