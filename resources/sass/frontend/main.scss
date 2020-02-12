@@ -1657,7 +1657,6 @@ footer a {
     max-width: 100%;
     height: auto;
     max-height: 100%;
-    transition: 1s;
 }
 
 .prev {
@@ -1708,5 +1707,63 @@ footer a {
     text-decoration: none;
 }
 
+.gallery_close.close {
+    font-size: 28px;
+    color: white;
+    margin: 7px;
+    outline: none;
+}
+
+.information__title_container {
+    display: flex;
+    padding: 20px 10px 30px 10px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.information__work_container {
+    padding: 10px 0px;
+    color: #fff;
+    font-family: "Circe";
+    border-bottom: 1px solid #454646;
+    margin: 0 20px;
+}
+
+.information__work_title {
+    font-size: 22px;
+}
+
+.information__work_description {
+    padding: 10px 0;
+    font-size: 13px;
+}
+
+.information__work_publication {
+    font-size: 13px;
+}
+
+.information__person_avatar {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    position: relative;
+    background-size: cover !important;
+}
+
+.information__person_name {
+    font-size: 20px;
+    font-family: "Circe";
+    color: #11b0f1;
+    margin: 0;
+    padding: 0 10px 0;
+}
+
+.information__person_range {
+    font-size: 14px;
+    font-family: "Circe";
+    padding: 0 10px;
+    color: #ffffff;
+}
 
 
