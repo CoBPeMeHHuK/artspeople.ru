@@ -146,7 +146,7 @@ class ArticlesController extends AppController
                         $widthPreview = 580;
                         break;
 
-                    case 4:
+                    case 3:
                         $widthPreview = 780;
                         break;
                     default:
