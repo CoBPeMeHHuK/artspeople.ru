@@ -33,7 +33,7 @@
                                 <div class="work_like__container">
                                     <div class="work_like__container_relative">
                                         <div class="work_like__icon work_icons" :class="{blue:isLike(workIndex)}"></div>
-                                        <div class="count_likes work_icons" v-if="work.number_of_likes > 0" :class="{blue:isLike(workIndex)}">@{{ work.number_of_likes }}</div>
+                                        <div class="count_likes work_icons" v-if="work.likes.length > 0" :class="{blue:isLike(workIndex)}">@{{ work.likes.length }}</div>
                                     </div>
                                 </div>
                             </div>

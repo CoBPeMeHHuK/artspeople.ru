@@ -40,7 +40,7 @@ new Vue({
         getUrlList: function () {
             this.urlList = [];
             Object.keys(this.works).forEach(function (id) {
-                this.urlList.push(this.selectelWorkSrc + this.works[id].src)
+                this.urlList.push(this.selectelWorkSrc + this.works[id].image.src)
             }.bind(this));
             return this.urlList;
         },
