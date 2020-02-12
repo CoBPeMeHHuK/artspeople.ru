@@ -5,7 +5,6 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    //  счетчик
 
     $('.register_next').on('click',function(){
        $(this).css('display','none');
@@ -25,54 +24,6 @@ $(document).ready(function () {
         $('.register_button_container').css('justify-content','flex-end');
     });
 
-    width = $(window).width();
-    if (width <= 991) {
-        $(".tattoo_text").animated("fadeIn", "fadeOut");
-        $(".photography_text").animated("fadeIn", "fadeOut");
-        $(".musick_text").animated("fadeIn", "fadeOut");}
-    else {
-        $(".musick_text").animated("fadeInUp", "fadeOut");
-    }
-
-    function checkOffset(elem) {
-        var offset = $(elem).offset().top,
-            height = $(elem).height(),
-            position = offset - height;
-
-        return position;
-    }
-
-
-    // ещё скролл нужен
-    $(window).scroll(function(event) {
-        var scrollY = $(this).scrollTop();
-        if(scrollY > checkOffset($('.photography_section'))) {
-            $('.photography_slide').css('transform','translateX(0)');
-            $('.photography_text').removeClass('fadeOut');
-            $('.photography_text').addClass('fadeInUp');
-        }
-        if(scrollY > checkOffset($('.tattoo_section'))) {
-            $('.tattoo_slide').css('transform','translateX(0)');
-            $('.tattoo_text').removeClass('fadeOut');
-            $('.tattoo_text').addClass('fadeInUp');
-        }
-    });
-
-
-    width = $(window).width();
-    if (width >= 991) {
-        $(window).scroll(function() {
-            var s = $(window).scrollTop();
-            if (s == 0) {
-                $(".photography_slide").css('transform', 'translateX(-50%)');
-                $(".tattoo_slide").css('transform', 'translateX(50%)');
-                $(".tattoo_text").addClass('fadeOut');
-                $(".musick_text").addClass('fadeOut');
-                $(".photography_text").addClass('fadeOut');
-            }
-        });
-    }
-    // $("section").animated("fadeInLeft", "fadeOut");
 
     $(window).scroll(function(){
         var y = window.scrollY;
@@ -116,38 +67,6 @@ $(document).ready(function () {
         $('.itemStyle').addClass('fadeIn');
         $('.wrapper_tabs ul li').removeClass('active');
 
-        var info = e.currentTarget
-
-        if ($(info).hasClass('allTab')) {
-            $(info).addClass('active')
-            $('.all').css('display', 'none')
-            $('.all').css('display', 'block')
-
-        } else if ($(info).hasClass('cinemaTab')) {
-            $(info).addClass('active')
-            $('.cinemaall').css('display', 'none')
-            $('.all').css('display', 'none')
-            $('.cinemaall').css('display', 'block')
-
-        } else if ($(info).hasClass('tattooTab')) {
-            $(info).addClass('active')
-            $('.tattoo').css('display', 'none')
-            $('.all').css('display', 'none')
-            $('.tattoo').css('display', 'block')
-
-        } else if ($(info).hasClass('photographyTab')) {
-            $(info).addClass('active')
-            $('.photography').css('display', 'none')
-            $('.all').css('display', 'none')
-            $('.photography').css('display', 'block')
-
-        } else if ($(info).hasClass('musicTab')) {
-            $(info).addClass('active')
-            $('.music').css('display', 'none')
-            $('.all').css('display', 'none')
-            $('.music').css('display', 'block')
-
-        }
     });
 
     // <--! Main slider
@@ -203,272 +122,12 @@ $(document).ready(function () {
         $('.count .two').text('/'+b);
     });
 
-    // Main slider !-->
-
-
-
-    // <--! Photography slider
-
-    $('.sl_photography_for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: "<div class='mobile_container_slider-prev'><i class='prev-arrow fa fa-angle-left'></i></div>",
-        nextArrow: "<div class='mobile_container_slider-next'><i class='next-arrow fa fa-angle-right'></i></div>",
-        fade: true,
-        asNavFor: '.photography_slide',
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                }
-            }
-        ]
-    });
-    $('.photography_slide').slick({
-        slidesToShow: 4,
-        dots: false,
-        arrows: false,
-        focusOnSelect: true,
-        asNavFor: '.sl_photography_for',
-        responsive: [
-            {
-                breakpoint: 2600,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1800,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1560,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-        ]
-    });
-
-    // Photography slider !-->
-
-
-
-    // <--! Cinema slider
-
-    $('.sl_tattoo_for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        prevArrow: "<div class='mobile_container_slider-prev'><i class='prev-arrow fa fa-angle-left '></i></div>",
-        nextArrow: "<div class='mobile_container_slider-next'><i class='next-arrow fa fa-angle-right'></i></div>",
-        asNavFor: '.tattoo_slide',
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                }
-            }
-
-        ]
-    });
-    $('.tattoo_slide').slick({
-        dots: false,
-        slidesToShow: 4,
-        arrows: false,
-        asNavFor: '.sl_tattoo_for',
-        focusOnSelect: true,
-        responsive: [
-            {
-                breakpoint: 2600,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1800,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1560,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-        ]
-    });
-
-    // Cinema slider !-->
-
-
-    // <--! Music slider
-
-
-    $('.sl_musick_for').slick({
-        slidesToShow: 1,
-        dots: false,
-        arrows: true,
-        fade: true,
-        focusOnSelect: true,
-        prevArrow: "<i class='prev-arrow fa fa-angle-left'></i>",
-        nextArrow: "<i class='next-arrow fa fa-angle-right'></i>",
-        asNavFor: '.musick_slider',
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                }
-            }
-        ]
-    });
-
-    $('.musick_slider').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        dots: false,
-        arrows: false,
-        focusOnSelect: true,
-        asNavFor: '.sl_musick_for',
-        responsive: [
-            {
-                breakpoint: 1560,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1280,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: false
-                }
-            },
-        ]
-    });
-    // Music slider !-->
-
-    // $(".photo_slide").animated("fadeInLeft", "fadeOut");
-    // $(".cinema_slide").animated("fadeInRight", "fadeOut");
-    // $(".musick_slider").animated("fadeIn", "fadeOut");
 
     $(".wrapper").animated("fadeIn", "fadeOut");
-
-    $(".photography_slide" ).hover(function(){
-        $(".photography_slide").css('transform', 'translateX(0)');
-    });
-    $( ".tattoo_slide" ).hover(function(){
-        $(".tattoo_slide").css('transform', 'translateX(0)');
-        // $(".cinema_text").removeClass('fadeOut');
-        // $(".cinema_text").addClass('fadeInUp');
-    });
-
 
     setTimeout(function(){
         $('body').removeClass('bg');
     },300);
-
-$('.after_mobile_photography').on('click',function(){
-    $('.desktop_photography').css('display','block');
-    $('.mobile_photography').css('display','none');
-    $('.after_mobile_photography').css('display','none');
-    $('.after_mobile_photography-up').css('display','block');
-});
-$('.after_mobile_tattoo').on('click',function(){
-    $('.desktop_tattoo').css('display','block');
-    $('.mobile_tattoo').css('display','none');
-    $('.after_mobile_tattoo').css('display','none');
-    $('.after_mobile_tattoo-up').css('display','block');
-});
-
-    $('.after_mobile_photography-up').on('click',function(){
-        $('.desktop_photography').css('display','none');
-        $('.mobile_photography').css('display','block');
-        $('.after_mobile_photography').css('display','block');
-        $('.after_mobile_photography-up').css('display','none');
-    });
-    $('.after_mobile_tattoo-up').on('click',function(){
-        $('.desktop_tattoo').css('display','none');
-        $('.mobile_tattoo').css('display','block');
-        $('.after_mobile_tattoo').css('display','block');
-        $('.after_mobile_tattoo-up').css('display','none');
-    });
 
     $(document).ready(function() {
         $('.wrapper_tab_content').magnificPopup({
@@ -479,14 +138,11 @@ $('.after_mobile_tattoo').on('click',function(){
             gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                preload: [0,1]
             },
             image: {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
                 titleSrc: function(item) {
-                    // return '<p class="author_work">Автор: '+item.el.attr('title_img') + '</p>' +
-                    //     '<p class="category_work">Стиль: '+item.el.attr('title_category') +'</p>'+
-                    // '<p class="date_work">Дата: '+item.el.attr('title_date') +'</p>';
                 }
             }
         });

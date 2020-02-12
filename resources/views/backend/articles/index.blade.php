@@ -50,7 +50,17 @@
                                     @foreach($article->images->where('condition','max') as $image)
                                         <td><div class="admin_img" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div></td>
                                     @endforeach
-                                    <td>{{ $article->type }}</td>
+                                    <td>
+                                        @if($article->type == 1)
+                                            Нормальное превью
+                                            @elseif($article->type == 2)
+                                            Малое превью
+                                                @elseif($article->type == 3)
+                                            Большое превью
+                                                    @elseif($article->type == 4)
+                                            Дополнение к большому<br>превью
+                                        @endif
+                                    </td>
 
                                     <td><a href="/admin/articles/{{ $article->id }}"><button class="btn btn-success">Изменить</button></a></td>
                                     <td><button value="{{$article->id}}" class="btn btn-danger delete">Удалить</button></td>
