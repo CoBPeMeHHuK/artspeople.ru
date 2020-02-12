@@ -12,6 +12,7 @@ mix.options({
     .js('resources/js/frontend/main.js', 'public/js')
     .js('resources/js/frontend/about.js', 'public/js')
     .js('resources/js/frontend/articles.js', 'public/js')
+    .js('resources/js/frontend/main_vue.js', 'public/js')
 
     .sass('resources/sass/frontend/upload.scss','public/css')
     .sass('resources/sass/auth/auth.scss','public/css')

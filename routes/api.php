@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
     Route::get('/get_dropzone_images/{id}','SlidersController@getImages');
     Route::get('/get_articles_images/{id}','ArticleController@getImages');
     Route::get('/get_subcategories_images/{id}/{type}','SubCategoriesController@getImages');
@@ -41,6 +43,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/get-person-about/{id}','UsersController@getPersonAbout');
 	Route::post('/add-delete-like','LikeController@addLike');
     Route::post('/profile/{id}/likes','LikeController@getLikeWorks');
+    Route::post('/get-all-works','WorksController@getAllWorks');
 
 
 

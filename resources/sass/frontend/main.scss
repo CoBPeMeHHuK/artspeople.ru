@@ -229,20 +229,6 @@ header {
 
 }
 
-.after_mobile_photography{
-    display: none;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-.after_mobile_tattoo{
-    display: none;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-
 .modalMenu ul li a {
     text-transform: uppercase;
     font-family: Circe;
@@ -274,27 +260,6 @@ header {
     right: 23%;
     padding: 25px 20px 25px 0;
     width: 26%;
-}
-
-.after_mobile_photography-up{
-    display: none;
-    width: 30px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    background: #e2e2e2;
-    border-radius: 5px;
-    padding-bottom:3px;
-    text-align: center;
-}
-.after_mobile_tattoo-up{
-    display: none;
-    width: 30px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    background: #e2e2e2;
-    border-radius: 5px;
-    padding-bottom:3px;
-    text-align: center;
 }
 
 @media (max-width:500px){
@@ -487,17 +452,6 @@ body{
     font-family: Circe;
     font-weight: 800;
 }
-/*
-  @media (max-width:768px) {
-    .logoName h1 {
-        font-size: 70px;
-    }
-  }
-  @media (max-width:500px) {
-    .logoName h1 {
-        font-size: 12vw;
-    }
-  }*/
 .container-head {
     position: relative;
     max-width: 1200px;
@@ -543,24 +497,6 @@ img{
 .slider-nav .next-arrow:hover {
     opacity: 0.6;
     cursor: pointer;
-}
-.sl_photography_for .prev-arrow,
-.sl_tattoo_for .prev-arrow,
-.sl_musick_for .prev-arrow {
-    font-size: 60px;
-    left: 0px;
-}
-.sl_photography_for .next-arrow,
-.sl_tattoo_for .next-arrow,
-.sl_musick_for .next-arrow {
-    font-size: 60px;
-    right: 0px;
-}
-.sl_photography_for .slick-list.draggable,
-.sl_tattoo_for .slick-list.draggable,
-.sl_musick_for .slick-list.draggable {
-    padding:20px 40px 40px 40px;
-    position: relative;
 }
 .slider_first .slider-nav .slick-list {
     padding: 0 50px 0 0!important;
@@ -664,9 +600,9 @@ footer a {
     flex-flow: row wrap;
     align-items: flex-end;
     margin: 0 auto;
-    margin-bottom: 3.38%;
+    margin-bottom: 26px;
     margin-top: 8%;
-    padding: 0 36px 0 20px;
+    padding:0 20px;
 }
 .wrapper_tabs .right_column {
     width: 50%;
@@ -681,7 +617,6 @@ footer a {
     flex-flow: row wrap;
     align-items: flex-end;
     margin: 0 auto;
-    margin-bottom: 100px;
     padding: 0 20px;
 }
 .wrapper_tab_content .itemStyle {
@@ -689,7 +624,6 @@ footer a {
     height: 190px;
 }
 .wrapper_tabs p {
-    /*float: left;*/
     margin-left: 10px;
     font-family: Circe;
     margin: 0 10px;
@@ -708,11 +642,7 @@ footer a {
     text-align: left;
 }
 
-/*.wrapper_tabs ul {
-    float: right;
-}*/
 .wrapper_tabs ul li {
-    /*float: left;*/
     list-style: none;
     margin: 0 10px;
     display: inline-block;
@@ -733,10 +663,6 @@ footer a {
     text-decoration: none;
 }
 
-.all {
-    display: none;
-}
-.tattoo {display: block;}
 .wrapper_tabs ul li.active a {
     font-weight: 700;
     color: black;
@@ -848,127 +774,14 @@ footer a {
         height: 100%;
     }
 }
-/* Стили для активного контейнера вкладки */
 .tab-content__item.active {
     display: block;
-}
-.photography_slide, .tattoo_slide{
-    width: 100%;
-}
-/*.photograph, .cinema {
-    padding-bottom: 23px;
-}*/
-.photography_section {
-    margin-bottom: calc(0% - 105px);
-}
-.tattoo_section {
-    margin-top: calc(0% - 225px);
-    margin-bottom: calc(0% - 0px);
-
-}
-.musick {
-    margin-bottom: calc(0% - 120px);
-}
-/*
-.photograph, .cinema, .musick {
-    display: flex;
-    align-items: center;
-    flex-flow: row wrap;
-}*/
-/*.photograph {
-    margin-bottom: calc(0% - 91px);
-}
-.cinema {
-    margin-top: calc(0% - 187px);
-}
-.musick {
-    margin-bottom: calc(0% - 120px);
-}*/
-.photography_section .sl_photo,
-.tattoo_section .sl_photo,
-.musick .sl_photo {
-    padding: 10px 10px;
-}
-.photography_section .sl_image,
-.tattoo_section .sl_image,
-.musick .sl_image {
-    width: calc((100%) - 7px);
-    height: 190px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 12px;
-
-    box-shadow: 2px 4px 7px rgb(116,116,116);
-}
-.photography_section .slick-slide,
-.tattoo_section .slick-slide,
-.musick .slick-slide{
-    opacity: .7;
-}
-.photography_section .slick-slide.slick-current,
-.tattoo_section .slick-slide.slick-current,
-.musick  .slick-slide.slick-current {
-    opacity: 1;
 }
 .wrapper {
     max-width: 1300px;
     margin : 0 auto;
     height: 435px;
 }
-.name_of_work .photography_name_sl,
-.name_of_work .tattoo_name_sl,
-.name_of_work .musick_name_sl{
-    display: flex;
-    flex-flow: row wrap;
-    padding: 0 20px;
-}
-.name_of_work {
-    /*padding-top: 238px;*/
-}
-.after_photography, .after_musick {
-    background-color: #eff0f4;
-}
-.after_photography {
-    padding-bottom: 440px;
-    padding-top: 180px;
-}
-.after_tattoo {
-    padding-top: 80px;
-    padding-bottom: 140px;
-}
-.after_musick {
-    padding-bottom: 140px;
-    padding-top: 240px;
-}
-.work_image {
-    width: calc(60% - 80px);
-}
-.work_image img{
-    border-radius: 7px;
-}
-.left_content {
-    width: 40%;
-    margin-right: 80px;
-    margin-top: 18px;
-}
-.left_content p{
-    font-family: Circe;
-    color: rgb(116, 116, 116);
-    line-height: 1.875;
-    font-size: 16px;
-}
-.left_content h2 {
-    font-family: 'BebasNeueRegular';
-    font-size: 60px;
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    margin-top: 0;
-    text-align: left;
-}
-
-
-
 
 .slick-slide {
     height: auto;
@@ -988,37 +801,12 @@ footer a {
     transform: rotateY(180deg);
 }
 @media (max-width: 1440px) {
-    .after_photography {
-        /*padding-bottom: 310px;*/
-        padding-bottom: 20%;
-    }
-    .after_tattoo {
-        padding-bottom: 5%;
-        /*padding-bottom: 20px;*/
-    }
-    .after_musick {
-        padding-bottom: 5%;
-        /*padding-bottom: 20px;*/
-    }
     .wrapper {
         height: auto;
     }
 }
 
 @media (max-width: 992px){
-
-   .mobile_photography{
-       display: block;
-   }
-    .desktop_photography{
-        display: none;
-    }
-    .mobile_tattoo{
-        display: block;
-    }
-    .desktop_tattoo{
-        display: none;
-    }
 
     .logoName p{
         margin-right: 0;
@@ -1034,112 +822,9 @@ footer a {
          text-align: center;
          line-height:1.5;
      }
-    .after_mobile_photography{
-        display: block;
-        width: 30px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        background: #e2e2e2;
-        border-radius: 5px;
-        padding-bottom:3px;
-    }
-    .after_mobile_tattoo{
-        display: block;
-        width: 30px;
-        margin: 0 auto;
-        margin-bottom: 10px;
-        background: #e2e2e2;
-        border-radius: 5px;
-        padding-bottom:3px;
-    }
-
-    .mobile_container_slider-prev{
-        width: 40px;
-        height: 40px;
-        bottom: 20px;
-        left: 14%;
-        top: 35px;
-        text-align: center;
-    }
-
-    .mobile_container_slider-next{
-        width: 40px;
-        height: 40px;
-        bottom: 20px;
-        right: 14%;
-        top: 35px;
-        text-align: center;
-    }
-    .next-arrow{
-        font-size: 32px!important;
-    }
-    .prev-arrow{
-        font-size: 32px!important;
-    }
-    .tattoo_section{
-       background: #eff0f4;
-   }
-    .next-arrow-mobile:active{
-        opacity: 0.5;
-        transition: 20ms;
-    }
-    .prev-arrow-mobile:active{
-        opacity: 0.5;
-        transition: 20ms;
-    }
-    .tattoo_text h2 {
-        margin: 0;
-        padding-top: 20px;
-        padding-bottom: 15px;
-        background-color: #eff0f4;
-    }
-    .photography_text h2 {
-        margin-bottom: 100px;
-    }
-    .musick_text h2 {
-        margin-bottom: 90px;
-    }
-    .tattoo_section {
-        margin-top: 0;
-    }
-
-    .musick_slider, .tattoo_slide, .photography_slide  {
-        display: none;
-    }
-    .after_photography, .after_tattoo, .after_musick {
-        padding: 0;
-    }
-    .left_content {
-        width: 100%;
-        margin-right: 0;
-        margin-top: -0;
-    }
-    .work_image {
-        width: 100%;
-    }
-    .left_content h2 {
-        text-align: center;
-        font-size: 40px;
-    }
-
-}
-.photography_slide {
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    transition: 2s;
 }
 
 @media (max-width: 992px){
-    .tattoo_text h2 {
-        font-size: 38px;
-    }
-    .photography_text h2 {
-        font-size: 38px;
-    }
-    .musick_text h2 {
-        font-size: 38px;
-    }
     .wrapper_tabs .right_column {
         width: 100%;
         text-align: center;
@@ -1154,43 +839,6 @@ footer a {
         text-align: center;
         margin-top: 30px;
     }
-}
-.photography_slide:hover {
-    margin-left:  0;
-}
-.tattoo_section {
-    overflow: hidden;
-}
-.active_user{
-
-    background:#d9ebff;
-}
-
-.user_name{
-
-    border-bottom: 1px solid #dedede;
-}
-.p_message{
-    /*margin-left: 33px;*/
-    /*margin-top: -10px;*/
-}
-.message_user_name{
-    display: inline-block;
-}
-
-.avatar_mini{
-    height: 30px;
-    width: 30px;
-    border-radius: 15px;
-}
-.tattoo_slide {
-    -webkit-transform: translateX(50%);
-    -ms-transform: translateX(50%);
-    transform: translateX(50%);
-    transition: 2s;
-}
-.tattoo_slide:hover {
-    margin-right:  0;
 }
 
 @media (max-width: 470px) {
@@ -1254,3 +902,628 @@ footer a {
     right: 7px;
     top: 5px;
 }
+
+
+/*-------------------НОВЫЕ СТИЛИ ДЛЯ ПОСЛЕДНИЙ ЗАГРУЖЕННЫХ РАБОТ-----------------------*/
+.profile_works_container__default{
+    font-family: 'Circe';
+    color: grey;
+    text-align: center;
+}
+
+.personal_gallery {
+    padding-top: 16px;
+    width: 100%;
+    background: #efeff3;
+}
+
+.margin_delete {
+    margin: 0;
+}
+
+
+.personal_category {
+    width: 100%;
+}
+
+.gallery_header_container {
+    width: 450px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 42px;
+}
+
+
+.gallery_header_container__title {
+    font-family: "BebasNeueBold";
+    color: rgb(24, 24, 24);
+    font-size: 34px;
+}
+
+.gallery_header_container__description {
+    padding: 9px 0 11px 0;
+
+    font-size: 14px;
+    font-family: "Circe";
+    color: rgb(160, 160, 163);
+    border-bottom: 1px solid #d7d8db;
+
+}
+
+.gallery_works {
+    padding: 20px 10px 20px 10px;
+
+}
+
+.gallery_work_wrapper {
+    width: 100%;
+}
+
+.gallery_work {
+    width: 250px;
+    cursor: pointer;
+}
+
+
+.gallery_work__container {
+    width: 100%;
+    position: relative;
+}
+
+.work_gradient {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+    position: absolute;
+    border-radius: 15px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.gallery_work:hover .work_gradient {
+    display: block;
+    opacity: 0.75;
+    transition: 0.5s;
+}
+
+.dz-option-icon{
+    background-size: cover;
+    z-index: 21;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/settings-active.png) no-repeat;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    cursor: pointer!important;
+}
+
+.dz-option-overlay{
+    z-index: 20;
+    position: absolute;
+    min-width: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    height: 100%;
+    background: linear-gradient(0deg,#ffffff,#000000);
+
+}
+
+.dz-details{
+    pointer-events: none;
+}
+
+.dz-preview.active .dz-details{
+    pointer-events: auto;
+}
+
+.dz-preview.active .dz-option-icon{
+    display: none;
+}
+
+.work_option__icon {
+    opacity: 0;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    right: 50px;
+    bottom: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/settings-active.png) no-repeat;
+    transition: 0.5s;
+}
+
+.work_delete__icon {
+    opacity: 0;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/trash-can.png) no-repeat;
+    transition: 0.5s;
+}
+
+.work_like__container{
+    width: 40px;
+    height: 24px;
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+}
+
+.work_like__container_relative{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+
+
+.work_like__icon {
+    opacity: 0;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/heart.png) no-repeat;
+    transition: 0.5s;
+    bottom: 0;
+}
+
+.work_like__icon.blue{
+    background: url(/images/profile/icons/heart_blue.png) no-repeat;
+}
+
+.count_likes.blue{
+    color: #1897cb;
+}
+
+.work_eye__icon {
+    opacity: 0;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    right: 90px;
+    bottom: 15px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/visible-eye.png) no-repeat;
+    transition: 0.5s;
+}
+
+.work_eye__icon.person {
+
+    right: 15px;
+
+}
+
+
+.count_likes {
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    left: 28px;
+    bottom: 0;
+    width: 30px;
+    height: 20px;
+    transition: 1s;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.gallery_work:hover .work_icons {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.work_option__icon:hover {
+    background: url(/images/profile/icons/settings.png) no-repeat;
+}
+
+.works_container{
+   width: 100%;
+}
+
+
+
+
+/*                                                           Image Css                                         */
+
+.gallery_works {
+    padding: 20px 0px 20px 0px;
+}
+
+.gallery_work_wrapper {
+    width: 1822px;
+    margin: 0 auto;
+}
+
+.grid-item {
+    width: 350px;
+    float: left;
+    margin-bottom: 18px;
+    border-radius: 15px;
+}
+
+.gallery_work_wrapper.is_auth {
+    width: 1550px;
+    margin: 0 auto;
+}
+
+.gallery_work_wrapper.is_auth .grid-item {
+    width: 295px;
+    float: left;
+    margin-bottom: 18px;
+    border-radius: 15px;
+}
+
+.grid-item:hover {
+    transition: 0.6s;
+}
+
+.gallery_work__container img{
+    border-radius: 15px;
+}
+
+@media (max-width: 1899px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+    .gallery_work_wrapper {
+        width: 1722px;
+        margin: 0 auto;
+    }
+    .grid-item {
+        width: 330px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+    .gallery_work_wrapper.is_auth {
+        width: 1498px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper.is_auth .grid-item {
+        width: 285px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+
+}
+
+@media (max-width: 1799px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+    .gallery_work_wrapper {
+        width: 1622px;
+        margin: 0 auto;
+    }
+    .grid-item {
+        width: 310px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+    .gallery_work_wrapper.is_auth {
+        width: 1398px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper.is_auth .grid-item {
+        width: 265px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+
+}
+
+@media (max-width: 1699px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 1297px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 245px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+
+}
+
+@media (max-width: 1599px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 1222px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 230px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+    .wrapper_tabs{
+        padding: 0 26px;
+    }
+
+
+}
+
+@media (max-width: 1499px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 1094px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 260px;
+        float: left;
+        margin-bottom: 18px;
+        border-radius: 15px;
+    }
+
+
+}
+
+
+@media (max-width: 1399px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 1006px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 240px;
+        float: left;
+        margin-bottom: 15px;
+        border-radius: 15px;
+    }
+
+
+}
+
+@media (max-width: 1299px) {
+
+    .gallery_works {
+        padding: 20px 0 20px 0;
+    }
+    .gallery_work_wrapper {
+        width: 905px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 215px;
+        float: left;
+        margin-bottom: 15px;
+        border-radius: 15px;
+    }
+
+
+}
+
+@media (max-width: 1199px) {
+
+    .gallery_works {
+        padding: 20px 0 20px 0;
+    }
+
+    .gallery_work_wrapper {
+        width: 756px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 180px;
+        float: left;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+
+
+}
+
+
+@media (max-width: 992px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 594px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 190px;
+        float: left;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+
+    .option_people {
+        margin-bottom: 0;
+    }
+
+    .option_people_line {
+        width: calc(100% - 100px);
+        height: 1px;
+        margin-left: 72px;
+        background: #d7d8db;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
+        width: 394px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 190px;
+        float: left;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .modal_header {
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .modal_content {
+        height: calc(100% - 110px);
+        width: 94%;
+        margin-top: 14px;
+    }
+
+    .modal_button__container {
+        width: 94%;
+        padding-top: 10px;
+
+    }
+
+    .modal_button__container button {
+        width: 100px;
+        height: 32px;
+        font-size: 15px;
+    }
+
+    .modal_textarea {
+        font-size: 14px;
+    }
+
+
+}
+
+
+@media (max-width: 400px) {
+
+    .personal_data_navigation__ul li {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .logo {
+        width: 90px;
+    }
+
+    .gallery_works {
+        padding: 20px 0 20px 0;
+    }
+
+    .gallery_work_wrapper {
+        width: 310px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 310px;
+        float: left;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+
+    .modal_header {
+        height: 40px;
+        font-size: 15px;
+    }
+
+    .modal_content {
+        height: calc(100% - 100px);
+        width: 96%;
+        margin-top: 6px;
+    }
+
+    .modal_button__container {
+        width: 96%;
+        padding-top: 13px;
+
+    }
+
+    .modal_button__container button {
+        width: 90px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+
+    .gallery_works {
+        padding: 20px 0 20px 0;
+    }
+
+    .gallery_work_wrapper {
+        width: 280px;
+        margin: 0 auto;
+    }
+
+    .gallery_work_wrapper .grid-item {
+        width: 280px;
+        float: left;
+        margin-bottom: 12px;
+        border-radius: 15px;
+    }
+}
+
+

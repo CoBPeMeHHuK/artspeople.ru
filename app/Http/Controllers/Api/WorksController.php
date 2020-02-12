@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class WorksController extends AppController
 {
-	
+
 	protected $worksService;
-	
+
 	/**
 	 * WorksController constructor.
 	 * @param WorkService $workService
@@ -19,16 +19,16 @@ class WorksController extends AppController
 		parent::__construct();
 		$this->worksService = $workService;
 	}
-	
-	
+
+
 	/**
 	 * @return false|string
 	 */
 	public function getUploadWorks(){
 		return $this->worksService->getUploadWorks();
 	}
-	
-	
+
+
 	/**
 	 * @param Request $request
 	 * @return false|string
@@ -36,8 +36,8 @@ class WorksController extends AppController
 	public function uploadWorks(Request $request){
 		return $this->worksService->uploadWorks($request);
 	}
-	
-	
+
+
 	/**
 	 * @param Request $request
 	 * @return array
@@ -45,8 +45,8 @@ class WorksController extends AppController
 	public function updateSettings(Request $request){
 		return $this->worksService->updateSettings($request);
 	}
-	
-	
+
+
 	/**
 	 * @param Request $request
 	 * @return false|string
@@ -55,5 +55,10 @@ class WorksController extends AppController
 	public function deleteWork(Request $request){
 		return $this->worksService->deleteWork($request);
 	}
-	
+
+
+	public function getAllWorks(){
+        return $this->worksService->getAllWorks();
+    }
+
 }

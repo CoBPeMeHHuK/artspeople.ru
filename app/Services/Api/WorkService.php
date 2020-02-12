@@ -18,6 +18,25 @@ class WorkService extends AppService
         parent::__construct();
     }
 
+
+
+    public function getAllWorks(){
+        $works = Work::query()->orderBy('id','desc')
+            ->with('image','user','avatar','likes')
+            ->get();
+
+
+        $works ? $response = [
+            'status'=>'success',
+            'works'=>$works
+        ] : $response = [
+            'status'=>'error',
+            'message'=>'no work found'
+        ];
+
+        return $response;
+    }
+
 	/**
 	 * @return false|string
 	 */
