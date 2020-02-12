@@ -73,9 +73,9 @@
                                         </div>
                                     </div>
                                     <div class="information__work_container">
-                                        <div class="information__work_title" v-html="works[selectImage].title"></div>
+                                        <div class="information__work_title" v-html="works[selectImage].name"></div>
                                         <div class="information__work_description" v-html="works[selectImage].description"></div>
-                                        <div class="information__work_publication"><i>@{{ works[selectImage].created}}</i></div>
+                                        <div class="information__work_publication"><i>@{{ works[selectImage].created_at}}</i></div>
                                     </div>
                                 </div>
                             </div>
