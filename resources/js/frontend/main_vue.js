@@ -62,10 +62,12 @@ new Vue({
         },
         closeGallery: function () {
             this.$modal.hide('gallery');
+            $('body').css('overflow','auto');
         },
         showGallery: function (index) {
             this.selectImage = index;
             this.$modal.show('gallery');
+            $('body').css('overflow','hidden');
         },
 
         addDeleteLike: function (work_id, work_index) {
