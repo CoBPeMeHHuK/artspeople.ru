@@ -16,7 +16,7 @@ new Vue({
     props: [],
 
     created() {
-        this.getWorks('all');
+        this.getWorks();
     },
 
     mounted() {
@@ -118,14 +118,10 @@ new Vue({
             });
         },
 
-        getWorks:function(type){
-            let params = {
-                type:type
-            };
+        getWorks:function(){
             axios({
                 method: 'post',
                 url: '/api/get-all-works',
-                params:params
             }).then((response) => {
                 this.works = response.data.works;
             });
@@ -133,8 +129,6 @@ new Vue({
 
         selectTypeCategory:function(category){
             this.selectedTypeCategory = category;
-            this.getWorks(category);
-            this.getMassonry();
         }
     }
 });
