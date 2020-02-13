@@ -6,15 +6,21 @@
         </div>
         <div class="left_column">
             <ul>
-                <li class="allTab ">
-                    <div><a href="#">общее</a></div>
+                <li class="choice_category"
+                    :class="{choice_category__active:selectedTypeCategory === 'all'}"
+                    @click="selectTypeCategory('all')">
+                    <div>Общее</div>
                 </li>
 
-                <li class="tattooTab active">
-                    <div><a href="#">татуировка</a></div>
+                <li class="choice_category"
+                    :class="{choice_category__active:selectedTypeCategory === 'tattoo'}"
+                    @click="selectTypeCategory('tattoo')">
+                    <div>Татуировка</div>
                 </li>
-                <li class="photographyTab">
-                    <div><a href="#">фотография</a></div>
+                <li class="choice_category"
+                    :class="{choice_category__active:selectedTypeCategory === 'photography'}"
+                    @click="selectTypeCategory('photography')">
+                    <div>Фотография</div>
                 </li>
             </ul>
         </div>

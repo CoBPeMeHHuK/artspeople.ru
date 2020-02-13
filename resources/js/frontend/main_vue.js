@@ -10,17 +10,13 @@ new Vue({
         selectelAvatarSrc: 'https://357319.selcdn.ru/artspeople/avatars/',
         selectImage: 0,
         isInvited: false,
+        selectedTypeCategory:'all'
     },
 
     props: [],
 
     created() {
-        axios({
-            method: 'post',
-            url: '/api/get-all-works',
-        }).then((response) => {
-            this.works = response.data.works;
-        });
+        this.getWorks('all');
     },
 
     mounted() {
@@ -32,6 +28,7 @@ new Vue({
 
     },
     updated() {
+        console.log('updated');
         this.getMassonry();
     },
     watch: {},
@@ -100,9 +97,9 @@ new Vue({
 
         getMassonry: function () {
             let grid = $('.grid').imagesLoaded().progress(function () {
+                    grid.masonry('destroy');
 
-                if (window.innerWidth > 1400) {
-                    console.log('masonry');
+                    if (window.innerWidth > 1400) {
                     grid.masonry({
                         itemSelector: '.grid-item',
                         gutter: 18,
@@ -119,6 +116,25 @@ new Vue({
                     });
                 }
             });
+        },
+
+        getWorks:function(type){
+            let params = {
+                type:type
+            };
+            axios({
+                method: 'post',
+                url: '/api/get-all-works',
+                params:params
+            }).then((response) => {
+                this.works = response.data.works;
+            });
+        },
+
+        selectTypeCategory:function(category){
+            this.selectedTypeCategory = category;
+            this.getWorks(category);
+            this.getMassonry();
         }
     }
 });

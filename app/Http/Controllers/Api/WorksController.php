@@ -57,8 +57,8 @@ class WorksController extends AppController
 	}
 
 
-	public function getAllWorks(){
-        return $this->worksService->getAllWorks();
+	public function getAllWorks(Request $request){
+        return $this->worksService->getAllWorks($request);
     }
 
 }
