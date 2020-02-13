@@ -624,6 +624,7 @@
     .modal_container_gallery > .v--modal-overlay > .v--modal-background-click > .v--modal-box{
         width: 100%!important;
         height: 100%!important;
+        left:0!important;
     }
 
 
@@ -685,6 +686,7 @@
         }
         .image_information{
             width: calc(100% - 10px);
+            height: 120px;
         }
 
         .next{

@@ -62,13 +62,17 @@
                                 </button>
                                 <div class="information_container">
                                     <div class="information__title_container">
+                                        <a v-bind:href="'/profile/'+ works[selectImage].user.id">
                                         <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+works[selectImage].avatar.src+') no-repeat' }"></div>
+                                        </a>
                                         <div class="information__person_info">
                                             <div class="information__person_title">
+                                                <a v-bind:href="'/profile/'+ works[selectImage].user.id">
                                                     <p class="information__person_name">
                                                         @{{ works[selectImage].user.surname +' '+works[selectImage].user.name }}
                                                     </p>
-                                                <p class="information__person_range">Генералисимус</p>
+                                                    <p class="information__person_range">Генералисимус</p>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -110,9 +114,9 @@
                             <div class="image_information">
                                 <div class="information_container">
                                     <div class="information__work_container">
-                                        <div class="information__work_title" v-html="works[selectImage].title"></div>
+                                        <div class="information__work_title" v-html="works[selectImage].name"></div>
                                         <div class="information__work_description" v-html="works[selectImage].description"></div>
-                                        <div class="information__work_publication"><i>@{{ works[selectImage].created}}</i></div>
+                                        <div class="information__work_publication"><i>@{{ works[selectImage].created_at}}</i></div>
                                     </div>
                                 </div>
                             </div>
