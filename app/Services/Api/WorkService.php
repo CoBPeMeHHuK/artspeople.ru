@@ -8,6 +8,7 @@ namespace App\Services\Api;
 use App\Model\Like;
 use App\Model\Work;
 use App\Traits\UploadImagesTrait;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class WorkService extends AppService
@@ -20,10 +21,36 @@ class WorkService extends AppService
 
 
 
-    public function getAllWorks(){
-        $works = Work::query()->orderBy('id','desc')
-            ->with('image','user','avatar','likes')
-            ->get();
+    public function getAllWorks($request){
+
+        isset($request->type) ? $type = $request->type : $type = false;
+        if($type){
+            switch ($type) {
+                case 'tattoo':
+                    $works = Work::where('category_id',2)
+                        ->orderBy('id','desc')
+                        ->with('image','user','avatar','likes')
+                        ->get();
+
+                    break;
+
+                case 'photography':
+                    $works = Work::where('category_id',1)
+                        ->orderBy('id','desc')
+                        ->with('image','user','avatar','likes')
+                        ->get();
+
+                    break;
+
+                default:
+                    $works = Work::query()
+                        ->orderBy('id','desc')
+                        ->with('image','user','avatar','likes')
+                        ->get();
+            }
+        } else{
+            $works = false;
+        }
 
 
         $works ? $response = [
