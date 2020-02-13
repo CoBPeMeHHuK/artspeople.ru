@@ -38,7 +38,7 @@
                     </li>
                 </ul>
                 <div class="personal_data_invite_button personal_data_invite_button__container"
-                     :class="{is_visible_flex:user.id != userAuth.id}">
+                     :class="{is_visible_flex:user.id != userAuth.id}" v-if="isAuth">
                     <div class="btn_message" @click="show"><span></span></div>
                     <div class="btn_invite" v-if="isStatusDefault" @click="addToFriendList"><span
                         class="friend_invite"></span></div>
