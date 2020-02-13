@@ -10,7 +10,7 @@ new Vue({
         selectelAvatarSrc: 'https://357319.selcdn.ru/artspeople/avatars/',
         selectImage: 0,
         isInvited: false,
-        selectedTypeCategory:'all'
+        selectedTypeCategory:0
     },
 
     props: [],
@@ -21,23 +21,37 @@ new Vue({
 
     mounted() {
         this.clientWidth = document.documentElement.clientWidth;
-        this.getMassonry();
+        // this.getMassonry();
     },
 
     beforeUpdate() {
 
     },
     updated() {
-        console.log('updated');
         this.getMassonry();
     },
     watch: {},
 
     computed: {
+
+
+        getWorkItems:function(){
+            let works = [];
+            if(this.selectedTypeCategory === 0){
+                works = this.works;
+            } else{
+                Object.keys(this.works).forEach(function(id){
+                    if(this.works[id].category_id === this.selectedTypeCategory) works.push(this.works[id]);
+                }.bind(this));
+            }
+
+            return works;
+        },
+
         getUrlList: function () {
             this.urlList = [];
-            Object.keys(this.works).forEach(function (id) {
-                this.urlList.push(this.selectelWorkSrc + this.works[id].image.src)
+            Object.keys(this.getWorkItems).forEach(function (id) {
+                this.urlList.push(this.selectelWorkSrc + this.getWorkItems[id].image.src)
             }.bind(this));
             return this.urlList;
         },
@@ -49,11 +63,11 @@ new Vue({
             return this.selectelWorkSrc + source;
         },
         prev() {
-            let length = this.works.length;
+            let length = this.getWorkItems.length;
             this.selectImage === 0 ? this.selectImage = length - 1 : this.selectImage--;
         },
         next() {
-            let length = this.works.length;
+            let length = this.getWorkItems.length;
             this.selectImage === length - 1 ? this.selectImage = 0 : this.selectImage++;
 
         },
@@ -79,11 +93,11 @@ new Vue({
                 if (response.data.status === 'success') {
 
                     if (response.data.message === 'created' || response.data.message === 'updated') {
-                        this.works[work_index]['is_like'] = true;
-                        this.works[work_index]['number_of_likes']++;
+                        this.getWorkItems[work_index]['is_like'] = true;
+                        this.getWorkItems[work_index]['number_of_likes']++;
                     } else {
-                        this.works[work_index]['is_like'] = false;
-                        this.works[work_index]['number_of_likes']--;
+                        this.getWorkItems[work_index]['is_like'] = false;
+                        this.getWorkItems[work_index]['number_of_likes']--;
                     }
                 }
 
@@ -91,15 +105,14 @@ new Vue({
         },
 
         isLike: function (id) {
-            return !!this.works[id]['is_like'];
+            return !!this.getWorkItems[id]['is_like'];
         },
 
 
         getMassonry: function () {
             let grid = $('.grid').imagesLoaded().progress(function () {
-                    grid.masonry('destroy');
 
-                    if (window.innerWidth > 1400) {
+                if (window.innerWidth > 1400) {
                     grid.masonry({
                         itemSelector: '.grid-item',
                         gutter: 18,
@@ -115,6 +128,8 @@ new Vue({
                         gutter: 12,
                     });
                 }
+
+                grid.masonry('reloadItems');
             });
         },
 
