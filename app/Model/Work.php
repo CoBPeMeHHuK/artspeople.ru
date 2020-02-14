@@ -16,6 +16,8 @@ class Work extends Model
         'rating',
         'is_can_comment',
         'is_active',
+        'is_active_main_pages',
+        'is_moderated',
         'created_at',
         'updated_at'
     ];

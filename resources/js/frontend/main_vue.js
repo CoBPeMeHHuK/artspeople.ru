@@ -144,6 +144,22 @@ new Vue({
 
         selectTypeCategory:function(category){
             this.selectedTypeCategory = category;
+        },
+
+        addToActiveWorks:function(work){
+            axios({
+                method: 'post',
+                url: '/api/add-to-active-works',
+                params:{
+                    'id':work.id
+                }
+            }).then((response) => {
+                if(response.data.status === 'success') work.is_active_main_pages = 1;
+            });
+
+
+
+
         }
     }
 });

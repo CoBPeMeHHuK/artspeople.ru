@@ -44,6 +44,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::post('/add-delete-like','LikeController@addLike');
     Route::post('/profile/{id}/likes','LikeController@getLikeWorks');
     Route::post('/get-all-works','WorksController@getAllWorks');
+    Route::post('/add-to-active-works','WorksController@addToActiveWorks');
 
 
 
