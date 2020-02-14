@@ -146,20 +146,29 @@ new Vue({
             this.selectedTypeCategory = category;
         },
 
-        addToActiveWorks:function(work){
+        addCancelActiveWorks:function(work,action){
+
             axios({
                 method: 'post',
                 url: '/api/add-to-active-works',
                 params:{
-                    'id':work.id
+                    'id':work.id,
+                    'action':action
                 }
             }).then((response) => {
-                if(response.data.status === 'success') work.is_active_main_pages = 1;
+                if(response.data.status === 'success'){
+                    if(response.data.action === 'add'){
+                        work.is_active_main_pages = 1;
+                        work.is_moderated = 1;
+                    } else{
+                        work.is_moderated = 1;
+                    }
+                } else{
+                   alert('Что-то пошло не так...')
+                }
             });
+        },
 
 
-
-
-        }
     }
 });

@@ -1090,7 +1090,7 @@ footer a {
     position: relative;
 }
 
-.work_is_active {
+.work_is_active__true {
     opacity: 0;
     background-size: cover;
     z-index: 2;
@@ -1099,9 +1099,23 @@ footer a {
     height: 24px;
     background: url(/images/profile/icons/correct.png) no-repeat;
     transition: 0.5s;
-    bottom: 15px;
-    right: 50px;
+    top: 15px;
+    right: 15px;
 }
+
+.work_is_active__false {
+    opacity: 0;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url(/images/profile/icons/correct_close.png) no-repeat;
+    transition: 0.5s;
+    top: 15px;
+    left: 15px;
+}
+
 
 
 .work_like__icon {
