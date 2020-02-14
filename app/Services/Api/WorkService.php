@@ -20,17 +20,25 @@ class WorkService extends AppService
 
     public function addToActiveWorks($request){
         isset($request->id) ? $id = $request->id : $id = false;
-        if($id){
+        isset($request->action) ? $action = $request->action : $action = false;
+        if($id && $action){
+            $action == 'add' ? $isActiveMainPages = 1 : $isActiveMainPages = 0;
             $work = Work::query()
                 ->findOrFail($id)
                 ->update([
-                    'is_active_main_pages'=>1
+                    'is_active_main_pages'=>$isActiveMainPages,
+                    'is_moderated'=>1
                 ]);
         }else{
             $work = 0;
         }
 
-        $work > 0 ? $response = ['status'=>'success'] : $response =  ['status'=>'error'];
+        $work > 0 ? $response = [
+            'status'=>'success',
+            'action'=>$action
+        ] : $response =  [
+            'status'=>'error'
+        ];
 
         return $response;
 
@@ -224,7 +232,8 @@ class WorkService extends AppService
 
     private function getWorksForAdmin()
     {
-        return $works = Work::where('is_moderated', 0)
+        return $works = Work::where([['is_moderated', 0],['is_active_main_pages',0]])
+            ->orWhere([['is_moderated', 1],['is_active_main_pages',1]])
             ->orderBy('id', 'desc')
             ->with('image', 'user', 'avatar', 'likes')
             ->get();
