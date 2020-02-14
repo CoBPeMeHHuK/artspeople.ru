@@ -61,4 +61,8 @@ class WorksController extends AppController
         return $this->worksService->getAllWorks();
     }
 
+    public function addToActiveWorks(Request $request){
+        return $this->worksService->addToActiveWorks($request);
+    }
+
 }
