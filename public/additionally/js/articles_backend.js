@@ -68,6 +68,7 @@ $(document).ready(function () {
                         name = $('#name_element').val(),
                         typePreview = $("input[name='optionsRadios']:checked").val(),
                         description = $('#description_element').summernote('code'),
+                        rating = $('#rating_element').val(),
                         is_activity = $('#is_activity_element').is(":checked");
                     is_activity === true ? is_activity = 1 : is_activity = 0;
                     if (id_element !== '') {
@@ -83,6 +84,7 @@ $(document).ready(function () {
                             name: name,
                             typePreview:typePreview,
                             description: description,
+                            rating:rating,
                             is_activity: is_activity
                         },
 
@@ -129,6 +131,7 @@ $(document).ready(function () {
                 name = $('#name_element').val(),
                 typePreview = $("input[name='optionsRadios']:checked").val(),
                 description = $('#description_element').summernote('code'),
+                rating = $('#rating_element').val(),
                 is_activity = $('#is_activity_element').is(":checked");
             is_activity === true ? is_activity = 1 : is_activity = 0;
 
@@ -137,6 +140,7 @@ $(document).ready(function () {
             formData.append('name', name);
             formData.append('typePreview', typePreview);
             formData.append('description', description);
+            formData.append('rating', rating);
             formData.append('is_activity', is_activity);
             console.log('отправка из дропзоны');
 

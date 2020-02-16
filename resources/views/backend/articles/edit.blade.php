@@ -84,6 +84,10 @@
                         <label for="exampleInputPassword1">Описание статьи</label>
                         <textarea class="form-control textarea" id="description_element"  placeholder="Введите описание статьи">{!! $article->content !!}</textarea>
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Рейтинг в числовом формате</label>
+                        <input class="form-control" id="rating_element"  placeholder="Введите число" value="{!! $article->rating !!}">
+                    </div>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="is_activity_element"

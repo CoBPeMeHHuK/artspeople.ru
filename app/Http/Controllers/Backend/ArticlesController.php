@@ -13,7 +13,7 @@ class ArticlesController extends AppController
 
 	public function index()
     {
-        $articles = Article::with('images' )->get();
+        $articles = Article::with('images' )->orderBy('id','desc')->get();
 	    return view('backend.articles.index')->with(['articles'=>$articles]);
     }
 
@@ -53,6 +53,7 @@ class ArticlesController extends AppController
         $name = $request->name;
         $typePreview = $request->typePreview;
         $content = $request->description;
+        $rating = $request->rating;
         $is_activity = $request->is_activity;
         $action = $request->action;
         $type = $request->type;
@@ -62,6 +63,7 @@ class ArticlesController extends AppController
             'title' => $name,
             'type'=>$typePreview,
             'content' => $content,
+            'rating'=>$rating,
             'is_active' => $is_activity,
             'created_at' => time()
         ]);
@@ -110,6 +112,7 @@ class ArticlesController extends AppController
         $name = $request->name;
         $typePreview = $request->typePreview;
         $content = $request->description;
+        $rating = $request->rating;
         $is_activity = $request->is_activity;
         $action = $request->action;
         $type = $request->type;
@@ -121,6 +124,7 @@ class ArticlesController extends AppController
                 'title'=>$name,
                 'type'=>$typePreview,
                 'content'=>$content,
+                'rating'=>$rating,
                 'is_active'=>$is_activity,
                 'updated_at'=> time()
             ]);

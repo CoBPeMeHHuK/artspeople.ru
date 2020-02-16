@@ -77,7 +77,7 @@ class ArticleController extends AppController
     }
 
     private function getArticles(){
-        return Article::where('is_active',1)->with('image')->get();
+        return Article::where('is_active',1)->orderBy('rating','desc')->with('image')->get();
     }
 
 }

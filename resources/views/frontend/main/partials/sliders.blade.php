@@ -2,7 +2,7 @@
 	@if(count($sliders)>0)
 		@foreach($sliders as $slider)
             @foreach($slider->images->where('condition','max') as $image)
-			<div class="sl_item" style="background-image: url({{ asset(Storage::url($image->type.'/'.$image->src)) }});">
+			<div class="sl_item" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});">
 
 				<div class="wrapper_main">
 					<div class="logoName">
@@ -29,7 +29,7 @@
 					@foreach($slider->images->where('condition','min') as $image)
 					<div class="sl_item-nav">
 						<div class="img-nav"
-						     style="background-image: url({{ asset(Storage::url($image->type.'/'.$image->src)) }});"></div>
+                             style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div>
 					</div>
 					@endforeach
 
@@ -39,7 +39,7 @@
 			@foreach($firstSlider->images->where('condition','min') as $image)
 			<div class="sl_item-nav">
 				<div class="img-nav"
-				     style="background-image: url({{ asset(Storage::url($image->type.'/'.$image->src)) }});"></div>
+                     style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div>
 			</div>
 				@endforeach
 		@endif
