@@ -48,9 +48,11 @@
         <div class="container-block">
             <div class="row rows">
                 <div class="col-md-3 col-xs-3 col-sm-3">
+                    <a href="/">
                     <div class="logo">
                         <img src="{{ asset('images/logo/logo.png') }}">
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-9  col-xs-9 col-sm-9">
                     <ul>
@@ -82,9 +84,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-xs-6 col-sm-6">
+                    <a href="/">
                     <div class="logo">
                         <img src="{{ asset('images/logo/logo_white5.png') }}">
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-6 col-xs-6 col-sm-6">
                     <div class="open hamburger hamburger--spring">
@@ -114,9 +118,6 @@
         <a href="#"><i class="fa fa-vk"></i></a>
     </div>
 </footer>
-
-{{--<div class="marquiz-pops marquiz-pops_position_bottom-left marquiz-pops_rounded marquiz-pops_shadowed marquiz-pops_blicked marquiz-pops_position" ><a class="marquiz-pops__body" href="#popup:marquiz_5e034617d74ff400445664f7" data-marquiz-pop-text-color="#ffffff" data-marquiz-pop-background-color="#2050f2" data-marquiz-pop-svg-color="#fff" data-marquiz-pop-close-color="#fff" data-marquiz-pop-color-pulse="rgba(32, 80, 242, 0.4)" data-marquiz-pop-color-pulse-alpha="rgba(32, 80, 242, 0)" data-marquiz-pop-bonuses="1" data-marquiz-pop-delay="20s" data-marquiz-pop="true"><span class="marquiz-pops__icon"></span><span class="marquiz-pops__content"><span class="marquiz-pops__content-title">Ответьте на 6 вопросов</span><span class="marquiz-pops__content-text">&laquo;Индивидуальный подбор объектов&raquo;</span></span><span class="marquiz-pops__bonus">Вам доступен бонус и скидка</span></a></div>--}}
-
 {!! $scripts !!}
 
 </body>
