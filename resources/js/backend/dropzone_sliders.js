@@ -85,7 +85,7 @@ $('form[name=form]').submit(function(event){
 
                             let mockFile = { name: value.src, size: value.size };
                             thisDropzone.options.addedfile.call(thisDropzone, mockFile);
-                            thisDropzone.options.thumbnail.call(thisDropzone, mockFile, '/storage/'+value.type+'/'+value.src);
+                            thisDropzone.options.thumbnail.call(thisDropzone, mockFile, 'https://357319.selcdn.ru/artspeople/'+value.type+'/'+value.src);
                         });
 
                     });

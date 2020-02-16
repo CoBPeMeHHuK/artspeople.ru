@@ -18,6 +18,7 @@ class Article extends Model
 		'title',
 		'type',
         'content',
+        'rating',
         'is_active'
 	];
 

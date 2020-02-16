@@ -31,6 +31,7 @@
                             <th>Название</th>
                             <th>Мини-картинка</th>
                             <th>Тип превью</th>
+                            <th>Рейтинг</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -61,6 +62,7 @@
                                             Дополнение к большому<br>превью
                                         @endif
                                     </td>
+                                    <td>{{ $article->rating }}</td>
 
                                     <td><a href="/admin/articles/{{ $article->id }}"><button class="btn btn-success">Изменить</button></a></td>
                                     <td><button value="{{$article->id}}" class="btn btn-danger delete">Удалить</button></td>

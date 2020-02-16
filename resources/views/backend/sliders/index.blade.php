@@ -50,11 +50,11 @@
                             <td>{{ $slider->title }}</td>
                             <td>{!! $slider->description !!}</td>
 	                        @foreach($slider->images->where('condition','min') as $image)
-                            <td><div class="admin_img" style="background-image: url({{ asset(Storage::url($image->type.'/'.$image->src)) }});"></div></td>
+                            <td><div class="admin_img"style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div></td>
 	                        @endforeach
 
 	                        @foreach($slider->images->where('condition','max') as $image)
-                            <td><div class="admin_img" style="background-image: url({{ asset(Storage::url($image->type.'/'.$image->src)) }});"></div></td>
+                            <td><div class="admin_img" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div></td>
 	                        @endforeach
 
 
