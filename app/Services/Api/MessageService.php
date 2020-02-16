@@ -26,7 +26,7 @@
             if ($auth_id && $user_id && $message) {
 
                 /*************************************************/
-                $channels = 'news-action.' . $user_id;
+                $channels = 'chat_message.' . $user_id;
                 $user = Auth::user();
                 $user_name = $user->name;
                 $user_surname = $user->surname;
