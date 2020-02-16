@@ -45,6 +45,7 @@ $('form[name=form]').submit(function(event){
                             action = $('#action').val(),
                             name = $('#name_element').val(),
                             description = $('#description_element').val(),
+                            urlRedirect = $('#url_element').val(),
                             rating = $('#rating_element').val(),
                             is_activity = $('#is_activity_element').is(":checked");
                         is_activity === true ? is_activity = 1 : is_activity = 0;
@@ -64,6 +65,7 @@ $('form[name=form]').submit(function(event){
                                 action:action,
                                 name:name,
                                 description:description,
+                                url:urlRedirect,
                                 rating:rating,
                                 is_activity:is_activity
                             },
@@ -109,6 +111,7 @@ $('form[name=form]').submit(function(event){
                     action = $('#action').val(),
                     name = $('#name_element').val(),
                     description = $('#description_element').val(),
+                    urlRedirect = $('#url_element').val(),
                     rating = $('#rating_element').val(),
                     is_activity = $('#is_activity_element').is(":checked");
                 is_activity === true ? is_activity = 1 : is_activity = 0;
@@ -118,6 +121,7 @@ $('form[name=form]').submit(function(event){
                 formData.append('action', action);
                 formData.append('name', name);
                 formData.append('description', description);
+                formData.append('url', urlRedirect);
                 formData.append('rating', rating);
                 formData.append('is_activity', is_activity);
                 console.log('отправка из дропзоны');
@@ -187,7 +191,7 @@ $('form[name=form]').submit(function(event){
                     icon: "success",
                 });
                 setTimeout(function(){
-                    document.location.href = redirectUrl;
+                   document.location.href = redirectUrl;
                 },1000);
 
 
