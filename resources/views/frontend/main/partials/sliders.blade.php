@@ -3,7 +3,7 @@
 		@foreach($sliders as $slider)
             @foreach($slider->images->where('condition','max') as $image)
 			<div class="sl_item" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});">
-                <a class="slider_a" href="/articles">
+                <a class="slider_a" href="{{ $slider->url }}">
                 <div class="wrapper_main">
                     <div class="logoName">
 						<h1>{{ $slider->title }}</h1>

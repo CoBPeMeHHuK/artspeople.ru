@@ -42,6 +42,10 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputPassword1">Ссылка, куда будет перееадресован пользователь</label>
+                        <input class="form-control" id="url_element"  placeholder="Введите url" value="{!! $slider->url !!}">
+                    </div>
+                    <div class="form-group">
                         <label for="exampleInputPassword1">Рейтинг в числовом формате</label>
                         <input class="form-control" id="rating_element"  placeholder="Введите число от 1 до 100" value="{!! $slider->rating !!}">
                     </div>
