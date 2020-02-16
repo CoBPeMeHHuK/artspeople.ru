@@ -2,9 +2,11 @@
     <div class="left-section">
         <div class="left_section_container">
             <div class="left_section_options_container">
+                <a href="/">
                 <div class="left-section__logo">
                     <img src="{{ asset('images/logo/logo_white5.png') }}">
                 </div>
+                </a>
 
                 <div class="left-section__avatar"
                      v-bind:style="{ background: 'url('+getAuthUserAvatar+') no-repeat' }">
