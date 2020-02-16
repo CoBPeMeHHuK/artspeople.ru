@@ -369,8 +369,15 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('/images/general/slider_background.png');
     background-size: contain;
     opacity: .3;
+    pointer-events: none;
+}
+
+.slider_a{
+    outline: none!important;
+    border: none;
 }
 
 .sl_item.slick-slide {
