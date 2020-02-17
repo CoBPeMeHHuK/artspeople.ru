@@ -48,7 +48,7 @@
                                                 {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
                                             </p>
                                             </router-link>
-                                            <p class="information__person_range">Генералисимус</p>
+                                            <p class="information__person_range">Новичок</p>
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                             {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
                                         </p>
                                         </router-link>
-                                        <p class="information__person_range">Генералисимус</p>
+                                        <p class="information__person_range">Новичок</p>
                                     </div>
                                 </div>
                                 </div>
