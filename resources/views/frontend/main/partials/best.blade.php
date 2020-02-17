@@ -79,7 +79,7 @@
                                                     <p class="information__person_name">
                                                         @{{ getWorkItems[selectImage].user.surname +' '+getWorkItems[selectImage].user.name }}
                                                     </p>
-                                                    <p class="information__person_range">Генералисимус</p>
+                                                    <p class="information__person_range">Новичок</p>
                                                 </a>
                                             </div>
                                         </div>
