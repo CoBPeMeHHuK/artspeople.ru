@@ -90,7 +90,8 @@
                                 <div class="personal_chat__name">{{ userInformation.surname +' '+
                                     userInformation.name}}
                                 </div>
-                                <div class="personal_chat__status" v-if="isOnlineFriend(userInformation.id)">Online</div>
+                                <div class="personal_chat__status" v-if="isOnlineFriend(userInformation.id)">Online
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -153,8 +154,8 @@
             'connectedUsers'
         ],
 
-        watch : {
-            dataMessages:function(newVal, oldVal){
+        watch: {
+            dataMessages: function (newVal, oldVal) {
                 this.getScroll();
             }
         },
@@ -172,6 +173,8 @@
             }]);
 
             this.getScroll();
+
+            this.hideAddressBar();
 
         },
 
@@ -290,17 +293,17 @@
                 let user = this.users.find(x => x.id === Number(this.userSelect));
                 console.log(this.userAuth.id);
 
-             //   if (this.selectUserMessagesIsRead === false) {
+                //   if (this.selectUserMessagesIsRead === false) {
 
-                    console.log('selectUserMessagesIsRead');
-                    if (user.last_messages_from !== null && user.last_messages_from.count_of_unread > 0 && user.last_messages_from.last_user_changes_id !== this.userAuth.id) {
-                        let last_message = 'last_message_from';
-                        this.clearReadMessages(last_message, user);
-                    } else if (user.last_messages_to !== null && user.last_messages_to.count_of_unread > 0 && user.last_messages_to.last_user_changes_id !== this.userAuth.id) {
-                        let last_message = 'last_message_to';
-                        this.clearReadMessages(last_message.user, user);
-                    }
-              //  }
+                console.log('selectUserMessagesIsRead');
+                if (user.last_messages_from !== null && user.last_messages_from.count_of_unread > 0 && user.last_messages_from.last_user_changes_id !== this.userAuth.id) {
+                    let last_message = 'last_message_from';
+                    this.clearReadMessages(last_message, user);
+                } else if (user.last_messages_to !== null && user.last_messages_to.count_of_unread > 0 && user.last_messages_to.last_user_changes_id !== this.userAuth.id) {
+                    let last_message = 'last_message_to';
+                    this.clearReadMessages(last_message.user, user);
+                }
+                //  }
             },
 
             clickBack: function () {
@@ -308,15 +311,15 @@
                 this.isLeftChat = true;
             },
 
-            isOnlineFriend:function(id){
-                let user = this.connectedUsers.find(x=>x.channel === Number(id));
+            isOnlineFriend: function (id) {
+                let user = this.connectedUsers.find(x => x.channel === Number(id));
                 return !!user;
             },
 
 
             /*-------------------------------------------ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ-------------------------------*/
 
-            getScroll:function(){
+            getScroll: function () {
                 let area = this.$refs.message_area;
                 setTimeout(function () {
                     if (area.selectionStart == area.selectionEnd) {
@@ -345,6 +348,13 @@
                     if (response.data.status === 'success') this.selectUserMessagesIsRead = true;
                     last_messages === 'last_message_from' ? user.last_messages_from.count_of_unread = 0 : user.last_messages_to.count_of_unread = 0;
                 });
+            },
+
+            hideAddressBar: function () {
+                if (navigator.userAgent.match(/Android/i) != null) {
+                    document.documentElement.style.height = window.outerHeight + 'px';
+                    setTimeout(window.scrollTo(0, 1), 0);
+                }
             }
         }
     }
