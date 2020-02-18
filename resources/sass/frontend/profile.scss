@@ -2688,7 +2688,7 @@ input[type=range]::-ms-track {
     height: 100%;
   }
   .chat_content_left__persons {
-    height: 80%;
+    height: calc(100vh - 200px);
     padding-top: 0;
   }
 
