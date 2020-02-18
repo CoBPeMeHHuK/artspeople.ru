@@ -956,15 +956,15 @@ input[type=range]::-ms-track {
 }
 
 .bottom_icon_homepage {
-  background: url('/images/profile/icons/home.png') no-repeat;
+  background: url('/images/profile/icons/home-new.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   width: 24px;
-  height: 23px;
+  height: 24px;
 }
 
 .router-link-active > .bottom_icon_homepage {
-  background: url('/images/profile/icons/home_blue.png') no-repeat;
+  background: url('/images/profile/icons/home-new-blue.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   width: 24px;
@@ -977,19 +977,19 @@ input[type=range]::-ms-track {
 }
 
 .bottom_icon_works {
-  background: url('/images/profile/icons/left_icon1.png') no-repeat;
+  background: url('/images/profile/icons/portfolio-new.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   width: 23px;
-  height: 20px;
+  height: 23px;
 }
 
 .router-link-active > .bottom_icon_works {
-  background: url('/images/profile/icons/works_icon_blue.png') no-repeat;
+  background: url('/images/profile/icons/portfolio-new-blue.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
   width: 23px;
-  height: 20px;
+  height: 23px;
 }
 
 .left_icon_friends {
@@ -997,19 +997,19 @@ input[type=range]::-ms-track {
 }
 
 .bottom_icon_friends {
-  background: url('/images/profile/icons/people_icon.png') no-repeat;
+  background: url('/images/profile/icons/friends-new.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 23px;
 }
 
 .router-link-active > .bottom_icon_friends {
-  background: url('/images/profile/icons/people_icon_blue.png') no-repeat;
+  background: url('/images/profile/icons/friends-new-blue.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 23px;
 }
 
 .left_icon_mail {
@@ -1017,19 +1017,19 @@ input[type=range]::-ms-track {
 }
 
 .bottom_icon_mail {
-  background: url('/images/profile/icons/mail_icon.png') no-repeat;
+  background: url('/images/profile/icons/mail-new.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 23px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .router-link-active > .bottom_icon_mail {
-  background: url('/images/profile/icons/mail_icon_blue.png') no-repeat;
+  background: url('/images/profile/icons/mail-new-blue.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 23px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .left_icon_likes {
@@ -1053,11 +1053,11 @@ input[type=range]::-ms-track {
 }
 
 .bottom_icon_contacts {
-  background: url('/images/profile/icons/settings_menu.png') no-repeat;
+  background: url('/images/profile/icons/setting-new.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
 }
 
 .bottom_icon_notifications {
@@ -1069,11 +1069,11 @@ input[type=range]::-ms-track {
 }
 
 .router-link-active > .bottom_icon_contacts {
-  background: url('/images/profile/icons/settings_menu_blue.png') no-repeat;
+  background: url('/images/profile/icons/setting-new-blue.png') no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
 }
 
 .router-link-active > .bottom_icon_notifications {
