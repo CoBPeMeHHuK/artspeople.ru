@@ -117,7 +117,7 @@
                             <div class="chat_write_input_message__container">
                                 <div class="chat_write_input_message__smile_icon"></div>
                                 <div class="chat_write_input_message__btn_send" @click="sendMessage"></div>
-                                <div class="chat_write_input_message__option_icon"></div>
+<!--                                <div class="chat_write_input_message__option_icon"></div>-->
                                 <div class="chat_write_input_message__clear_chat">Очистить переписку</div>
                                 <textarea class="chat_write_input_message" placeholder="Напишите сообщение"
                                           v-model="message" @keyup.enter="sendMessage"></textarea>
