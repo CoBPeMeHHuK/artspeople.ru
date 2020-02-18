@@ -652,14 +652,13 @@ footer a {
     font-size: 58px;
     font-weight: 400;
     text-transform: uppercase;
-    margin-left: 10px;
     padding-bottom: 0;
     text-align: left;
 }
 
 .wrapper_tabs ul li {
     list-style: none;
-    margin: 0 10px;
+    margin: 0 0 0 20px;
     display: inline-block;
     color: #7a7a7a;
     font-weight: 600;
@@ -1365,30 +1364,59 @@ footer a {
     color: #ffffff;
 }
 
+@media (max-width: 2000px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
 
-@media (max-width: 1899px) {
+    .wrapper_tabs{
+        max-width:1498px;
+        padding: 0;
+    }
 
     .gallery_works {
         padding: 20px 0px 20px 0px;
     }
+
     .gallery_work_wrapper {
-        width: 1722px;
+        width: 1498px;
         margin: 0 auto;
     }
-    .grid-item {
-        width: 330px;
+
+    .gallery_work_wrapper .grid-item {
+        width: 285px;
         float: left;
         margin-bottom: 18px;
         border-radius: 15px;
     }
 
-    .gallery_work_wrapper.is_auth {
+
+}
+
+
+
+@media (max-width: 1899px) {
+
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+         max-width:1498px;
+        padding: 0;
+     }
+
+    .gallery_works {
+        padding: 20px 0px 20px 0px;
+    }
+
+    .gallery_work_wrapper {
         width: 1498px;
         margin: 0 auto;
     }
 
-    .gallery_work_wrapper.is_auth .grid-item {
+    .gallery_work_wrapper .grid-item {
         width: 285px;
         float: left;
         margin-bottom: 18px;
@@ -1400,26 +1428,25 @@ footer a {
 
 @media (max-width: 1799px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
     .gallery_works {
         padding: 20px 0px 20px 0px;
     }
-    .gallery_work_wrapper {
-        width: 1622px;
-        margin: 0 auto;
-    }
-    .grid-item {
-        width: 310px;
-        float: left;
-        margin-bottom: 18px;
-        border-radius: 15px;
+    .wrapper_tabs{
+        max-width:1398px;
+        padding: 0;
+
     }
 
-    .gallery_work_wrapper.is_auth {
+    .gallery_work_wrapper {
         width: 1398px;
         margin: 0 auto;
     }
 
-    .gallery_work_wrapper.is_auth .grid-item {
+    .gallery_work_wrapper .grid-item {
         width: 265px;
         float: left;
         margin-bottom: 18px;
@@ -1431,10 +1458,17 @@ footer a {
 
 @media (max-width: 1699px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
     .gallery_works {
         padding: 20px 0px 20px 0px;
     }
-
+    .wrapper_tabs{
+        max-width:1297px;
+        padding: 0;
+    }
     .gallery_work_wrapper {
         width: 1297px;
         margin: 0 auto;
@@ -1452,9 +1486,20 @@ footer a {
 
 @media (max-width: 1599px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+        max-width:1222px;
+        padding: 0;
+    }
+
     .gallery_works {
         padding: 20px 0px 20px 0px;
     }
+
+
 
     .gallery_work_wrapper {
         width: 1222px;
@@ -1468,14 +1513,19 @@ footer a {
         border-radius: 15px;
     }
 
-    .wrapper_tabs{
-        padding: 0 26px;
-    }
-
 
 }
 
 @media (max-width: 1499px) {
+
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+        max-width:1094px;
+        padding: 0;
+    }
 
     .gallery_works {
         padding: 20px 0px 20px 0px;
@@ -1499,6 +1549,15 @@ footer a {
 
 @media (max-width: 1399px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+        max-width:1006px;
+        padding: 0;
+    }
+
     .gallery_works {
         padding: 20px 0px 20px 0px;
     }
@@ -1520,6 +1579,15 @@ footer a {
 
 @media (max-width: 1299px) {
 
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+        max-width:905px;
+        padding: 0;
+    }
+
     .gallery_works {
         padding: 20px 0 20px 0;
     }
@@ -1539,6 +1607,15 @@ footer a {
 }
 
 @media (max-width: 1199px) {
+
+    .wrapper_tab_content{
+        max-width:100%
+    }
+
+    .wrapper_tabs{
+        max-width:756px;
+        padding: 0;
+    }
 
     .gallery_works {
         padding: 20px 0 20px 0;
