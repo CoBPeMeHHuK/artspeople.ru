@@ -709,9 +709,15 @@ footer a {
         margin: 0;
         text-align: center;
     }
+
+    .wrapper_tabs ul li {
+        width: 50%;
+        margin:4px 0;
+    }
     .wrapper_tabs ul li div{
         text-align: center;
     }
+
     .wrapper_tabs ul {
         width: 100%;
         margin: 0 auto;
@@ -725,7 +731,6 @@ footer a {
 
     .wrapper_tabs ul li {
         width: 50%;
-        margin: 0;
     }
 
 }
@@ -845,8 +850,9 @@ footer a {
         padding: 0 36px 0 36px;
     }
     .wrapper_tabs p{
-        width: 148px;
+        width: 310px;
         margin: 0 auto;
+        font-size: 14px;
     }
     .left_content p{
          text-align: center;
@@ -1638,6 +1644,10 @@ footer a {
 
 
 @media (max-width: 992px) {
+
+    .wrapper_tabs{
+        margin: 20px 0 10px;
+    }
 
     .gallery_works {
         padding: 20px 0px 20px 0px;
