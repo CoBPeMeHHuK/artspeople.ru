@@ -13,15 +13,7 @@
 
 <header>
 	<div class="modalMenu">
-		<div class="burgerClose">
-			<div class="close hamburger hamburger--spring">
-				<div class="hamburger-box">
-					<div class="hamburger-inner"></div>
-				</div>
-			</div>
-		</div>
-
-		<ul>
+        <ul>
 			<li><a href="/">ГЛАВНАЯ</a></li>
             <li><a href="/articles">НОВОСТИ</a></li>
 			@if($isAuth)
