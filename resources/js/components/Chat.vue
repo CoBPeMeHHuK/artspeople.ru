@@ -353,12 +353,13 @@
             },
 
             hideAddressBar: function () {
-                console.log(document.documentElement.style);
-                console.log(window.outerHeight);
-                if (navigator.userAgent.match(/Android/i) != null) {
-                    document.documentElement.style.height = window.outerHeight + 'px';
-                    setTimeout(window.scrollTo(0, 1), 0);
-                }
+                setTimeout(function () {
+                    document.body.style.height = window.outerHeight + 'px';
+                    setTimeout(function () {
+                        window.scrollTo(0, 1);
+                    }, 1100);
+                }, 1000);
+                return false;
             }
         }
     }
