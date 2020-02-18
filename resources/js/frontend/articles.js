@@ -12,18 +12,10 @@ $(document).ready(function () {
         var y = window.scrollY;
         if(y > 10){
             $(".menu").css({position: 'fixed'} );
-            $(".menu").css({background: '#ffffff'} );
             $(".mobMenu").css({position: 'fixed'} );
-            $(".mobMenu").css({background: '#ffffff'} );
-            $(".rows").css({opacity: 0.6} );
-            $(".mobMenu").css({opacity: 0.9} );
         } else {
             $(".menu").css({position: 'absolute'});
-            $(".menu").css({background: '#ffffff'} );
             $(".mobMenu").css({position: 'absolute'});
-            $(".mobMenu").css({background: '#ffffff'} );
-            $(".rows").css({opacity:1} );
-            $(".mobMenu").css({opacity: 1} );
         }
 
     });

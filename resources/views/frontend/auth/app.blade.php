@@ -10,9 +10,12 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{mix('css/util.css')}}">
 	<link rel="stylesheet" href="{{ mix('css/selectric.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{mix('css/auth.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{mix('css/main.css')}}">
+
+
 	<link rel="stylesheet" href="{{ mix('css/hamburgers.min.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/hamburger-profile.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{mix('css/articles.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{mix('css/auth.css')}}">
 	<link rel="stylesheet" href="{{ asset('additionally/slick/slick.css') }}">
 	<link rel="stylesheet" href="{{ asset('additionally/slick/slick-theme.css') }}">
 	<link rel="stylesheet" href="{{ mix('css/animate.css') }}">

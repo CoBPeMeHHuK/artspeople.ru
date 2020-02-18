@@ -47,11 +47,13 @@ $(document).ready(function () {
 
         if (!$('.hamburger').hasClass('is-active')) {
             $(".hamburger").addClass('is-active');
+            $(".mobMenu").addClass('is-active');
             $(".modalMenu").css({display: 'block'});
             $(".modalMenu").css('z-index', '550');
             $(".hamburger").css('z-index', '551')
         } else {
             $(".hamburger").removeClass('is-active');
+            $(".mobMenu").removeClass('is-active');
             $(".modalMenu").css({display: 'none'})
         }
     });
