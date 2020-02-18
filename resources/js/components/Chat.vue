@@ -174,8 +174,6 @@
 
             this.getScroll();
 
-            this.hideAddressBar();
-
         },
 
 
@@ -206,7 +204,6 @@
                 this.scrollMounted = true;
             }
 
-            this.hideAddressBar();
         },
 
         methods: {
@@ -351,16 +348,6 @@
                     last_messages === 'last_message_from' ? user.last_messages_from.count_of_unread = 0 : user.last_messages_to.count_of_unread = 0;
                 });
             },
-
-            hideAddressBar: function () {
-                setTimeout(function () {
-                    document.body.style.height = window.outerHeight + 'px';
-                    setTimeout(function () {
-                        window.scrollTo(0, 1);
-                    }, 1100);
-                }, 1000);
-                return false;
-            }
         }
     }
 </script>
