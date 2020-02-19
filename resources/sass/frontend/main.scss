@@ -447,7 +447,6 @@ body{
 }
 .logoName {
     padding: 25px;
-    pointer-events: none;
     z-index: 23;
     text-align: left;
 }
@@ -473,6 +472,14 @@ body{
 
 .logoName p{
     width: 550px;
+}
+
+.slider_btn{
+    border: 2px solid white;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-size: 18px;
 }
 .container-head {
     position: relative;
@@ -869,12 +876,24 @@ footer a {
 
 @media (max-width: 992px){
 
+    .logoName{
+        text-align: center;
+        padding-bottom: 40px;
+    }
+
     .logoName p{
         width: 100%;
     }
 
     .logoName h1{
         text-align: center;
+    }
+
+    .slider_btn{
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 7px;
+        border: 1px solid #ffffff;
     }
     .wrapper_tabs .right_column {
         width: 100%;
