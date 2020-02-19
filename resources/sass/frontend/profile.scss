@@ -1768,17 +1768,19 @@ input[type=range]::-ms-track {
     height: 24px;
     background: url(/images/profile/icons/like-new.png) no-repeat;
     background-size: cover;
-    transition: 0.5s;
     bottom: 0;
+    transition: none!important;
 }
 
 .work_like__icon.blue {
     background: url(/images/profile/icons/like-new-blue.png) no-repeat;
     background-size: cover;
+    transition: none!important;
 }
 
 .count_likes.blue {
     color: #1897cb;
+    transition: none!important;
 }
 
 .work_eye__icon {
@@ -1792,7 +1794,7 @@ input[type=range]::-ms-track {
     height: 24px;
     background: url(/images/profile/icons/open-new.png) no-repeat;
     background-size: cover;
-    transition: 0.5s;
+    transition: none!important;
 }
 
 .work_eye__icon.person {
