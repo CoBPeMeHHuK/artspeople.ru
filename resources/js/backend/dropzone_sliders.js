@@ -44,6 +44,7 @@ $('form[name=form]').submit(function(event){
                             url = '/admin/'+type,
                             action = $('#action').val(),
                             name = $('#name_element').val(),
+                            isOverlay = $("input[name='optionsRadios']:checked").val(),
                             description = $('#description_element').val(),
                             urlRedirect = $('#url_element').val(),
                             rating = $('#rating_element').val(),
@@ -64,6 +65,7 @@ $('form[name=form]').submit(function(event){
                                 type:type,
                                 action:action,
                                 name:name,
+                                is_overlay:isOverlay,
                                 description:description,
                                 url:urlRedirect,
                                 rating:rating,
@@ -110,6 +112,7 @@ $('form[name=form]').submit(function(event){
                 let type = $('#type_element').val(),
                     action = $('#action').val(),
                     name = $('#name_element').val(),
+                    isOverlay = $("input[name='optionsRadios']:checked").val(),
                     description = $('#description_element').val(),
                     urlRedirect = $('#url_element').val(),
                     rating = $('#rating_element').val(),
@@ -120,6 +123,7 @@ $('form[name=form]').submit(function(event){
                 formData.append('type', type);
                 formData.append('action', action);
                 formData.append('name', name);
+                formData.append('is_overlay', isOverlay);
                 formData.append('description', description);
                 formData.append('url', urlRedirect);
                 formData.append('rating', rating);
