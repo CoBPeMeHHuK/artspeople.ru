@@ -5,12 +5,13 @@
 			<div class="sl_item" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});">
 
                 <div class="wrapper_main">
-                    <a class="slider_a" href="{{ $slider->url }}">
                     <div class="logoName">
 						<h1>{{ $slider->title }}</h1>
 						<p>{!! $slider->description !!}</p>
+                        <a class="slider_a" href="{{ $slider->url }}">
+                            <span class="slider_btn">Подробнее</span>
+                        </a>
                     </div>
-                    </a>
                 </div>
             </div>
             @endforeach
