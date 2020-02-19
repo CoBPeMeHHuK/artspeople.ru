@@ -173,13 +173,11 @@
                 this.user.friendRequest.status === this.user.statuses[0] ? this.isStatusDefault = true : this.isStatusDefault = false;
                 this.user.friendRequest.status === this.user.statuses[1] ? this.isStatusNotAccepted = true : this.isStatusNotAccepted = false;
                 this.user.friendRequest.status === this.user.statuses[2] ? this.isStatusAccepted = true : this.isStatusAccepted = false;
+
+                this.$emit('preloader', [{
+                    'isPreloader': false
+                }]);
             });
-
-            this.$emit('preloader', [{
-                'isPreloader': false
-            }]);
-
-
         },
 
         beforeUpdate() {

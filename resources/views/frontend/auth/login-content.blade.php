@@ -41,11 +41,11 @@
                         </label>
                     </div>
 
-                    @if (Route::has('password.request'))
-                        <a class="btn btn-link txt3" href="{{ route('password.request') }}">
-                            {{ __('Забыли ваш пароль ?') }}
-                        </a>
-                    @endif
+{{--                    @if (Route::has('password.request'))--}}
+{{--                        <a class="btn btn-link txt3" href="{{ route('password.request') }}">--}}
+{{--                            {{ __('Забыли ваш пароль ?') }}--}}
+{{--                        </a>--}}
+{{--                    @endif--}}
 
                 </div>
 

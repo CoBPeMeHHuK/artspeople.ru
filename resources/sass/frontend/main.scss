@@ -446,9 +446,10 @@ body{
     background-color: rgba(73, 73, 73, 0.603);
 }
 .logoName {
-    padding: 20px;
+    padding: 25px;
     pointer-events: none;
     z-index: 23;
+    text-align: left;
 }
 
 .logoName p {
@@ -466,6 +467,12 @@ body{
     color: #ffffff;
     font-family: Circe;
     font-weight: 800;
+    padding-bottom: 20px;
+    text-align: left;
+}
+
+.logoName p{
+    width: 550px;
 }
 .container-head {
     position: relative;
@@ -861,6 +868,14 @@ footer a {
 }
 
 @media (max-width: 992px){
+
+    .logoName p{
+        width: 100%;
+    }
+
+    .logoName h1{
+        text-align: center;
+    }
     .wrapper_tabs .right_column {
         width: 100%;
         text-align: center;
