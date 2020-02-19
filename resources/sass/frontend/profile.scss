@@ -1812,10 +1812,10 @@ input[type=range]::-ms-track {
     bottom: 0;
     width: 30px;
     height: 20px;
-    transition: 1s;
     color: white;
     font-size: 14px;
     font-weight: 600;
+    transition: none!important;
 }
 
 
