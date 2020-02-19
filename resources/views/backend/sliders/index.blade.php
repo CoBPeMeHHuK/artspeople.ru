@@ -32,6 +32,7 @@
                             <th>Описание</th>
                             <th>Мини-картинка</th>
                             <th>Картинка</th>
+                            <th>Затемнение</th>
                             <th>Рейтинг</th>
                             <th>Url</th>
                             <th></th>
@@ -58,6 +59,13 @@
 	                        @foreach($slider->images->where('condition','max') as $image)
                             <td><div class="admin_img" style="background-image: url({{ asset("https://357319.selcdn.ru/artspeople/".$image->type.'/'.$image->src) }});"></div></td>
 	                        @endforeach
+                            <td>
+                                @if($slider->is_blackout_overlay == 1)
+                                    Есть
+                                    @else
+                                    Нет
+                                    @endif
+                            </td>
                             <td>{{ $slider->rating }}</td>
                             <td>{{ $slider->url }}</td>
 

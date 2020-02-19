@@ -41,6 +41,30 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Затемнение</label>
+                        <div class="radio">
+                            <label for="optionsRadios1">
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="0"
+                                       @if($slider->is_blackout_overlay == 0)
+                                       checked
+                                    @endif>
+                                Без затемнения
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="optionsRadios2">
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="1"
+                                       @if($slider->is_blackout_overlay == 1)
+                                       checked
+                                    @endif>
+                                С затемнением
+                            </label>
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">Ссылка, куда будет перееадресован пользователь</label>
                         <input class="form-control" id="url_element"  placeholder="Введите url" value="{!! $slider->url !!}">

@@ -83,6 +83,7 @@ class SlidersController extends AppController
 
 	    $name = $request->name;
 	    $description = $request->description;
+	    $isOverlay = $request->is_overlay;
 	    $rating = $request->rating;
 	    $is_activity = $request->is_activity;
 	    $action = $request->action;
@@ -92,6 +93,7 @@ class SlidersController extends AppController
 	    $slider = Slider::query()->create([
 		    'title' => $name,
 		    'description' => $description,
+		    'is_blackout_overlay'=>$isOverlay,
 		    'url'=>$url,
 		    'rating' => $rating,
 		    'is_activity' => $is_activity,
@@ -138,6 +140,7 @@ class SlidersController extends AppController
 	    $name = $request->name;
 	    $description = $request->description;
 	    $rating = $request->rating;
+        $isOverlay = $request->is_overlay;
 	    $is_activity = (int)$request->is_activity;
 	    $action = $request->action;
 	    $type = $request->type;
@@ -148,6 +151,7 @@ class SlidersController extends AppController
 		    ->update([
 		    'title'=>$name,
 		    'description'=>$description,
+		    'is_blackout_overlay'=>$isOverlay,
 		    'url'=>$url,
 		    'rating'=>$rating,
 		    'is_active'=>$is_activity,
