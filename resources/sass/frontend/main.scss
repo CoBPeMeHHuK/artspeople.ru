@@ -1193,13 +1193,15 @@ footer a {
     position: absolute;
     width: 24px;
     height: 24px;
-    background: url(/images/profile/icons/heart.png) no-repeat;
+    background: url(/images/profile/icons/like-new.png) no-repeat;
+    background-size: cover;
     transition: 0.5s;
     bottom: 0;
 }
 
 .work_like__icon.blue{
-    background: url(/images/profile/icons/heart_blue.png) no-repeat;
+    background: url(/images/profile/icons/like-new-blue.png) no-repeat;
+    background-size: cover;
 }
 
 .count_likes.blue{
@@ -1215,7 +1217,8 @@ footer a {
     bottom: 15px;
     width: 24px;
     height: 24px;
-    background: url(/images/profile/icons/visible-eye.png) no-repeat;
+    background: url(/images/profile/icons/open-new.png) no-repeat;
+    background-size: cover;
     transition: 0.5s;
 }
 
