@@ -53,9 +53,15 @@
                                     </div>
                                 </div>
                                 <div class="information__work_container">
-                                    <div class="information__work_title" v-html="works[selectImage].title"></div>
-                                    <div class="information__work_description" v-html="works[selectImage].description"></div>
+                                    <div v-if="works[selectImage].title.length > 0" class="information__work_title" v-html="works[selectImage].title"></div>
+                                    <div v-if="works[selectImage].description.length > 0" class="information__work_description" v-html="works[selectImage].description"></div>
                                     <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
+                                </div>
+                            </div>
+                            <div class="information_comments">
+                                <div class="information_comments__container">
+                                    <div class="information_comments__icon"></div>
+                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
                                 </div>
                             </div>
                         </div>
@@ -92,9 +98,15 @@
                         <div class="image_information">
                             <div class="information_container">
                                 <div class="information__work_container">
-                                    <div class="information__work_title" v-html="works[selectImage].title"></div>
-                                    <div class="information__work_description" v-html="works[selectImage].description"></div>
+                                    <div v-if="works[selectImage].title.length > 0" class="information__work_title" v-html="works[selectImage].title"></div>
+                                    <div v-if="works[selectImage].description.length > 0"  class="information__work_description" v-html="works[selectImage].description"></div>
                                     <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
+                                </div>
+                            </div>
+                            <div class="information_comments">
+                                <div class="information_comments__container">
+                                    <div class="information_comments__icon"></div>
+                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
                                 </div>
                             </div>
                         </div>

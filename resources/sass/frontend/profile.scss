@@ -2093,6 +2093,33 @@ input[type=range]::-ms-track {
     font-size: 13px;
 }
 
+.information_comments{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:340px;
+}
+
+.information_comments__container{
+
+}
+
+.information_comments__icon{
+    background:url('/images/profile/icons/works-comment.png') no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.information_comments__message{
+    padding-top: 12px;
+    font-family: 'Circe';
+    color: #525252;
+}
+
+
+
 .gallery_close.close {
     font-size: 28px;
     color: white;
@@ -2748,11 +2775,13 @@ input[type=range]::-ms-track {
         left: 5%;
         cursor: pointer;
     }
-
-
 }
 
 @media (max-width: 992px) {
+
+    .information_comments{
+        height: 170px;
+    }
 
     .vicp-wrap {
         left: 0 !important;
