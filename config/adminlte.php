@@ -148,8 +148,14 @@ return [
 		    'url'         => 'admin/articles',
 		    'icon'        => 'fa fa-newspaper',
 		    'label_color' => 'success',
-		    'can'=>'access to users'
 	    ],
+        [
+            'text'        => 'Пользователи',
+            'url'         => 'admin/users',
+            'icon'        => 'fa fa-user',
+            'label_color' => 'success',
+            'can'=>'access to users'
+        ],
 	    ['header' => 'СТРАНИЦА ПРОФИЛЯ'],
     ],
 

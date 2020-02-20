@@ -6,6 +6,7 @@
 
 	Route::group(['prefix' => 'admin', 'as' => 'admin.', 'name' => 'admin.','middleware'=>'role:root|administrator'], function () {
 
+        Route::resource('users', 'UsersController');
 		Route::resource('sliders', 'SlidersController');
         Route::resource('articles', 'ArticlesController');
         Route::post('/articles/{id}', 'ArticlesController@update')->name('articles.update');
