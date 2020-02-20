@@ -320,6 +320,33 @@ header {
     display: none;
 }
 
+
+
+.information_comments{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:340px;
+}
+
+.information_comments__container{
+
+}
+
+.information_comments__icon{
+    background:url('/images/profile/icons/works-comment.png') no-repeat;
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.information_comments__message{
+    padding-top: 12px;
+    font-family: 'Circe';
+    color: #525252;
+}
+
 @media (max-width:992px) {
     .menu ul {
         float: right;
@@ -890,6 +917,10 @@ footer a {
 
 @media (max-width: 992px){
 
+    .information_comments{
+        height: 170px;
+    }
+
     .sl_item__overlay{
         background: linear-gradient(359.77deg, #000000 -8.71%, rgba(0, 0, 0, 0) 84.9%);
     }
@@ -1404,6 +1435,8 @@ footer a {
 .information__work_publication {
     font-size: 13px;
 }
+
+
 
 .information__person_avatar {
     border-radius: 50%;
