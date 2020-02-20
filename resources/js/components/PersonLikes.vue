@@ -58,6 +58,12 @@
                                     <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>
                                 </div>
                             </div>
+                            <div class="information_comments">
+                                <div class="information_comments__container">
+                                    <div class="information_comments__icon"></div>
+                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="image_container image_container_mobile" v-else>
@@ -95,6 +101,12 @@
                                     <div class="information__work_title" v-html="likes[selectImage].work.name"></div>
                                     <div class="information__work_description" v-html="likes[selectImage].work.description"></div>
                                     <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>
+                                </div>
+                            </div>
+                            <div class="information_comments">
+                                <div class="information_comments__container">
+                                    <div class="information_comments__icon"></div>
+                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
                                 </div>
                             </div>
                         </div>
