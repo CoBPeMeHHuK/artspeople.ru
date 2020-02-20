@@ -10,9 +10,7 @@
 
         <div class="col-xs-12">
             <div class="box-header">
-                <h1 class="box-title">
-                    Пользователи
-                </h1>
+                <h3 class="box-title">Колличество пользователей - {{ count($users) }}</h3>
             </div>
             <div class="box">
                 <!-- /.box-header -->
