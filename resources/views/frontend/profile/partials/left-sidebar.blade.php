@@ -19,9 +19,9 @@
                                     class="title-section__icons" :class="{rotate:isOpenUserOption}"></span></div>
                         <div class="title_section__options" :class="{is_active:isOpenUserOption}">
                             <ul class="title_section__ul">
-                                <li @click="isOpenUserOption = false">Название пункта</li>
-                                <li @click="isOpenUserOption = false">Название пункта</li>
-                                <li @click="isOpenUserOption = false">Название пункта</li>
+                                <li @click="isOpenUserOption = false"><router-link to="/profile/{{ $user->id }}"><p>Профиль</p></router-link></li>
+                                <li @click="isOpenUserOption = false"><router-link to="/profile/{{ $user->id }}/likes"><p>Симпатии</p></router-link></li>
+                                <li @click="isOpenUserOption = false"><router-link to="/profile/{{ $user->id }}/about"><p>О себе</p></router-link></li>
                             </ul>
                         </div>
                     </div>

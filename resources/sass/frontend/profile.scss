@@ -796,15 +796,21 @@ input[type=range]::-ms-track {
 
 
 .title_section__ul li {
-    font-size: 14px;
-    font-family: "Circe", serif;
-    color: rgb(0, 0, 0);
     text-align: left;
     border-bottom: 1px solid #d9d9d9;
     padding: 10px 5px 5px 10px;
 }
 
-.title_section__ul li:hover {
+.title_section__ul p{
+    font-size: 14px;
+    font-family: "Circe", serif;
+    color: rgb(0, 0, 0);
+    width:100%;
+    height: 100%;
+    margin: 0;
+}
+
+.title_section__ul p:hover {
     color: #16a8e4;
 }
 
