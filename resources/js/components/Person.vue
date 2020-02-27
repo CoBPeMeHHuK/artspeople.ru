@@ -15,9 +15,11 @@
                     </div>
                     <div class="personal_title__options" :class="{is_active:isOpenUserOption}">
                         <ul class="personal_title__ul">
-                            <li @click="showUserOption">Название пункта</li>
-                            <li @click="showUserOption">Название пункта</li>
-                            <li @click="showUserOption">Название пункта</li>
+                            <li @click="showUserOption"><router-link :to="{ name:'personworks' }"><p>Профиль</p></router-link></li>
+                            <li @click="showUserOption"><router-link :to="{name:'personlikes'}"><p>Симпатии</p></router-link></li>
+                            <li @click="showUserOption"><router-link :to="{name:'personabout'}"><p>О себе</p></router-link></li>
+                            <li @click="showUserOption"><p @click="show">Написать сообщение</p></li>
+                            <li @click="showUserOption" v-if="isStatusDefault"><p @click="addToFriendList">Добавить в друзья</p></li>
                         </ul>
                     </div>
                 </div>
