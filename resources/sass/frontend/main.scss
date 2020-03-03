@@ -1104,7 +1104,7 @@ footer a {
     transition: 0.5s;
 }
 
-.gallery_work:hover .work_gradient, .gallery_work:focus .work_gradient {
+.gallery_work:hover .work_gradient {
     display: block;
     opacity: 0.75;
     transition: 0.5s;
@@ -1275,7 +1275,7 @@ footer a {
 }
 
 
-.gallery_work:hover .work_icons , .gallery_work:focus .work_icons {
+.gallery_work:hover .work_icons {
     opacity: 1;
     transition: 0.5s;
 }
