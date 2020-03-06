@@ -31,7 +31,7 @@
             <div class="works_container">
                 <div class="gallery_works">
                     <div class="grid gallery_work_wrapper" v-if="getWorkItems.length > 0">
-                        <div class="gallery_work grid-item" :key="workIndex" v-for="(work,workIndex) in getWorkItems" v-if="!((work.is_active_main_pages === 0)&&(work.is_moderated === 1))">
+                        <div class="gallery_work grid-item" ontouchstart="" :key="workIndex" v-for="(work,workIndex) in getWorkItems" v-if="!((work.is_active_main_pages === 0)&&(work.is_moderated === 1))">
                             <div class="gallery_work__container">
                                 <p class="work_gradient"></p>
                                 <img v-bind:src="getImgSrc(work.image.src)" class="work" alt="image.png" :class="{new_work:(work.is_active_main_pages ==0)&&(work.is_moderated == 0)}">
