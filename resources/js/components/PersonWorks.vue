@@ -23,101 +23,15 @@
                 </div>
             </div>
 
-            <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="works.length > 0">
-                <modal :height="'100%'" :width="'100%'" name="gallery">
-                    <div class="image_container" v-if="clientWidth >= 992">
-                        <div class="image_content">
-                            <transition name="image" mode="out-in">
-                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
-                            </transition>
-                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
-                        </div>
+            <full-screen-gallery-modal :is-auth="isAuth" :works="works" :select-image="selectImage" type-works="works"/>
 
-                        <div class="image_information">
-                            <button type="button" @click="closeGallery" class="gallery_close close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="information_container">
-                                <div class="information__title_container">
-                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+works[selectImage].avatar.src+') no-repeat' }"></div>
-                                    <div class="information__person_info">
-                                        <div class="information__person_title">
-                                            <router-link :to="'/profile/'+works[selectImage].user.id">
-                                                <p class="information__person_name">
-                                                    {{ works[selectImage].user.surname +' '+works[selectImage].user.name }}
-                                                </p>
-                                            </router-link>
-                                            <p class="information__person_range">Новичок</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="information__work_container">
-                                    <div v-if="works[selectImage].title.length > 0" class="information__work_title" v-html="works[selectImage].title"></div>
-                                    <div v-if="works[selectImage].description.length > 0" class="information__work_description" v-html="works[selectImage].description"></div>
-                                    <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
-                                </div>
-                            </div>
-                            <div class="information_comments">
-                                <div class="information_comments__container">
-                                    <div class="information_comments__icon"></div>
-                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image_container image_container_mobile" v-else>
-                        <div class="image_information__header_mobile">
-                            <div class="information__title_container__mobile">
-                                <div class="information__title_container__mobile">
-                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+works[selectImage].avatar.src+') no-repeat' }"></div>
-                                    <div class="information__person_info">
-                                        <div class="information__person_title">
-                                            <router-link :to="'/profile/'+works[selectImage].user.id">
-                                            <p class="information__person_name">
-                                                {{ works[selectImage].user.surname +' '+works[selectImage].user.name }}
-                                            </p>
-                                            </router-link>
-                                            <p class="information__person_range">Новичок</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" @click="closeGallery" class="gallery_close close close_mobile" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="image_content">
-                            <transition name="image" mode="out-in">
-                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
-                            </transition>
-                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
-                        </div>
-
-                        <div class="image_information">
-                            <div class="information_container">
-                                <div class="information__work_container">
-                                    <div v-if="works[selectImage].title.length > 0" class="information__work_title" v-html="works[selectImage].title"></div>
-                                    <div v-if="works[selectImage].description.length > 0"  class="information__work_description" v-html="works[selectImage].description"></div>
-                                    <div class="information__work_publication"><i>{{ works[selectImage].created}}</i></div>
-                                </div>
-                            </div>
-                            <div class="information_comments">
-                                <div class="information_comments__container">
-                                    <div class="information_comments__icon"></div>
-                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </modal>
-            </div>
         </div>
     </div>
 </template>
 <script>
+    import FullScreenGalleryModal from "./fullScreenGalleryModal";
     export default {
+        components: {FullScreenGalleryModal},
         data: function () {
             return {
                 works: [],
