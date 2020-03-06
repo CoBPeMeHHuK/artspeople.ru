@@ -23,101 +23,105 @@
                 </div>
             </div>
 
-            <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="likes.length > 0">
-                <modal :height="'100%'" :width="'100%'" name="gallery">
-                    <div class="image_container" v-if="clientWidth >= 992">
-                        <div class="image_content">
-                            <transition name="image" mode="out-in">
-                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
-                            </transition>
-                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
-                        </div>
+            <full-screen-gallery-modal :is-auth="isAuth" :works="likes" :select-image="selectImage" type-works="likes"/>
 
-                        <div class="image_information">
-                            <button type="button" @click="closeGallery" class="gallery_close close" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="information_container">
-                                <div class="information__title_container">
-                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>
-                                    <div class="information__person_info">
-                                        <div class="information__person_title">
-                                            <router-link :to="'/profile/'+likes[selectImage].work.user.id">
-                                            <p class="information__person_name">
-                                                {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
-                                            </p>
-                                            </router-link>
-                                            <p class="information__person_range">Новичок</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="information__work_container">
-                                    <div class="information__work_title" v-html="likes[selectImage].work.name"></div>
-                                    <div class="information__work_description" v-html="likes[selectImage].work.description"></div>
-                                    <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>
-                                </div>
-                            </div>
-                            <div class="information_comments">
-                                <div class="information_comments__container">
-                                    <div class="information_comments__icon"></div>
-                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="image_container image_container_mobile" v-else>
-                        <div class="image_information__header_mobile">
-                            <div class="information__title_container__mobile">
-                                <div class="information__title_container__mobile">
-                                <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>
-                                <div class="information__person_info">
-                                    <div class="information__person_title">
-                                        <router-link :to="'/profile/'+likes[selectImage].work.user.id">
-                                        <p class="information__person_name">
-                                            {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}
-                                        </p>
-                                        </router-link>
-                                        <p class="information__person_range">Новичок</p>
-                                    </div>
-                                </div>
-                                </div>
-                                <button type="button" @click="closeGallery" class="gallery_close close close_mobile" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="image_content">
-                            <transition name="image" mode="out-in">
-                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
-                            </transition>
-                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
-                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
-                        </div>
+<!--            <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="likes.length > 0">-->
+<!--                <modal :height="'100%'" :width="'100%'" name="gallery">-->
+<!--                    <div class="image_container" v-if="clientWidth >= 992">-->
+<!--                        <div class="image_content">-->
+<!--                            <transition name="image" mode="out-in">-->
+<!--                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">-->
+<!--                            </transition>-->
+<!--                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>-->
+<!--                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>-->
+<!--                        </div>-->
 
-                        <div class="image_information">
-                            <div class="information_container">
-                                <div class="information__work_container">
-                                    <div class="information__work_title" v-html="likes[selectImage].work.name"></div>
-                                    <div class="information__work_description" v-html="likes[selectImage].work.description"></div>
-                                    <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>
-                                </div>
-                            </div>
-                            <div class="information_comments">
-                                <div class="information_comments__container">
-                                    <div class="information_comments__icon"></div>
-                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </modal>
-            </div>
+<!--                        <div class="image_information">-->
+<!--                            <button type="button" @click="closeGallery" class="gallery_close close" aria-label="Close">-->
+<!--                                <span aria-hidden="true">&times;</span>-->
+<!--                            </button>-->
+<!--                            <div class="information_container">-->
+<!--                                <div class="information__title_container">-->
+<!--                                    <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>-->
+<!--                                    <div class="information__person_info">-->
+<!--                                        <div class="information__person_title">-->
+<!--                                            <router-link :to="'/profile/'+likes[selectImage].work.user.id">-->
+<!--                                            <p class="information__person_name">-->
+<!--                                                {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}-->
+<!--                                            </p>-->
+<!--                                            </router-link>-->
+<!--                                            <p class="information__person_range">Новичок</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="information__work_container">-->
+<!--                                    <div class="information__work_title" v-html="likes[selectImage].work.name"></div>-->
+<!--                                    <div class="information__work_description" v-html="likes[selectImage].work.description"></div>-->
+<!--                                    <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="information_comments">-->
+<!--                                <div class="information_comments__container">-->
+<!--                                    <div class="information_comments__icon"></div>-->
+<!--                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="image_container image_container_mobile" v-else>-->
+<!--                        <div class="image_information__header_mobile">-->
+<!--                            <div class="information__title_container__mobile">-->
+<!--                                <div class="information__title_container__mobile">-->
+<!--                                <div class="information__person_avatar" v-bind:style="{ background: 'url('+selectelAvatarSrc+likes[selectImage].work.avatar.src+') no-repeat' }"></div>-->
+<!--                                <div class="information__person_info">-->
+<!--                                    <div class="information__person_title">-->
+<!--                                        <router-link :to="'/profile/'+likes[selectImage].work.user.id">-->
+<!--                                        <p class="information__person_name">-->
+<!--                                            {{ likes[selectImage].work.user.surname +' '+likes[selectImage].work.user.name }}-->
+<!--                                        </p>-->
+<!--                                        </router-link>-->
+<!--                                        <p class="information__person_range">Новичок</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                </div>-->
+<!--                                <button type="button" @click="closeGallery" class="gallery_close close close_mobile" aria-label="Close">-->
+<!--                                    <span aria-hidden="true">&times;</span>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="image_content">-->
+<!--                            <transition name="image" mode="out-in">-->
+<!--                                <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">-->
+<!--                            </transition>-->
+<!--                            <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>-->
+<!--                            <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>-->
+<!--                        </div>-->
+
+<!--                        <div class="image_information">-->
+<!--                            <div class="information_container">-->
+<!--                                <div class="information__work_container">-->
+<!--                                    <div class="information__work_title" v-html="likes[selectImage].work.name"></div>-->
+<!--                                    <div class="information__work_description" v-html="likes[selectImage].work.description"></div>-->
+<!--                                    <div class="information__work_publication"><i>{{ likes[selectImage].work.created_at}}</i></div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="information_comments">-->
+<!--                                <div class="information_comments__container">-->
+<!--                                    <div class="information_comments__icon"></div>-->
+<!--                                    <div class="information_comments__message">Будьте первым, кто оставит<br> комментарий к этой работе</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </modal>-->
+<!--            </div>-->
         </div>
     </div>
 </template>
 <script>
+    import FullScreenGalleryModal from "./fullScreenGalleryModal";
     export default {
+        components: {FullScreenGalleryModal},
         data: function () {
             return {
                 likes: [],
