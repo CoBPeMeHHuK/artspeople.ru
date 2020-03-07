@@ -9,12 +9,15 @@
                       @vdropzone-success="successUpload"
         ></vue-dropzone>
         <div class="send_container">
-            <button class="btn btn-primary" @click="uploadFiles" v-show="isAddedFile">Загрузить</button>
+            <button class="btn btn-primary"
+                    @click="uploadFiles"
+                    v-show="isAddedFile">Загрузить</button>
         </div>
         <div class="works_container" v-if="works.length > 0 ">
             <div class="gallery_works">
                 <div class="grid gallery_work_wrapper is_auth">
-                    <div class="gallery_work grid-item"  :key="workIndex" v-for="(work,workIndex) in works">
+                    <div class="gallery_work grid-item"
+                         :key="workIndex" v-for="(work,workIndex) in works">
                         <div class="gallery_work__container">
                             <p class="work_gradient"></p>
                             <img  class="work" v-bind:src="getImgSrc(work.src)" alt="image.png">
@@ -40,12 +43,16 @@
                 </div>
                 <div class="modal_content" :height="heightModal" :width="widthModal">
                     <label>Выбор подкатегории
-                        <select class="image-select form-control form-control-lg form-padding option_custom" v-model="selectSubcategory">
-                            <option v-for="subcategory in subcategories" :selected="subcategory.id == selectSubcategory" :value="subcategory.id">{{ subcategory.title }}</option>
+                        <select class="image-select form-control form-control-lg form-padding option_custom"
+                                v-model="selectSubcategory">
+                            <option v-for="subcategory in subcategories"
+                                    :selected="subcategory.id == selectSubcategory"
+                                    :value="subcategory.id">{{ subcategory.title }}</option>
                         </select>
                     </label>
                     <label> Название
-                        <input type="text" class="form-control option_custom" v-model="selectTitle">
+                        <input type="text" class="form-control option_custom"
+                               v-model="selectTitle">
                     </label>
                     <label> Описание
                         <textarea class="form-control option_custom" v-model="selectDescription"></textarea>
@@ -57,21 +64,33 @@
             </div>
         </modal>
         </div>
-        <div class="modal_container_gallery" :class="{auth:isAuth}" v-if="works.length > 0 ">
-            <modal :height="'100%'" :width="'100%'" name="gallery">
-            <div class="image_container" v-if="clientWidth >= 992">
+
+        <div class="modal_container_gallery"
+             :class="{auth:isAuth}"
+             v-if="works.length > 0 ">
+
+            <modal
+                :height="'100%'"
+                :width="'100%'"
+                name="gallery">
+
+                <div class="image_container" v-if="clientWidth >= 992">
                 <div class="image_content">
+
                     <transition name="image" mode="out-in">
                         <img :key="selectImage"  class="image_item" :src="getUrlList[selectImage]">
                     </transition>
+
                     <a class="prev" @click="prev"><i class="fa fa-chevron-left"></i></a>
                     <a class="next" @click="next"><i class="fa fa-chevron-right"></i></a>
                 </div>
 
                 <div class="image_information">
+
                     <button type="button" @click="closeGallery" class="gallery_close close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+
                     <div class="information_container">
                         <div class="information__work_container">
                             <div class="information__work_title" v-html="works[selectImage].title"></div>
@@ -118,11 +137,6 @@
     import 'sweetalert2/dist/sweetalert2.min.css';
 
 
-
-
-
-
-
     export default {
         data: function () {
             return {
@@ -135,7 +149,6 @@
                 index:null,
                 clientWidth:0,
                 selectId:null,
-                selectelUrl:'https://357319.selcdn.ru/artspeople/works/',
                 urlList:[],
                 works: [],
                 subcategories: [],
@@ -162,32 +175,19 @@
         },
 
 
-
-
-
-
-
-
-
-
-
-
         props: [
             'user-auth',
-            'isAuth'
+            'isAuth',
+            'selectelAddress',
+            'selectelAddressAvatar',
+            'selectelAddressWorks'
         ],
+
+
+
         components: {
             vueDropzone,
         },
-
-
-
-
-
-
-
-
-
 
 
         created() {
@@ -205,16 +205,6 @@
                 }]);
             });
         },
-
-
-
-
-
-
-
-
-
-
 
 
         mounted() {
@@ -263,24 +253,7 @@
                 this.$refs.dropzone.dropzone.options.previewTemplate = template;
 
             });
-
-            // this.$emit('preloader', [{
-            //     'isPreloader': false
-            // }]);
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         updated(){
@@ -304,47 +277,18 @@
                     });
                 }
             });
-
-            // this.$emit('preloader', [{
-            //     'isPreloader':false
-            // }]);
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         computed: {
             getUrlList:function(){
                 this.urlList = [];
                 Object.keys(this.works).forEach(function(id) {
-                    this.urlList.push(this.selectelUrl+this.works[id].src)
+                    this.urlList.push(this.selectelAddressWorks+this.works[id].src)
                 }.bind(this));
                 return this.urlList;
             }
         },
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -392,7 +336,7 @@
                 $('.grid').masonry('destroy');
             },
             getImgSrc:function(source){
-                return this.selectelUrl+source;
+                return this.selectelAddressWorks+source;
             },
 
             show (id) {

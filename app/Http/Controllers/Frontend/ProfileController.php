@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\AppController;
 use App\Model\FriendsRequest;
 use App\Model\User;
+use http\Env;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\Flysystem\Config;
 
 class ProfileController extends AppController
 {
@@ -66,6 +68,15 @@ class ProfileController extends AppController
         $this->vars['isAuth'] = $this->isAuth;
         $this->vars['isActiveLeftSidebar'] = $isActiveLeftSidebar;
 
+        $contentParameters =  [
+            'isAuth' => $isAuthClass,
+            'friends' => $friends,
+            'selectelAddress'=>json_encode(config('app.selectel_url')),
+            'selectelAddressAvatar'=> json_encode(config('app.selectel_url_avatar')),
+            'selectelAddressWorks'=> json_encode(config('app.selectel_url_works'))
+
+        ];
+
 
         $css = view('frontend.profile.partials.css')->render();
         $this->vars['css'] = $css;
@@ -73,7 +84,8 @@ class ProfileController extends AppController
         $left_sidebar = view('frontend.profile.partials.left-sidebar')->with($leftSideBarParameters)->render();
         $this->vars['left_sidebar'] = $left_sidebar;
 
-        $content = view('frontend.profile.partials.content')->with(['isAuth' => $isAuthClass, 'friends' => $friends])->render();
+        $content = view('frontend.profile.partials.content')->with($contentParameters)->render();
+
         $this->vars['content'] = $content;
 
         $scripts = view('frontend.profile.partials.js')->render();

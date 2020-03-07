@@ -2,6 +2,14 @@
 
 return [
 
+    /*----------------------  Sselectel address ------------------*/
+
+    'selectel_url'=>'https://357319.selcdn.ru/artspeople/',
+    'selectel_url_avatar'=>'https://357319.selcdn.ru/artspeople/avatars/',
+    'selectel_url_works'=>'https://357319.selcdn.ru/artspeople/works/',
+
+    /*------------------------------------------------------------*/
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -161,7 +169,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-	    
+
 
         /*
          * Package Service Providers...
@@ -175,7 +183,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-	
+
 	    JeroenNoten\LaravelAdminLte\AdminLteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 	    Spatie\Permission\PermissionServiceProvider::class,
