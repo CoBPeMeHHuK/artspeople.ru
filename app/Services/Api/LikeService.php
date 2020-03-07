@@ -16,6 +16,14 @@ class LikeService extends AppService
         parent::__construct();
     }
 
+    public function getUserAuthLikes(){
+
+        $this->redirectIfNotAuth(route('login'));
+        $user = Auth::user();
+
+        return $this->getLikes($user);
+    }
+
 
     public function addLike($request){
 
@@ -108,6 +116,45 @@ class LikeService extends AppService
 
         return $message;
 
+    }
+
+    private function redirectIfNotAuth($route){
+        if(!$this->isAuth){
+            return redirect($route);
+        } else{
+            return false;
+        }
+    }
+
+    private function getLikes($user){
+        $userCategory = $user->category_id;
+        $id = $user->id;
+        $subcategories = $this->getWorks($userCategory,$id);
+
+        $result =[];
+
+        foreach($subcategories as $subcategory){
+            $works=[];
+            foreach($subcategory->works as $work ) {
+
+                $works[] = [
+                    'name'=>$work->name,
+                    'description'=>$work->description,
+                    'type'=>$subcategory->relative_title,
+                    'source'=>$work->source,
+                    'count_views'=>$work->count_views,
+                    'rating'=>$work->rating,
+                    'is_can_comment'=>$work->is_can_comment,
+                    'is_active'=>'is_active'
+                ];
+            }
+            $result[]=[
+                'title'=>$subcategory->title,
+                'relative_title'=>$subcategory->relative_title,
+                'works'=>$works
+            ];
+        }
+        return $result;
     }
 
 

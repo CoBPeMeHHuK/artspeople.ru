@@ -3,6 +3,7 @@
     namespace App\Services\Api;
 
     use App\Events\ChatMessage;
+    use App\Model\Image;
     use App\Model\LastMessageUser;
     use App\Model\Message;
     use App\Model\User;
@@ -15,6 +16,23 @@
         public function __construct()
         {
             parent::__construct();
+        }
+
+        public function getUsers(){
+
+
+            $user = Auth::check() ? Auth::user() : false;
+            $users = MessageService::getAuthUserMessages() ? MessageService::getAuthUserMessages() :false;
+            $userAvatar = $this->getAvatar(Auth::id());
+
+            $parameters = [
+                'user'=>$user,
+                'userAvatar'=>$userAvatar,
+                'users'=>$users
+            ];
+
+            return $parameters;
+
         }
 
         public function sendMessage($request)
@@ -180,6 +198,10 @@
                 ->reverse()
                 ->values();
             return $messages;
+        }
+
+        private function getAvatar($id){
+            return Image::where(['entity'=>User::class,'element_id'=>$id,'type'=>'avatars'])->first();
         }
 
 
