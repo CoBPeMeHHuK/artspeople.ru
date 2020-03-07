@@ -1,7 +1,7 @@
 
 <template>
     <div class="about_container">
-        <div class="user_information__container_about">
+        <div class="user_information__container_about" :class="{is_auth:isAuth}">
             <div class="user_information__option_about">
                 <div class="user_information__option_container_about">
                     <div class="user_information__title_about">Дата рождения</div>
@@ -52,6 +52,7 @@
         },
 
         props:[
+            'isAuth'
         ],
 
         created(){

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="personal_gallery">
+    <div class="personal_gallery" :class="{is_auth:isAuth}">
         <div class="works_container">
             <div class="gallery_works">
                 <div class="grid gallery_work_wrapper is_auth" v-if="works.length > 0">
