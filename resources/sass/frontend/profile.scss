@@ -1442,9 +1442,13 @@ input[type=range]::-ms-track {
 
 .personal_data__info {
     text-align: center;
-    padding-bottom: 10px;
     max-width: 235px;
     margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+.personal_data__info.is_auth{
+   padding-bottom: 0;
 }
 
 .personal_title {
@@ -1485,9 +1489,15 @@ input[type=range]::-ms-track {
 }
 
 .personal_data_navigation {
+    padding: 20px 0;
+    background:#e0e0e0;
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.personal_data_navigation.is_auth{
+    background: #eff0f4;
 }
 
 .personal_data_navigation__ul {
@@ -1619,6 +1629,10 @@ input[type=range]::-ms-track {
     padding-top: 16px;
     width: 100%;
     background: #efeff3;
+}
+
+.personal_gallery.is_auth{
+  padding-top: 0;
 }
 
 .margin_delete {
@@ -2675,6 +2689,10 @@ input[type=range]::-ms-track {
     font-family: 'Circe';
     font-size: 14px;
     color: #757575;
+}
+
+.user_information__container_about.is_auth{
+    padding: 10px 0;
 }
 
 .user_information__option_about {

@@ -7,7 +7,7 @@
                     <div class="online_icon"></div>
                 </div>
             </div>
-            <div class="personal_data__info">
+            <div class="personal_data__info" :class="{is_auth:isAuth}">
                 <div class="personal_title">
                     <p class="personal_title__name">{{user.surname+' '+user.name}}</p>
                     <div class="icons-container" @click="showUserOption"><span class="personal_title_section__icons"
@@ -32,7 +32,7 @@
                 </p>
             </div>
 
-            <div class="personal_data_navigation" v-if="clientWidth >= 992">
+            <div class="personal_data_navigation" :class="{is_auth:isAuth}" v-if="clientWidth >= 992">
                 <ul class="personal_data_navigation__ul">
                     <li>
                         <router-link :to="{ name:'personworks' }">ПОРТФОЛИО</router-link>
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="personal_data_navigation" v-else>
+            <div class="personal_data_navigation" :class="{is_auth:isAuth}"  v-else>
                 <div class="personal_data_invite_button personal_data_invite_button__container mobile"
                      :class="{is_visible_flex:user.id != userAuth.id}">
                     <div class="btn_message" @click="show"><span></span></div>
@@ -102,9 +102,9 @@
         </div>
         <transition>
             <router-view
-                v-bind:is-auth="isAuth"
-                v-bind:user="user"
-                v-bind:user-auth="userAuth"
+                :is-auth="isAuth"
+                :user="user"
+                :user-auth="userAuth"
                 :selectel-address="selectelAddress"
                 :selectel-address-avatar="selectelAddressAvatar"
                 :selectel-address-works="selectelAddressWorks"
