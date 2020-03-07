@@ -1,64 +1,49 @@
 <div class="profile_content chat">
 
-	<div :class="{not_visible:!preloader}">
-	</div>
+    <div :class="{not_visible:!preloader}">
+    </div>
 
-    <h1>{{ env('THEME') }}</h1>
-
-	<div class="vue_container bg" :class="{preloader_hide:!preloader}">
-		@if(Auth::check())
-			<transition>
+    <div class="vue_container bg" :class="{preloader_hide:!preloader}">
+        <transition>
 				<router-view
                     :selectel-address="{{ $selectelAddress }}"
                     :selectel-address-avatar="{{ $selectelAddressAvatar }}"
                     :selectel-address-works="{{ $selectelAddressWorks }}"
-                    v-bind:is-auth="true"
                     :key="$route.params['id']"
-                    v-bind:connected-users="connectedUsers"
-                    v-bind:friend-requests="friendRequests"
-                    v-bind:statuses="statuses"
-                    v-bind:user-auth-avatar="userAuthAvatar"
-                    :auth-id="{{ Auth::id() }}"
+                    :connected-users="connectedUsers"
                     :class="{is_visible:!preloader}"
-                    :friends="{{ $friends }}"
-                    v-on:clear="clearMessages"
-                    v-bind:data-messages="dataMessages"
-                    v-bind:users="users"
-                    v-bind:user-auth="{{ Auth::user() }}"
-                    v-bind:user-select="userSelect"
                     v-on:preloader="getPreloader"
+                    :user-auth="userAuth"
+
+                    @if(Auth::check())
+                    :users="users"
+                    :friends="{{ $friends }}"
+                    :user-select="userSelect"
                     v-on:message="getMessage"
-                    v-on:avatar="changeAvatar">
+                    v-on:avatar="changeAvatar"
+                    :data-messages="dataMessages"
+                    v-on:clear="clearMessages"
+                    :is-auth="true"
+                    :friend-requests="friendRequests"
+                    :statuses="statuses"
+                    :user-auth-avatar="userAuthAvatar"
+                    :auth-id="{{ Auth::id() }}"
+                    @else
+
+                    :is-auth="false"
+                    @endif
+                            >
                 </router-view>
-			</transition>
-			@else
-		<transition>
-			<router-view
-{{--                :selectel-address="{{ env('THEME') }}"--}}
-                v-bind:is-auth="false"
-                :key="$route.params['id']"
-                v-bind:connected-users="connectedUsers"
-                :class="{is_visible:!preloader}"
-                :friends="{{ $friends }}"
-                v-on:clear="clearMessages"
-                v-bind:data-messages="dataMessages"
-                v-bind:users="users"
-                v-bind:user-auth="userAuth"
-                v-bind:user-select="userSelect"
-                v-on:preloader="getPreloader"
-                v-on:message="getMessage"
-                v-on:avatar="changeAvatar">
-            </router-view>
 		</transition>
-			@endif
+
 	</div>
 
-	<footer>
-		<div  class="footer">
+    <footer>
+        <div class="footer">
             <a href="https://instagram.com/artspeople.ru?igshid=bvoukvyxzxe6"><i class="fa fa-instagram"></i></a>
             <a href="https://t.me/CoBPeMeHHuK"><i class="fa fa-telegram"></i></a>
             <a href="https://vk.com/artspeopleru"><i class="fa fa-vk"></i></a>
-		</div>
-	</footer>
+        </div>
+    </footer>
 
 </div>
