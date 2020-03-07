@@ -17,6 +17,50 @@ class WorkService extends AppService
         parent::__construct();
     }
 
+    public function getUserAuthWorks(){
+
+        $this->redirectIfNotAuth(route('login'));
+        $user = Auth::user();
+
+        return $this->getLikes($user);
+    }
+
+    public function getUserWorks($id){
+
+        $works = Work::where('user_id',$id)
+            ->orderBy('id','desc')
+            ->get();
+        $worksArray =[];
+
+        foreach($works as $work ) {
+
+            $is_like = false;
+
+            foreach($work->likes as $like){
+                if($like->user_id == Auth::id()) $is_like = true;
+            }
+
+            $worksArray[] = [
+                'id'=>$work->id,
+                'user'=>$work->user,
+                'avatar'=>$work->avatar,
+                'subcategory_id'=>$work->subcategory_id,
+                'title'=>$work->name,
+                'description'=>$work->description,
+                'src'=>$work->image->src,
+                'count_views'=>$work->count_views,
+                'rating'=>$work->rating,
+                'is_can_comment'=>$work->is_can_comment,
+                'is_active'=>$work->is_active,
+                'created'=>date("d.m.Y", strtotime($work->created_at)),
+                'likes'=>$work->likes,
+                'is_like'=>$is_like,
+                'number_of_likes'=>count($work->likes)
+            ];
+        }
+        return json_encode($worksArray);
+    }
+
 
     public function addToActiveWorks($request){
         isset($request->id) ? $id = $request->id : $id = false;
@@ -245,6 +289,45 @@ class WorkService extends AppService
             ->orderBy('id', 'desc')
             ->with('image', 'user', 'avatar', 'likes')
             ->get();
+    }
+
+    private function redirectIfNotAuth($route){
+        if(!$this->isAuth){
+            return redirect($route);
+        } else{
+            return false;
+        }
+    }
+
+    private function getLikes($user){
+        $userCategory = $user->category_id;
+        $id = $user->id;
+        $subcategories = $this->getWorks($userCategory,$id);
+
+        $result =[];
+
+        foreach($subcategories as $subcategory){
+            $works=[];
+            foreach($subcategory->works as $work ) {
+
+                $works[] = [
+                    'name'=>$work->name,
+                    'description'=>$work->description,
+                    'type'=>$subcategory->relative_title,
+                    'source'=>$work->source,
+                    'count_views'=>$work->count_views,
+                    'rating'=>$work->rating,
+                    'is_can_comment'=>$work->is_can_comment,
+                    'is_active'=>'is_active'
+                ];
+            }
+            $result[]=[
+                'title'=>$subcategory->title,
+                'relative_title'=>$subcategory->relative_title,
+                'works'=>$works
+            ];
+        }
+        return $result;
     }
 
 

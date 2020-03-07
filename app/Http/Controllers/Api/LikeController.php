@@ -17,6 +17,13 @@ class LikeController extends AppController
 		parent::__construct();
 	}
 
+    /**
+     * @return array
+     */
+    public function getUserAuthLikes(){
+        return $this->likeService->getUserAuthLikes();
+    }
+
 	public function addLike(Request $request){
 	    return $this->likeService->addLike($request);
     }

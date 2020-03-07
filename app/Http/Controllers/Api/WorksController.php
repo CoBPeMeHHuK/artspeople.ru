@@ -20,6 +20,21 @@ class WorksController extends AppController
 		$this->worksService = $workService;
 	}
 
+    /**
+     * @param $id
+     * @return array
+     */
+    public function getUserWorks($id){
+        return $this->worksService->getUserWorks($id);
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserAuthWorks(){
+        return $this->worksService->getUserAuthWorks();
+    }
+
 
 	/**
 	 * @return false|string
