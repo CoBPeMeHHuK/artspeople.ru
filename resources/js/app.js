@@ -125,7 +125,8 @@ const app = new Vue({
             connectedUsers: [],
             friendRequests: [],
             statuses: [],
-            isLoadingUserInformation:false
+            isLoadingUserInformation:false,
+            selectelAddress:'https://357319.selcdn.ru/artspeople/'
         }
     },
     beforeCreate() {

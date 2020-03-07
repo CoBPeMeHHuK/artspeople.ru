@@ -101,7 +101,14 @@
             </div>
         </div>
         <transition>
-            <router-view v-bind:is-auth="isAuth" v-bind:user="user" v-bind:user-auth="userAuth"></router-view>
+            <router-view
+                v-bind:is-auth="isAuth"
+                v-bind:user="user"
+                v-bind:user-auth="userAuth"
+                :selectel-address="selectelAddress"
+                :selectel-address-avatar="selectelAddressAvatar"
+                :selectel-address-works="selectelAddressWorks"
+            ></router-view>
         </transition>
         <div class="modal_container_option">
             <modal name="hello-world" @before-open="beforeOpenModal" :height="heightModal" :width="widthModal">
@@ -153,7 +160,10 @@
         props: [
             'userAuth',
             'connectedUsers',
-            'isAuth'
+            'isAuth',
+            'selectelAddress',
+            'selectelAddressAvatar',
+            'selectelAddressWorks'
         ],
 
         created() {
@@ -173,7 +183,7 @@
                 url: window.location.origin + '/api/profile/' + this.$route.params['id'],
             }).then((response) => {
                 this.user = response.data;
-                this.avatar = "https://357319.selcdn.ru/artspeople/avatars/" + response.data.avatar;
+                this.avatar = this.selectelAddressAvatar + response.data.avatar;
                 this.isAuth = response.data.isAuth;
                 console.log(this.user.friendRequest);
                 console.log(this.user.statuses[0]);

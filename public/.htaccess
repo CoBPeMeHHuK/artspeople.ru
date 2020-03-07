@@ -3,9 +3,9 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-        # https
-        RewriteCond %{SERVER_PORT} !^443$
-        RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+#        # https
+#        RewriteCond %{SERVER_PORT} !^443$
+#        RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 
 
 
