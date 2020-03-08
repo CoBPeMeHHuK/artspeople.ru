@@ -6,7 +6,7 @@
                 <div class="friends_requests__user_container">
                     <div class="information__title_container_request_friend">
                         <div class="information__person_avatar_friend"
-                             v-bind:style="{ background: 'url(https://357319.selcdn.ru/artspeople/avatars/'+friendRequest.user.avatar.src+') no-repeat' }"></div>
+                             v-bind:style="{ background: 'url('+selectelAddressAvatar+friendRequest.user.avatar.src+') no-repeat' }"></div>
                         <div class="information__person_info">
                             <div class="information__person_title_friend">
                                 <p class="information__person_name_friend">{{ friendRequest.user.name +' '+
@@ -49,7 +49,8 @@
         props: [
             'userAuth',
             'friendRequests',
-            'statuses'
+            'statuses',
+            'selectelAddressAvatar',
         ],
 
         created() {

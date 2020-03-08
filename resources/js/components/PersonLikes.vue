@@ -3,7 +3,7 @@
     <div class="personal_gallery" :class="{is_auth:isAuth}">
         <div class="works_container">
             <div class="gallery_works">
-                <div class="grid gallery_work_wrapper is_auth" v-if="likes.length > 0">
+                <div class="grid gallery_work_wrapper is_auth" v-if="isHasAnyWorks">
                     <div class="gallery_work grid-item" :key="likeIndex" v-for="(like,likeIndex) in likes">
                         <div class="gallery_work__container">
                             <p class="work_gradient"></p>
@@ -23,6 +23,7 @@
                 </div>
             </div>
 
+
             <full-screen-gallery-modal :is-auth="isAuth" :works="likes" :select-image="selectImage" type-works="likes"/>
 
         </div>
@@ -38,7 +39,8 @@
                 likes: [],
                 selectImage:0,
                 isInvited:false,
-                clientWidth:0
+                clientWidth:0,
+                isLoadingWorks:false
             }
         },
 
@@ -59,6 +61,7 @@
                 url:'/api/profile/'+this.$route.params['id']+'/likes',
             }).then((response) => {
                 this.likes = response.data.likes;
+                this.isLoadingWorks = true;
             });
         },
 
@@ -117,6 +120,9 @@
                 this.selectImage = index;
                 this.$modal.show('gallery');
             },
+            isHasAnyWorks:function(){
+                return this.likes.length > 0 && this.isLoadingWorks;
+            }
         }
     }
 </script>
