@@ -201,8 +201,26 @@ img {
 }
 
 .vue_container {
-    min-height: calc(100vh - 50px);
+    height: calc(100vh - 50px);
     padding-top: 50px;
+    overflow-y: scroll;
+}
+
+.vue_container::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.vue_container::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.vue_container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #b4b6b9;
 }
 
 /* футер */
@@ -638,25 +656,9 @@ input[type=range]::-ms-track {
 .main {
     display: flex;
     height: 100%;
-    overflow-y: scroll;
 }
 
-.main::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
-}
 
-.main::-webkit-scrollbar {
-    width: 8px;
-    background-color: #F5F5F5;
-}
-
-.main::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #b4b6b9;
-}
 
 .left-section {
     display: inline-block;
