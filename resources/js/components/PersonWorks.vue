@@ -2,8 +2,8 @@
 <template>
     <div class="personal_gallery" :class="{is_auth:isAuth}">
         <div class="works_container">
-            <div class="gallery_works">
-                <div class="grid gallery_work_wrapper is_auth" v-if="works.length > 0">
+            <div class="gallery_works" >
+                <div class="grid gallery_work_wrapper is_auth" v-if="isHasAnyWorks">
                     <div class="gallery_work grid-item"
                          :key="workIndex"
                          v-for="(work,workIndex) in works">
@@ -47,7 +47,8 @@
                 works: [],
                 selectImage:0,
                 isInvited:false,
-                clientWidth:0
+                clientWidth:0,
+                isLoadingWorks:false
             }
         },
 
@@ -64,6 +65,7 @@
                 url:'/api/profile/'+this.$route.params['id']+'/works',
             }).then((response) => {
                 this.works = response.data;
+                this.isLoadingWorks = true;
             });
         },
 
@@ -158,6 +160,10 @@
 
             isLike:function(id){
                 return !!this.works[id]['is_like'];
+            },
+
+            isHasAnyWorks:function(){
+                return this.works.length > 0 && this.isLoadingWorks;
             }
         }
     }
