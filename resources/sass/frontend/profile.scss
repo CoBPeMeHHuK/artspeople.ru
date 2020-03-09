@@ -2839,6 +2839,12 @@ input[type=range]::-ms-track {
 
 @media (max-width: 992px) {
 
+    .vue_container{
+        min-height: calc(100vh - 100px);
+        overflow:unset;
+
+    }
+
     .information_comments{
         height: 170px;
     }
