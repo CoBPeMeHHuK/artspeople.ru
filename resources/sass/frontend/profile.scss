@@ -1784,7 +1784,7 @@ input[type=range]::-ms-track {
     width: 24px;
     height: 24px;
     background: url(/images/profile/icons/settings-active.png) no-repeat;
-    transition: 0.5s;
+    transition: none!important;
 }
 
 .work_delete__icon {
@@ -1797,7 +1797,7 @@ input[type=range]::-ms-track {
     width: 24px;
     height: 24px;
     background: url(/images/profile/icons/trash-can.png) no-repeat;
-    transition: 0.5s;
+    transition: none!important;
 }
 
 .work_like__container {
