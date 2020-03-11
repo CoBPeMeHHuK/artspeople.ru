@@ -41,7 +41,7 @@
                 <div class="user_information__option">
                     <div class="user_information__option_container">
                         <div class="user_information__title">Дата рождения</div>
-                        <datepicker  :isDateDisabled="true" v-model="settingBirthday" :displayFormat="'DD-MM-YYYY'" :months="months" :weekdays="weekdays"
+                        <datepicker   v-model="settingBirthday" :displayFormat="'DD-MM-YYYY'" :months="months" :weekdays="weekdays"
                                     class="user_information__input form-control__custom"></datepicker>
                         <div v-if="isDateError" class="user_information__error">Неверный формат даты</div>
                     </div>
