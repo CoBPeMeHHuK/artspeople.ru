@@ -5,7 +5,11 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 Vue.use(require('vue-moment'));
+import VueCoreVideoPlayer from 'vue-core-video-player';
+Vue.use(VueCoreVideoPlayer);
 import VModal from 'vue-js-modal'
+
+
 
 Vue.use(VModal);
 import VueSweetalert2 from 'vue-sweetalert2';

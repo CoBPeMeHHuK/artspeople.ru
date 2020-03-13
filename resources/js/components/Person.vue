@@ -1,5 +1,8 @@
 <template>
     <div class="personal_container">
+        <div class="player-container">
+            <!--<vue-core-video-player src="http://vjs.zencdn.net/v/oceans.mp4" muted="false" cover="https://357319.selcdn.ru/artspeople/sliders/2089c6zqXcikEAMzaEaEdzHXY84kT7ROg2YtMziOrPyW.jpeg"></vue-core-video-player>-->
+        </div>
         <div class="personal_data">
             <div class="personal_data__avatar"
                  v-bind:style="{ background: 'url('+avatar+') no-repeat' }">
@@ -138,6 +141,7 @@
     </div>
 </template>
 <script>
+
     export default {
         data: function () {
             return {
